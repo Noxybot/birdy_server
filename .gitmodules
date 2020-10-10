@@ -1,0 +1,3 @@
+[submodule "birdy_common"]
+	path = birdy_common
+	url = https://github.com/Noxybot/birdy_common.git
