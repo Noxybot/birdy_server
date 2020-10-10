@@ -30,3 +30,7 @@
 *.exe
 *.out
 *.app
+
+birdy.sln
+birdy.vcxproj*
+.vs
