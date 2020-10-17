@@ -34,3 +34,4 @@
 birdy.sln
 birdy.vcxproj*
 .vs
+Debug/*

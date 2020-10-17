@@ -2,7 +2,7 @@
 // If you make any local change, they will be lost.
 // source: birdy.proto
 
-#include "../protobuf/birdy.pb.h"
+#include "birdy.pb.h"
 #include "birdy.grpc.pb.h"
 
 #include <functional>
@@ -25,6 +25,8 @@ static const char* MainEndpoint_method_names[] = {
   "/birdy_grpc.MainEndpoint/RegisterUser",
   "/birdy_grpc.MainEndpoint/LoginUser",
   "/birdy_grpc.MainEndpoint/FindBird",
+  "/birdy_grpc.MainEndpoint/SendMessage",
+  "/birdy_grpc.MainEndpoint/SubscribeToNewMessages",
 };
 
 std::unique_ptr< MainEndpoint::Stub> MainEndpoint::NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options) {
@@ -37,6 +39,8 @@ MainEndpoint::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& chann
   : channel_(channel), rpcmethod_RegisterUser_(MainEndpoint_method_names[0], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_LoginUser_(MainEndpoint_method_names[1], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_FindBird_(MainEndpoint_method_names[2], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_SendMessage_(MainEndpoint_method_names[3], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_SubscribeToNewMessages_(MainEndpoint_method_names[4], ::grpc::internal::RpcMethod::SERVER_STREAMING, channel)
   {}
 
 ::grpc::Status MainEndpoint::Stub::RegisterUser(::grpc::ClientContext* context, const ::birdy_grpc::RegistrationRequest& request, ::birdy_grpc::RegistrationResponse* response) {
@@ -123,6 +127,50 @@ void MainEndpoint::Stub::experimental_async::FindBird(::grpc::ClientContext* con
   return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::birdy_grpc::FindBirdResponse>::Create(channel_.get(), cq, rpcmethod_FindBird_, context, request, false);
 }
 
+::grpc::Status MainEndpoint::Stub::SendMessage(::grpc::ClientContext* context, const ::birdy_grpc::SendMessageRequest& request, ::birdy_grpc::SendMessageResponse* response) {
+  return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_SendMessage_, context, request, response);
+}
+
+void MainEndpoint::Stub::experimental_async::SendMessage(::grpc::ClientContext* context, const ::birdy_grpc::SendMessageRequest* request, ::birdy_grpc::SendMessageResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_SendMessage_, context, request, response, std::move(f));
+}
+
+void MainEndpoint::Stub::experimental_async::SendMessage(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::birdy_grpc::SendMessageResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_SendMessage_, context, request, response, std::move(f));
+}
+
+void MainEndpoint::Stub::experimental_async::SendMessage(::grpc::ClientContext* context, const ::birdy_grpc::SendMessageRequest* request, ::birdy_grpc::SendMessageResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_SendMessage_, context, request, response, reactor);
+}
+
+void MainEndpoint::Stub::experimental_async::SendMessage(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::birdy_grpc::SendMessageResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_SendMessage_, context, request, response, reactor);
+}
+
+::grpc::ClientAsyncResponseReader< ::birdy_grpc::SendMessageResponse>* MainEndpoint::Stub::AsyncSendMessageRaw(::grpc::ClientContext* context, const ::birdy_grpc::SendMessageRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::birdy_grpc::SendMessageResponse>::Create(channel_.get(), cq, rpcmethod_SendMessage_, context, request, true);
+}
+
+::grpc::ClientAsyncResponseReader< ::birdy_grpc::SendMessageResponse>* MainEndpoint::Stub::PrepareAsyncSendMessageRaw(::grpc::ClientContext* context, const ::birdy_grpc::SendMessageRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::birdy_grpc::SendMessageResponse>::Create(channel_.get(), cq, rpcmethod_SendMessage_, context, request, false);
+}
+
+::grpc::ClientReader< ::birdy_grpc::ChatMessage>* MainEndpoint::Stub::SubscribeToNewMessagesRaw(::grpc::ClientContext* context, const ::birdy_grpc::Empty& request) {
+  return ::grpc_impl::internal::ClientReaderFactory< ::birdy_grpc::ChatMessage>::Create(channel_.get(), rpcmethod_SubscribeToNewMessages_, context, request);
+}
+
+void MainEndpoint::Stub::experimental_async::SubscribeToNewMessages(::grpc::ClientContext* context, ::birdy_grpc::Empty* request, ::grpc::experimental::ClientReadReactor< ::birdy_grpc::ChatMessage>* reactor) {
+  ::grpc_impl::internal::ClientCallbackReaderFactory< ::birdy_grpc::ChatMessage>::Create(stub_->channel_.get(), stub_->rpcmethod_SubscribeToNewMessages_, context, request, reactor);
+}
+
+::grpc::ClientAsyncReader< ::birdy_grpc::ChatMessage>* MainEndpoint::Stub::AsyncSubscribeToNewMessagesRaw(::grpc::ClientContext* context, const ::birdy_grpc::Empty& request, ::grpc::CompletionQueue* cq, void* tag) {
+  return ::grpc_impl::internal::ClientAsyncReaderFactory< ::birdy_grpc::ChatMessage>::Create(channel_.get(), cq, rpcmethod_SubscribeToNewMessages_, context, request, true, tag);
+}
+
+::grpc::ClientAsyncReader< ::birdy_grpc::ChatMessage>* MainEndpoint::Stub::PrepareAsyncSubscribeToNewMessagesRaw(::grpc::ClientContext* context, const ::birdy_grpc::Empty& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc_impl::internal::ClientAsyncReaderFactory< ::birdy_grpc::ChatMessage>::Create(channel_.get(), cq, rpcmethod_SubscribeToNewMessages_, context, request, false, nullptr);
+}
+
 MainEndpoint::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       MainEndpoint_method_names[0],
@@ -154,6 +202,26 @@ MainEndpoint::Service::Service() {
              ::birdy_grpc::FindBirdResponse* resp) {
                return service->FindBird(ctx, req, resp);
              }, this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      MainEndpoint_method_names[3],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< MainEndpoint::Service, ::birdy_grpc::SendMessageRequest, ::birdy_grpc::SendMessageResponse>(
+          [](MainEndpoint::Service* service,
+             ::grpc_impl::ServerContext* ctx,
+             const ::birdy_grpc::SendMessageRequest* req,
+             ::birdy_grpc::SendMessageResponse* resp) {
+               return service->SendMessage(ctx, req, resp);
+             }, this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      MainEndpoint_method_names[4],
+      ::grpc::internal::RpcMethod::SERVER_STREAMING,
+      new ::grpc::internal::ServerStreamingHandler< MainEndpoint::Service, ::birdy_grpc::Empty, ::birdy_grpc::ChatMessage>(
+          [](MainEndpoint::Service* service,
+             ::grpc_impl::ServerContext* ctx,
+             const ::birdy_grpc::Empty* req,
+             ::grpc_impl::ServerWriter<::birdy_grpc::ChatMessage>* writer) {
+               return service->SubscribeToNewMessages(ctx, req, writer);
+             }, this)));
 }
 
 MainEndpoint::Service::~Service() {
@@ -177,6 +245,20 @@ MainEndpoint::Service::~Service() {
   (void) context;
   (void) request;
   (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status MainEndpoint::Service::SendMessage(::grpc::ServerContext* context, const ::birdy_grpc::SendMessageRequest* request, ::birdy_grpc::SendMessageResponse* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status MainEndpoint::Service::SubscribeToNewMessages(::grpc::ServerContext* context, const ::birdy_grpc::Empty* request, ::grpc::ServerWriter< ::birdy_grpc::ChatMessage>* writer) {
+  (void) context;
+  (void) request;
+  (void) writer;
   return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
 }
 
