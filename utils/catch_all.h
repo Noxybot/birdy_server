@@ -11,4 +11,8 @@ catch (std::exception const &e)\
 {\
     std::cerr << e.what() << std::endl;\
     return ret;\
+}\
+catch (...)\
+{\
+    std::cerr << "Unknown exception" << std::endl;\
 }

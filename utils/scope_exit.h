@@ -12,14 +12,14 @@ class ScopeExit
 {
 public:
     template<class Callback_t>
-    ScopeExit(Callback_t callback)
-		: m_caller(new caller<Callback_t>(callback))
+    ScopeExit(Callback_t&& callback)
+		: m_caller(new caller<Callback_t>(std::forward<Callback_t>(callback)))
 	    {}
 	~ScopeExit()
     {
         m_caller->call();
+		delete m_caller;
     }
-
 private:
 	struct caller_interface
 	{
@@ -30,8 +30,8 @@ private:
     template<class Callback_t>
 	struct caller: caller_interface
 	{
-		caller( const Callback_t& callback )
-            : m_callback (callback)
+		explicit caller(Callback_t&& callback )
+            : m_callback(std::forward<Callback_t>(callback))
             {}
 		void call() override
 		{
