@@ -16,7 +16,7 @@
 #include <google/protobuf/port_def.inc>
 extern PROTOBUF_INTERNAL_EXPORT_birdy_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_EncyclopedicBirdInfo_birdy_2eproto;
 extern PROTOBUF_INTERNAL_EXPORT_birdy_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_Timestamp_birdy_2eproto;
-extern PROTOBUF_INTERNAL_EXPORT_birdy_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<3> scc_info_UserBirdInfo_birdy_2eproto;
+extern PROTOBUF_INTERNAL_EXPORT_birdy_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_UserBirdInfo_birdy_2eproto;
 extern PROTOBUF_INTERNAL_EXPORT_birdy_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_UserBirdInfo_Point_birdy_2eproto;
 namespace birdy_grpc {
 class RegistrationRequestDefaultTypeInternal {
@@ -55,18 +55,22 @@ class EncyclopedicBirdInfoDefaultTypeInternal {
  public:
   ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<EncyclopedicBirdInfo> _instance;
 } _EncyclopedicBirdInfo_default_instance_;
-class FindBirdRequestDefaultTypeInternal {
+class FindBirdByNameRequestDefaultTypeInternal {
  public:
-  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<FindBirdRequest> _instance;
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr media_;
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr name_;
-} _FindBirdRequest_default_instance_;
-class FindBirdResponseDefaultTypeInternal {
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<FindBirdByNameRequest> _instance;
+} _FindBirdByNameRequest_default_instance_;
+class AddBirdWithDataRequestDefaultTypeInternal {
  public:
-  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<FindBirdResponse> _instance;
-  const ::birdy_grpc::EncyclopedicBirdInfo* enc_info_;
-  const ::birdy_grpc::UserBirdInfo* user_info_;
-} _FindBirdResponse_default_instance_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<AddBirdWithDataRequest> _instance;
+} _AddBirdWithDataRequest_default_instance_;
+class AddBirdWithDataResponseDefaultTypeInternal {
+ public:
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<AddBirdWithDataResponse> _instance;
+} _AddBirdWithDataResponse_default_instance_;
+class FindBirdByNameResponseDefaultTypeInternal {
+ public:
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<FindBirdByNameResponse> _instance;
+} _FindBirdByNameResponse_default_instance_;
 class SendMessageRequestDefaultTypeInternal {
  public:
   ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<SendMessageRequest> _instance;
@@ -80,6 +84,35 @@ class ChatMessageDefaultTypeInternal {
   ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<ChatMessage> _instance;
 } _ChatMessage_default_instance_;
 }  // namespace birdy_grpc
+static void InitDefaultsscc_info_AddBirdWithDataRequest_birdy_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::birdy_grpc::_AddBirdWithDataRequest_default_instance_;
+    new (ptr) ::birdy_grpc::AddBirdWithDataRequest();
+    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::birdy_grpc::AddBirdWithDataRequest::InitAsDefaultInstance();
+}
+
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_AddBirdWithDataRequest_birdy_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_AddBirdWithDataRequest_birdy_2eproto}, {
+      &scc_info_UserBirdInfo_birdy_2eproto.base,}};
+
+static void InitDefaultsscc_info_AddBirdWithDataResponse_birdy_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::birdy_grpc::_AddBirdWithDataResponse_default_instance_;
+    new (ptr) ::birdy_grpc::AddBirdWithDataResponse();
+    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::birdy_grpc::AddBirdWithDataResponse::InitAsDefaultInstance();
+}
+
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_AddBirdWithDataResponse_birdy_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_AddBirdWithDataResponse_birdy_2eproto}, {}};
+
 static void InitDefaultsscc_info_ChatMessage_birdy_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
@@ -123,35 +156,34 @@ static void InitDefaultsscc_info_EncyclopedicBirdInfo_birdy_2eproto() {
 ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_EncyclopedicBirdInfo_birdy_2eproto =
     {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_EncyclopedicBirdInfo_birdy_2eproto}, {}};
 
-static void InitDefaultsscc_info_FindBirdRequest_birdy_2eproto() {
+static void InitDefaultsscc_info_FindBirdByNameRequest_birdy_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   {
-    void* ptr = &::birdy_grpc::_FindBirdRequest_default_instance_;
-    new (ptr) ::birdy_grpc::FindBirdRequest();
+    void* ptr = &::birdy_grpc::_FindBirdByNameRequest_default_instance_;
+    new (ptr) ::birdy_grpc::FindBirdByNameRequest();
     ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
   }
-  ::birdy_grpc::FindBirdRequest::InitAsDefaultInstance();
+  ::birdy_grpc::FindBirdByNameRequest::InitAsDefaultInstance();
 }
 
-::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_FindBirdRequest_birdy_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_FindBirdRequest_birdy_2eproto}, {}};
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_FindBirdByNameRequest_birdy_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_FindBirdByNameRequest_birdy_2eproto}, {}};
 
-static void InitDefaultsscc_info_FindBirdResponse_birdy_2eproto() {
+static void InitDefaultsscc_info_FindBirdByNameResponse_birdy_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   {
-    void* ptr = &::birdy_grpc::_FindBirdResponse_default_instance_;
-    new (ptr) ::birdy_grpc::FindBirdResponse();
+    void* ptr = &::birdy_grpc::_FindBirdByNameResponse_default_instance_;
+    new (ptr) ::birdy_grpc::FindBirdByNameResponse();
     ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
   }
-  ::birdy_grpc::FindBirdResponse::InitAsDefaultInstance();
+  ::birdy_grpc::FindBirdByNameResponse::InitAsDefaultInstance();
 }
 
-::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<2> scc_info_FindBirdResponse_birdy_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 2, 0, InitDefaultsscc_info_FindBirdResponse_birdy_2eproto}, {
-      &scc_info_EncyclopedicBirdInfo_birdy_2eproto.base,
-      &scc_info_UserBirdInfo_birdy_2eproto.base,}};
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_FindBirdByNameResponse_birdy_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_FindBirdByNameResponse_birdy_2eproto}, {
+      &scc_info_EncyclopedicBirdInfo_birdy_2eproto.base,}};
 
 static void InitDefaultsscc_info_LoginRequest_birdy_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
@@ -263,11 +295,9 @@ static void InitDefaultsscc_info_UserBirdInfo_birdy_2eproto() {
   ::birdy_grpc::UserBirdInfo::InitAsDefaultInstance();
 }
 
-::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<3> scc_info_UserBirdInfo_birdy_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 3, 0, InitDefaultsscc_info_UserBirdInfo_birdy_2eproto}, {
-      &scc_info_UserBirdInfo_Point_birdy_2eproto.base,
-      &scc_info_Timestamp_birdy_2eproto.base,
-      &scc_info_EncyclopedicBirdInfo_birdy_2eproto.base,}};
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_UserBirdInfo_birdy_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_UserBirdInfo_birdy_2eproto}, {
+      &scc_info_UserBirdInfo_Point_birdy_2eproto.base,}};
 
 static void InitDefaultsscc_info_UserBirdInfo_Point_birdy_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
@@ -283,8 +313,8 @@ static void InitDefaultsscc_info_UserBirdInfo_Point_birdy_2eproto() {
 ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_UserBirdInfo_Point_birdy_2eproto =
     {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_UserBirdInfo_Point_birdy_2eproto}, {}};
 
-static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_birdy_2eproto[14];
-static const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* file_level_enum_descriptors_birdy_2eproto[4];
+static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_birdy_2eproto[16];
+static const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* file_level_enum_descriptors_birdy_2eproto[3];
 static constexpr ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor const** file_level_service_descriptors_birdy_2eproto = nullptr;
 
 const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_birdy_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
@@ -346,7 +376,6 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_birdy_2eproto::offsets[] PROTO
   PROTOBUF_FIELD_OFFSET(::birdy_grpc::UserBirdInfo, found_point_),
   PROTOBUF_FIELD_OFFSET(::birdy_grpc::UserBirdInfo, found_time_),
   PROTOBUF_FIELD_OFFSET(::birdy_grpc::UserBirdInfo, finder_email_),
-  PROTOBUF_FIELD_OFFSET(::birdy_grpc::UserBirdInfo, info_),
   PROTOBUF_FIELD_OFFSET(::birdy_grpc::UserBirdInfo, sound_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::birdy_grpc::EncyclopedicBirdInfo, _internal_metadata_),
@@ -357,23 +386,32 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_birdy_2eproto::offsets[] PROTO
   PROTOBUF_FIELD_OFFSET(::birdy_grpc::EncyclopedicBirdInfo, name_),
   PROTOBUF_FIELD_OFFSET(::birdy_grpc::EncyclopedicBirdInfo, description_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::birdy_grpc::FindBirdRequest, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::birdy_grpc::FindBirdByNameRequest, _internal_metadata_),
   ~0u,  // no _extensions_
-  PROTOBUF_FIELD_OFFSET(::birdy_grpc::FindBirdRequest, _oneof_case_[0]),
+  ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::birdy_grpc::FindBirdRequest, type_),
-  offsetof(::birdy_grpc::FindBirdRequestDefaultTypeInternal, media_),
-  offsetof(::birdy_grpc::FindBirdRequestDefaultTypeInternal, name_),
-  PROTOBUF_FIELD_OFFSET(::birdy_grpc::FindBirdRequest, data_),
+  PROTOBUF_FIELD_OFFSET(::birdy_grpc::FindBirdByNameRequest, name_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::birdy_grpc::FindBirdResponse, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::birdy_grpc::AddBirdWithDataRequest, _internal_metadata_),
   ~0u,  // no _extensions_
-  PROTOBUF_FIELD_OFFSET(::birdy_grpc::FindBirdResponse, _oneof_case_[0]),
+  ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::birdy_grpc::FindBirdResponse, res_),
-  offsetof(::birdy_grpc::FindBirdResponseDefaultTypeInternal, enc_info_),
-  offsetof(::birdy_grpc::FindBirdResponseDefaultTypeInternal, user_info_),
-  PROTOBUF_FIELD_OFFSET(::birdy_grpc::FindBirdResponse, data_),
+  PROTOBUF_FIELD_OFFSET(::birdy_grpc::AddBirdWithDataRequest, info_),
+  PROTOBUF_FIELD_OFFSET(::birdy_grpc::AddBirdWithDataRequest, sound_),
+  PROTOBUF_FIELD_OFFSET(::birdy_grpc::AddBirdWithDataRequest, photo_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::birdy_grpc::AddBirdWithDataResponse, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  PROTOBUF_FIELD_OFFSET(::birdy_grpc::AddBirdWithDataResponse, bird_name_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::birdy_grpc::FindBirdByNameResponse, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  PROTOBUF_FIELD_OFFSET(::birdy_grpc::FindBirdByNameResponse, res_),
+  PROTOBUF_FIELD_OFFSET(::birdy_grpc::FindBirdByNameResponse, enc_info_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::birdy_grpc::SendMessageRequest, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -404,12 +442,14 @@ static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOB
   { 36, -1, sizeof(::birdy_grpc::Timestamp)},
   { 43, -1, sizeof(::birdy_grpc::UserBirdInfo_Point)},
   { 50, -1, sizeof(::birdy_grpc::UserBirdInfo)},
-  { 60, -1, sizeof(::birdy_grpc::EncyclopedicBirdInfo)},
-  { 68, -1, sizeof(::birdy_grpc::FindBirdRequest)},
-  { 77, -1, sizeof(::birdy_grpc::FindBirdResponse)},
-  { 86, -1, sizeof(::birdy_grpc::SendMessageRequest)},
-  { 92, -1, sizeof(::birdy_grpc::SendMessageResponse)},
-  { 98, -1, sizeof(::birdy_grpc::ChatMessage)},
+  { 59, -1, sizeof(::birdy_grpc::EncyclopedicBirdInfo)},
+  { 67, -1, sizeof(::birdy_grpc::FindBirdByNameRequest)},
+  { 73, -1, sizeof(::birdy_grpc::AddBirdWithDataRequest)},
+  { 81, -1, sizeof(::birdy_grpc::AddBirdWithDataResponse)},
+  { 87, -1, sizeof(::birdy_grpc::FindBirdByNameResponse)},
+  { 94, -1, sizeof(::birdy_grpc::SendMessageRequest)},
+  { 100, -1, sizeof(::birdy_grpc::SendMessageResponse)},
+  { 106, -1, sizeof(::birdy_grpc::ChatMessage)},
 };
 
 static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
@@ -422,8 +462,10 @@ static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] =
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::birdy_grpc::_UserBirdInfo_Point_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::birdy_grpc::_UserBirdInfo_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::birdy_grpc::_EncyclopedicBirdInfo_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::birdy_grpc::_FindBirdRequest_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::birdy_grpc::_FindBirdResponse_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::birdy_grpc::_FindBirdByNameRequest_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::birdy_grpc::_AddBirdWithDataRequest_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::birdy_grpc::_AddBirdWithDataResponse_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::birdy_grpc::_FindBirdByNameResponse_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::birdy_grpc::_SendMessageRequest_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::birdy_grpc::_SendMessageResponse_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::birdy_grpc::_ChatMessage_default_instance_),
@@ -444,49 +486,51 @@ const char descriptor_table_protodef_birdy_2eproto[] PROTOBUF_SECTION_VARIABLE(p
   "lt\022\006\n\002OK\020\000\022\022\n\016WRONG_PASSWORD\020\001\022\023\n\017LOGIN_"
   "NOT_FOUND\020\002\022\014\n\010DB_ERROR\020\003\"\007\n\005Empty\"+\n\tTi"
   "mestamp\022\017\n\007seconds\030\001 \001(\003\022\r\n\005nanos\030\002 \001(\005\""
-  "\361\001\n\014UserBirdInfo\0223\n\013found_point\030\001 \001(\0132\036."
-  "birdy_grpc.UserBirdInfo.Point\022)\n\nfound_t"
-  "ime\030\002 \001(\0132\025.birdy_grpc.Timestamp\022\024\n\014find"
-  "er_email\030\003 \001(\t\022.\n\004info\030\004 \001(\0132 .birdy_grp"
-  "c.EncyclopedicBirdInfo\022\r\n\005sound\030\005 \001(\014\032,\n"
-  "\005Point\022\021\n\tlongitude\030\001 \001(\001\022\020\n\010latitude\030\002 "
-  "\001(\001\"H\n\024EncyclopedicBirdInfo\022\r\n\005photo\030\001 \001"
-  "(\014\022\014\n\004name\030\002 \001(\t\022\023\n\013description\030\003 \001(\t\"\243\001"
-  "\n\017FindBirdRequest\0222\n\004type\030\001 \001(\0162$.birdy_"
-  "grpc.FindBirdRequest.FindType\022\017\n\005media\030\002"
-  " \001(\014H\000\022\016\n\004name\030\003 \001(\tH\000\"3\n\010FindType\022\014\n\010BY"
-  "_PHOTO\020\000\022\014\n\010BY_SOUND\020\001\022\013\n\007BY_NAME\020\002B\006\n\004d"
-  "ata\"\343\001\n\020FindBirdResponse\0220\n\003res\030\001 \001(\0162#."
-  "birdy_grpc.FindBirdResponse.Result\0224\n\010en"
-  "c_info\030\002 \001(\0132 .birdy_grpc.EncyclopedicBi"
-  "rdInfoH\000\022-\n\tuser_info\030\003 \001(\0132\030.birdy_grpc"
-  ".UserBirdInfoH\000\"0\n\006Result\022\t\n\005FOUND\020\000\022\r\n\t"
-  "NOT_FOUND\020\001\022\014\n\010DB_ERROR\020\002B\006\n\004data\"*\n\022Sen"
-  "dMessageRequest\022\024\n\014text_content\030\001 \001(\t\"A\n"
-  "\023SendMessageResponse\022*\n\013server_time\030\001 \001("
-  "\0132\025.birdy_grpc.Timestamp\"^\n\013ChatMessage\022"
-  "\024\n\014sender_email\030\001 \001(\t\022+\n\014message_time\030\002 "
-  "\001(\0132\025.birdy_grpc.Timestamp\022\014\n\004text\030\003 \001(\t"
-  "2\214\003\n\014MainEndpoint\022S\n\014RegisterUser\022\037.bird"
-  "y_grpc.RegistrationRequest\032 .birdy_grpc."
-  "RegistrationResponse\"\000\022B\n\tLoginUser\022\030.bi"
-  "rdy_grpc.LoginRequest\032\031.birdy_grpc.Login"
-  "Response\"\000\022G\n\010FindBird\022\033.birdy_grpc.Find"
-  "BirdRequest\032\034.birdy_grpc.FindBirdRespons"
-  "e\"\000\022P\n\013SendMessage\022\036.birdy_grpc.SendMess"
-  "ageRequest\032\037.birdy_grpc.SendMessageRespo"
-  "nse\"\000\022H\n\026SubscribeToNewMessages\022\021.birdy_"
-  "grpc.Empty\032\027.birdy_grpc.ChatMessage\"\0000\001b"
-  "\006proto3"
+  "\252\001\n\014UserBirdInfo\0223\n\013found_point\030\001 \001(\0132\036."
+  "birdy_grpc.UserBirdInfo.Point\022\022\n\nfound_t"
+  "ime\030\002 \001(\t\022\024\n\014finder_email\030\003 \001(\t\022\r\n\005sound"
+  "\030\004 \001(\014\032,\n\005Point\022\021\n\tlongitude\030\001 \001(\001\022\020\n\010la"
+  "titude\030\002 \001(\001\"H\n\024EncyclopedicBirdInfo\022\r\n\005"
+  "photo\030\001 \001(\014\022\014\n\004name\030\002 \001(\t\022\023\n\013description"
+  "\030\003 \001(\t\"%\n\025FindBirdByNameRequest\022\014\n\004name\030"
+  "\001 \001(\t\"^\n\026AddBirdWithDataRequest\022&\n\004info\030"
+  "\001 \001(\0132\030.birdy_grpc.UserBirdInfo\022\r\n\005sound"
+  "\030\002 \001(\014\022\r\n\005photo\030\003 \001(\014\",\n\027AddBirdWithData"
+  "Response\022\021\n\tbird_name\030\001 \001(\t\"\266\001\n\026FindBird"
+  "ByNameResponse\0226\n\003res\030\001 \001(\0162).birdy_grpc"
+  ".FindBirdByNameResponse.Result\0222\n\010enc_in"
+  "fo\030\002 \001(\0132 .birdy_grpc.EncyclopedicBirdIn"
+  "fo\"0\n\006Result\022\t\n\005FOUND\020\000\022\r\n\tNOT_FOUND\020\001\022\014"
+  "\n\010DB_ERROR\020\002\"*\n\022SendMessageRequest\022\024\n\014te"
+  "xt_content\030\001 \001(\t\"A\n\023SendMessageResponse\022"
+  "*\n\013server_time\030\001 \001(\0132\025.birdy_grpc.Timest"
+  "amp\"^\n\013ChatMessage\022\024\n\014sender_email\030\001 \001(\t"
+  "\022+\n\014message_time\030\002 \001(\0132\025.birdy_grpc.Time"
+  "stamp\022\014\n\004text\030\003 \001(\t2\376\003\n\014MainEndpoint\022S\n\014"
+  "RegisterUser\022\037.birdy_grpc.RegistrationRe"
+  "quest\032 .birdy_grpc.RegistrationResponse\""
+  "\000\022B\n\tLoginUser\022\030.birdy_grpc.LoginRequest"
+  "\032\031.birdy_grpc.LoginResponse\"\000\022[\n\016FindBir"
+  "dByName\022!.birdy_grpc.FindBirdByNameReque"
+  "st\032\".birdy_grpc.FindBirdByNameResponse\"\000"
+  "0\001\022\\\n\017AddBirdWithData\022\".birdy_grpc.AddBi"
+  "rdWithDataRequest\032#.birdy_grpc.AddBirdWi"
+  "thDataResponse\"\000\022P\n\013SendMessage\022\036.birdy_"
+  "grpc.SendMessageRequest\032\037.birdy_grpc.Sen"
+  "dMessageResponse\"\000\022H\n\026SubscribeToNewMess"
+  "ages\022\021.birdy_grpc.Empty\032\027.birdy_grpc.Cha"
+  "tMessage\"\0000\001b\006proto3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_birdy_2eproto_deps[1] = {
 };
-static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_birdy_2eproto_sccs[14] = {
+static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_birdy_2eproto_sccs[16] = {
+  &scc_info_AddBirdWithDataRequest_birdy_2eproto.base,
+  &scc_info_AddBirdWithDataResponse_birdy_2eproto.base,
   &scc_info_ChatMessage_birdy_2eproto.base,
   &scc_info_Empty_birdy_2eproto.base,
   &scc_info_EncyclopedicBirdInfo_birdy_2eproto.base,
-  &scc_info_FindBirdRequest_birdy_2eproto.base,
-  &scc_info_FindBirdResponse_birdy_2eproto.base,
+  &scc_info_FindBirdByNameRequest_birdy_2eproto.base,
+  &scc_info_FindBirdByNameResponse_birdy_2eproto.base,
   &scc_info_LoginRequest_birdy_2eproto.base,
   &scc_info_LoginResponse_birdy_2eproto.base,
   &scc_info_RegistrationRequest_birdy_2eproto.base,
@@ -499,10 +543,10 @@ static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_bir
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_birdy_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_birdy_2eproto = {
-  false, false, descriptor_table_protodef_birdy_2eproto, "birdy.proto", 1887,
-  &descriptor_table_birdy_2eproto_once, descriptor_table_birdy_2eproto_sccs, descriptor_table_birdy_2eproto_deps, 14, 0,
+  false, false, descriptor_table_protodef_birdy_2eproto, "birdy.proto", 1900,
+  &descriptor_table_birdy_2eproto_once, descriptor_table_birdy_2eproto_sccs, descriptor_table_birdy_2eproto_deps, 16, 0,
   schemas, file_default_instances, TableStruct_birdy_2eproto::offsets,
-  file_level_metadata_birdy_2eproto, 14, file_level_enum_descriptors_birdy_2eproto, file_level_service_descriptors_birdy_2eproto,
+  file_level_metadata_birdy_2eproto, 16, file_level_enum_descriptors_birdy_2eproto, file_level_service_descriptors_birdy_2eproto,
 };
 
 // Force running AddDescriptors() at dynamic initialization time.
@@ -556,11 +600,11 @@ constexpr LoginResponse_Result LoginResponse::Result_MIN;
 constexpr LoginResponse_Result LoginResponse::Result_MAX;
 constexpr int LoginResponse::Result_ARRAYSIZE;
 #endif  // (__cplusplus < 201703) && (!defined(_MSC_VER) || _MSC_VER >= 1900)
-const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* FindBirdRequest_FindType_descriptor() {
+const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* FindBirdByNameResponse_Result_descriptor() {
   ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&descriptor_table_birdy_2eproto);
   return file_level_enum_descriptors_birdy_2eproto[2];
 }
-bool FindBirdRequest_FindType_IsValid(int value) {
+bool FindBirdByNameResponse_Result_IsValid(int value) {
   switch (value) {
     case 0:
     case 1:
@@ -572,35 +616,12 @@ bool FindBirdRequest_FindType_IsValid(int value) {
 }
 
 #if (__cplusplus < 201703) && (!defined(_MSC_VER) || _MSC_VER >= 1900)
-constexpr FindBirdRequest_FindType FindBirdRequest::BY_PHOTO;
-constexpr FindBirdRequest_FindType FindBirdRequest::BY_SOUND;
-constexpr FindBirdRequest_FindType FindBirdRequest::BY_NAME;
-constexpr FindBirdRequest_FindType FindBirdRequest::FindType_MIN;
-constexpr FindBirdRequest_FindType FindBirdRequest::FindType_MAX;
-constexpr int FindBirdRequest::FindType_ARRAYSIZE;
-#endif  // (__cplusplus < 201703) && (!defined(_MSC_VER) || _MSC_VER >= 1900)
-const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* FindBirdResponse_Result_descriptor() {
-  ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&descriptor_table_birdy_2eproto);
-  return file_level_enum_descriptors_birdy_2eproto[3];
-}
-bool FindBirdResponse_Result_IsValid(int value) {
-  switch (value) {
-    case 0:
-    case 1:
-    case 2:
-      return true;
-    default:
-      return false;
-  }
-}
-
-#if (__cplusplus < 201703) && (!defined(_MSC_VER) || _MSC_VER >= 1900)
-constexpr FindBirdResponse_Result FindBirdResponse::FOUND;
-constexpr FindBirdResponse_Result FindBirdResponse::NOT_FOUND;
-constexpr FindBirdResponse_Result FindBirdResponse::DB_ERROR;
-constexpr FindBirdResponse_Result FindBirdResponse::Result_MIN;
-constexpr FindBirdResponse_Result FindBirdResponse::Result_MAX;
-constexpr int FindBirdResponse::Result_ARRAYSIZE;
+constexpr FindBirdByNameResponse_Result FindBirdByNameResponse::FOUND;
+constexpr FindBirdByNameResponse_Result FindBirdByNameResponse::NOT_FOUND;
+constexpr FindBirdByNameResponse_Result FindBirdByNameResponse::DB_ERROR;
+constexpr FindBirdByNameResponse_Result FindBirdByNameResponse::Result_MIN;
+constexpr FindBirdByNameResponse_Result FindBirdByNameResponse::Result_MAX;
+constexpr int FindBirdByNameResponse::Result_ARRAYSIZE;
 #endif  // (__cplusplus < 201703) && (!defined(_MSC_VER) || _MSC_VER >= 1900)
 
 // ===================================================================
@@ -2311,29 +2332,15 @@ void UserBirdInfo_Point::InternalSwap(UserBirdInfo_Point* other) {
 void UserBirdInfo::InitAsDefaultInstance() {
   ::birdy_grpc::_UserBirdInfo_default_instance_._instance.get_mutable()->found_point_ = const_cast< ::birdy_grpc::UserBirdInfo_Point*>(
       ::birdy_grpc::UserBirdInfo_Point::internal_default_instance());
-  ::birdy_grpc::_UserBirdInfo_default_instance_._instance.get_mutable()->found_time_ = const_cast< ::birdy_grpc::Timestamp*>(
-      ::birdy_grpc::Timestamp::internal_default_instance());
-  ::birdy_grpc::_UserBirdInfo_default_instance_._instance.get_mutable()->info_ = const_cast< ::birdy_grpc::EncyclopedicBirdInfo*>(
-      ::birdy_grpc::EncyclopedicBirdInfo::internal_default_instance());
 }
 class UserBirdInfo::_Internal {
  public:
   static const ::birdy_grpc::UserBirdInfo_Point& found_point(const UserBirdInfo* msg);
-  static const ::birdy_grpc::Timestamp& found_time(const UserBirdInfo* msg);
-  static const ::birdy_grpc::EncyclopedicBirdInfo& info(const UserBirdInfo* msg);
 };
 
 const ::birdy_grpc::UserBirdInfo_Point&
 UserBirdInfo::_Internal::found_point(const UserBirdInfo* msg) {
   return *msg->found_point_;
-}
-const ::birdy_grpc::Timestamp&
-UserBirdInfo::_Internal::found_time(const UserBirdInfo* msg) {
-  return *msg->found_time_;
-}
-const ::birdy_grpc::EncyclopedicBirdInfo&
-UserBirdInfo::_Internal::info(const UserBirdInfo* msg) {
-  return *msg->info_;
 }
 UserBirdInfo::UserBirdInfo(::PROTOBUF_NAMESPACE_ID::Arena* arena)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
@@ -2344,6 +2351,11 @@ UserBirdInfo::UserBirdInfo(::PROTOBUF_NAMESPACE_ID::Arena* arena)
 UserBirdInfo::UserBirdInfo(const UserBirdInfo& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  found_time_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (!from._internal_found_time().empty()) {
+    found_time_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from._internal_found_time(),
+      GetArena());
+  }
   finder_email_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (!from._internal_finder_email().empty()) {
     finder_email_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from._internal_finder_email(),
@@ -2359,26 +2371,15 @@ UserBirdInfo::UserBirdInfo(const UserBirdInfo& from)
   } else {
     found_point_ = nullptr;
   }
-  if (from._internal_has_found_time()) {
-    found_time_ = new ::birdy_grpc::Timestamp(*from.found_time_);
-  } else {
-    found_time_ = nullptr;
-  }
-  if (from._internal_has_info()) {
-    info_ = new ::birdy_grpc::EncyclopedicBirdInfo(*from.info_);
-  } else {
-    info_ = nullptr;
-  }
   // @@protoc_insertion_point(copy_constructor:birdy_grpc.UserBirdInfo)
 }
 
 void UserBirdInfo::SharedCtor() {
   ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_UserBirdInfo_birdy_2eproto.base);
+  found_time_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   finder_email_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   sound_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  ::memset(&found_point_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&info_) -
-      reinterpret_cast<char*>(&found_point_)) + sizeof(info_));
+  found_point_ = nullptr;
 }
 
 UserBirdInfo::~UserBirdInfo() {
@@ -2389,11 +2390,10 @@ UserBirdInfo::~UserBirdInfo() {
 
 void UserBirdInfo::SharedDtor() {
   GOOGLE_DCHECK(GetArena() == nullptr);
+  found_time_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   finder_email_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   sound_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (this != internal_default_instance()) delete found_point_;
-  if (this != internal_default_instance()) delete found_time_;
-  if (this != internal_default_instance()) delete info_;
 }
 
 void UserBirdInfo::ArenaDtor(void* object) {
@@ -2417,20 +2417,13 @@ void UserBirdInfo::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
+  found_time_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
   finder_email_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
   sound_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
   if (GetArena() == nullptr && found_point_ != nullptr) {
     delete found_point_;
   }
   found_point_ = nullptr;
-  if (GetArena() == nullptr && found_time_ != nullptr) {
-    delete found_time_;
-  }
-  found_time_ = nullptr;
-  if (GetArena() == nullptr && info_ != nullptr) {
-    delete info_;
-  }
-  info_ = nullptr;
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
@@ -2449,10 +2442,12 @@ const char* UserBirdInfo::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_I
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
-      // .birdy_grpc.Timestamp found_time = 2;
+      // string found_time = 2;
       case 2:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
-          ptr = ctx->ParseMessage(_internal_mutable_found_time(), ptr);
+          auto str = _internal_mutable_found_time();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "birdy_grpc.UserBirdInfo.found_time"));
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
@@ -2465,16 +2460,9 @@ const char* UserBirdInfo::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_I
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
-      // .birdy_grpc.EncyclopedicBirdInfo info = 4;
+      // bytes sound = 4;
       case 4:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 34)) {
-          ptr = ctx->ParseMessage(_internal_mutable_info(), ptr);
-          CHK_(ptr);
-        } else goto handle_unusual;
-        continue;
-      // bytes sound = 5;
-      case 5:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 42)) {
           auto str = _internal_mutable_sound();
           ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
@@ -2516,12 +2504,14 @@ failure:
         1, _Internal::found_point(this), target, stream);
   }
 
-  // .birdy_grpc.Timestamp found_time = 2;
-  if (this->has_found_time()) {
-    target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        2, _Internal::found_time(this), target, stream);
+  // string found_time = 2;
+  if (this->found_time().size() > 0) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_found_time().data(), static_cast<int>(this->_internal_found_time().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "birdy_grpc.UserBirdInfo.found_time");
+    target = stream->WriteStringMaybeAliased(
+        2, this->_internal_found_time(), target);
   }
 
   // string finder_email = 3;
@@ -2534,18 +2524,10 @@ failure:
         3, this->_internal_finder_email(), target);
   }
 
-  // .birdy_grpc.EncyclopedicBirdInfo info = 4;
-  if (this->has_info()) {
-    target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        4, _Internal::info(this), target, stream);
-  }
-
-  // bytes sound = 5;
+  // bytes sound = 4;
   if (this->sound().size() > 0) {
     target = stream->WriteBytesMaybeAliased(
-        5, this->_internal_sound(), target);
+        4, this->_internal_sound(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -2564,6 +2546,13 @@ size_t UserBirdInfo::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
+  // string found_time = 2;
+  if (this->found_time().size() > 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_found_time());
+  }
+
   // string finder_email = 3;
   if (this->finder_email().size() > 0) {
     total_size += 1 +
@@ -2571,7 +2560,7 @@ size_t UserBirdInfo::ByteSizeLong() const {
         this->_internal_finder_email());
   }
 
-  // bytes sound = 5;
+  // bytes sound = 4;
   if (this->sound().size() > 0) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::BytesSize(
@@ -2583,20 +2572,6 @@ size_t UserBirdInfo::ByteSizeLong() const {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
         *found_point_);
-  }
-
-  // .birdy_grpc.Timestamp found_time = 2;
-  if (this->has_found_time()) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *found_time_);
-  }
-
-  // .birdy_grpc.EncyclopedicBirdInfo info = 4;
-  if (this->has_info()) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *info_);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -2630,6 +2605,9 @@ void UserBirdInfo::MergeFrom(const UserBirdInfo& from) {
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
+  if (from.found_time().size() > 0) {
+    _internal_set_found_time(from._internal_found_time());
+  }
   if (from.finder_email().size() > 0) {
     _internal_set_finder_email(from._internal_finder_email());
   }
@@ -2638,12 +2616,6 @@ void UserBirdInfo::MergeFrom(const UserBirdInfo& from) {
   }
   if (from.has_found_point()) {
     _internal_mutable_found_point()->::birdy_grpc::UserBirdInfo_Point::MergeFrom(from._internal_found_point());
-  }
-  if (from.has_found_time()) {
-    _internal_mutable_found_time()->::birdy_grpc::Timestamp::MergeFrom(from._internal_found_time());
-  }
-  if (from.has_info()) {
-    _internal_mutable_info()->::birdy_grpc::EncyclopedicBirdInfo::MergeFrom(from._internal_info());
   }
 }
 
@@ -2668,14 +2640,10 @@ bool UserBirdInfo::IsInitialized() const {
 void UserBirdInfo::InternalSwap(UserBirdInfo* other) {
   using std::swap;
   _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
+  found_time_.Swap(&other->found_time_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
   finder_email_.Swap(&other->finder_email_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
   sound_.Swap(&other->sound_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
-  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(UserBirdInfo, info_)
-      + sizeof(UserBirdInfo::info_)
-      - PROTOBUF_FIELD_OFFSET(UserBirdInfo, found_point_)>(
-          reinterpret_cast<char*>(&found_point_),
-          reinterpret_cast<char*>(&other->found_point_));
+  swap(found_point_, other->found_point_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata UserBirdInfo::GetMetadata() const {
@@ -2965,108 +2933,71 @@ void EncyclopedicBirdInfo::InternalSwap(EncyclopedicBirdInfo* other) {
 
 // ===================================================================
 
-void FindBirdRequest::InitAsDefaultInstance() {
-  ::birdy_grpc::_FindBirdRequest_default_instance_.media_.UnsafeSetDefault(
-      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  ::birdy_grpc::_FindBirdRequest_default_instance_.name_.UnsafeSetDefault(
-      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+void FindBirdByNameRequest::InitAsDefaultInstance() {
 }
-class FindBirdRequest::_Internal {
+class FindBirdByNameRequest::_Internal {
  public:
 };
 
-FindBirdRequest::FindBirdRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+FindBirdByNameRequest::FindBirdByNameRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
   SharedCtor();
   RegisterArenaDtor(arena);
-  // @@protoc_insertion_point(arena_constructor:birdy_grpc.FindBirdRequest)
+  // @@protoc_insertion_point(arena_constructor:birdy_grpc.FindBirdByNameRequest)
 }
-FindBirdRequest::FindBirdRequest(const FindBirdRequest& from)
+FindBirdByNameRequest::FindBirdByNameRequest(const FindBirdByNameRequest& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  type_ = from.type_;
-  clear_has_data();
-  switch (from.data_case()) {
-    case kMedia: {
-      _internal_set_media(from._internal_media());
-      break;
-    }
-    case kName: {
-      _internal_set_name(from._internal_name());
-      break;
-    }
-    case DATA_NOT_SET: {
-      break;
-    }
+  name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (!from._internal_name().empty()) {
+    name_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from._internal_name(),
+      GetArena());
   }
-  // @@protoc_insertion_point(copy_constructor:birdy_grpc.FindBirdRequest)
+  // @@protoc_insertion_point(copy_constructor:birdy_grpc.FindBirdByNameRequest)
 }
 
-void FindBirdRequest::SharedCtor() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_FindBirdRequest_birdy_2eproto.base);
-  type_ = 0;
-  clear_has_data();
+void FindBirdByNameRequest::SharedCtor() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_FindBirdByNameRequest_birdy_2eproto.base);
+  name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
 
-FindBirdRequest::~FindBirdRequest() {
-  // @@protoc_insertion_point(destructor:birdy_grpc.FindBirdRequest)
+FindBirdByNameRequest::~FindBirdByNameRequest() {
+  // @@protoc_insertion_point(destructor:birdy_grpc.FindBirdByNameRequest)
   SharedDtor();
   _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-void FindBirdRequest::SharedDtor() {
+void FindBirdByNameRequest::SharedDtor() {
   GOOGLE_DCHECK(GetArena() == nullptr);
-  if (has_data()) {
-    clear_data();
-  }
+  name_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
 
-void FindBirdRequest::ArenaDtor(void* object) {
-  FindBirdRequest* _this = reinterpret_cast< FindBirdRequest* >(object);
+void FindBirdByNameRequest::ArenaDtor(void* object) {
+  FindBirdByNameRequest* _this = reinterpret_cast< FindBirdByNameRequest* >(object);
   (void)_this;
 }
-void FindBirdRequest::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+void FindBirdByNameRequest::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
 }
-void FindBirdRequest::SetCachedSize(int size) const {
+void FindBirdByNameRequest::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
-const FindBirdRequest& FindBirdRequest::default_instance() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_FindBirdRequest_birdy_2eproto.base);
+const FindBirdByNameRequest& FindBirdByNameRequest::default_instance() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_FindBirdByNameRequest_birdy_2eproto.base);
   return *internal_default_instance();
 }
 
 
-void FindBirdRequest::clear_data() {
-// @@protoc_insertion_point(one_of_clear_start:birdy_grpc.FindBirdRequest)
-  switch (data_case()) {
-    case kMedia: {
-      data_.media_.Destroy(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
-      break;
-    }
-    case kName: {
-      data_.name_.Destroy(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
-      break;
-    }
-    case DATA_NOT_SET: {
-      break;
-    }
-  }
-  _oneof_case_[0] = DATA_NOT_SET;
-}
-
-
-void FindBirdRequest::Clear() {
-// @@protoc_insertion_point(message_clear_start:birdy_grpc.FindBirdRequest)
+void FindBirdByNameRequest::Clear() {
+// @@protoc_insertion_point(message_clear_start:birdy_grpc.FindBirdByNameRequest)
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  type_ = 0;
-  clear_data();
+  name_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* FindBirdRequest::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* FindBirdByNameRequest::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   ::PROTOBUF_NAMESPACE_ID::Arena* arena = GetArena(); (void)arena;
   while (!ctx->Done(&ptr)) {
@@ -3074,28 +3005,12 @@ const char* FindBirdRequest::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPAC
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     CHK_(ptr);
     switch (tag >> 3) {
-      // .birdy_grpc.FindBirdRequest.FindType type = 1;
+      // string name = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 8)) {
-          ::PROTOBUF_NAMESPACE_ID::uint64 val = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
-          CHK_(ptr);
-          _internal_set_type(static_cast<::birdy_grpc::FindBirdRequest_FindType>(val));
-        } else goto handle_unusual;
-        continue;
-      // bytes media = 2;
-      case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
-          auto str = _internal_mutable_media();
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(ptr);
-        } else goto handle_unusual;
-        continue;
-      // string name = 3;
-      case 3:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 26)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
           auto str = _internal_mutable_name();
           ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "birdy_grpc.FindBirdRequest.name"));
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "birdy_grpc.FindBirdByNameRequest.name"));
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
@@ -3121,76 +3036,45 @@ failure:
 #undef CHK_
 }
 
-::PROTOBUF_NAMESPACE_ID::uint8* FindBirdRequest::_InternalSerialize(
+::PROTOBUF_NAMESPACE_ID::uint8* FindBirdByNameRequest::_InternalSerialize(
     ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:birdy_grpc.FindBirdRequest)
+  // @@protoc_insertion_point(serialize_to_array_start:birdy_grpc.FindBirdByNameRequest)
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // .birdy_grpc.FindBirdRequest.FindType type = 1;
-  if (this->type() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteEnumToArray(
-      1, this->_internal_type(), target);
-  }
-
-  // bytes media = 2;
-  if (_internal_has_media()) {
-    target = stream->WriteBytesMaybeAliased(
-        2, this->_internal_media(), target);
-  }
-
-  // string name = 3;
-  if (_internal_has_name()) {
+  // string name = 1;
+  if (this->name().size() > 0) {
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
       this->_internal_name().data(), static_cast<int>(this->_internal_name().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "birdy_grpc.FindBirdRequest.name");
+      "birdy_grpc.FindBirdByNameRequest.name");
     target = stream->WriteStringMaybeAliased(
-        3, this->_internal_name(), target);
+        1, this->_internal_name(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:birdy_grpc.FindBirdRequest)
+  // @@protoc_insertion_point(serialize_to_array_end:birdy_grpc.FindBirdByNameRequest)
   return target;
 }
 
-size_t FindBirdRequest::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:birdy_grpc.FindBirdRequest)
+size_t FindBirdByNameRequest::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:birdy_grpc.FindBirdByNameRequest)
   size_t total_size = 0;
 
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // .birdy_grpc.FindBirdRequest.FindType type = 1;
-  if (this->type() != 0) {
+  // string name = 1;
+  if (this->name().size() > 0) {
     total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::EnumSize(this->_internal_type());
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_name());
   }
 
-  switch (data_case()) {
-    // bytes media = 2;
-    case kMedia: {
-      total_size += 1 +
-        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::BytesSize(
-          this->_internal_media());
-      break;
-    }
-    // string name = 3;
-    case kName: {
-      total_size += 1 +
-        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-          this->_internal_name());
-      break;
-    }
-    case DATA_NOT_SET: {
-      break;
-    }
-  }
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
         _internal_metadata_, total_size, &_cached_size_);
@@ -3200,225 +3084,155 @@ size_t FindBirdRequest::ByteSizeLong() const {
   return total_size;
 }
 
-void FindBirdRequest::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:birdy_grpc.FindBirdRequest)
+void FindBirdByNameRequest::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:birdy_grpc.FindBirdByNameRequest)
   GOOGLE_DCHECK_NE(&from, this);
-  const FindBirdRequest* source =
-      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<FindBirdRequest>(
+  const FindBirdByNameRequest* source =
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<FindBirdByNameRequest>(
           &from);
   if (source == nullptr) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:birdy_grpc.FindBirdRequest)
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:birdy_grpc.FindBirdByNameRequest)
     ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
   } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:birdy_grpc.FindBirdRequest)
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:birdy_grpc.FindBirdByNameRequest)
     MergeFrom(*source);
   }
 }
 
-void FindBirdRequest::MergeFrom(const FindBirdRequest& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:birdy_grpc.FindBirdRequest)
+void FindBirdByNameRequest::MergeFrom(const FindBirdByNameRequest& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:birdy_grpc.FindBirdByNameRequest)
   GOOGLE_DCHECK_NE(&from, this);
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from.type() != 0) {
-    _internal_set_type(from._internal_type());
-  }
-  switch (from.data_case()) {
-    case kMedia: {
-      _internal_set_media(from._internal_media());
-      break;
-    }
-    case kName: {
-      _internal_set_name(from._internal_name());
-      break;
-    }
-    case DATA_NOT_SET: {
-      break;
-    }
+  if (from.name().size() > 0) {
+    _internal_set_name(from._internal_name());
   }
 }
 
-void FindBirdRequest::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:birdy_grpc.FindBirdRequest)
+void FindBirdByNameRequest::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:birdy_grpc.FindBirdByNameRequest)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-void FindBirdRequest::CopyFrom(const FindBirdRequest& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:birdy_grpc.FindBirdRequest)
+void FindBirdByNameRequest::CopyFrom(const FindBirdByNameRequest& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:birdy_grpc.FindBirdByNameRequest)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool FindBirdRequest::IsInitialized() const {
+bool FindBirdByNameRequest::IsInitialized() const {
   return true;
 }
 
-void FindBirdRequest::InternalSwap(FindBirdRequest* other) {
+void FindBirdByNameRequest::InternalSwap(FindBirdByNameRequest* other) {
   using std::swap;
   _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
-  swap(type_, other->type_);
-  swap(data_, other->data_);
-  swap(_oneof_case_[0], other->_oneof_case_[0]);
+  name_.Swap(&other->name_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
 }
 
-::PROTOBUF_NAMESPACE_ID::Metadata FindBirdRequest::GetMetadata() const {
+::PROTOBUF_NAMESPACE_ID::Metadata FindBirdByNameRequest::GetMetadata() const {
   return GetMetadataStatic();
 }
 
 
 // ===================================================================
 
-void FindBirdResponse::InitAsDefaultInstance() {
-  ::birdy_grpc::_FindBirdResponse_default_instance_.enc_info_ = const_cast< ::birdy_grpc::EncyclopedicBirdInfo*>(
-      ::birdy_grpc::EncyclopedicBirdInfo::internal_default_instance());
-  ::birdy_grpc::_FindBirdResponse_default_instance_.user_info_ = const_cast< ::birdy_grpc::UserBirdInfo*>(
+void AddBirdWithDataRequest::InitAsDefaultInstance() {
+  ::birdy_grpc::_AddBirdWithDataRequest_default_instance_._instance.get_mutable()->info_ = const_cast< ::birdy_grpc::UserBirdInfo*>(
       ::birdy_grpc::UserBirdInfo::internal_default_instance());
 }
-class FindBirdResponse::_Internal {
+class AddBirdWithDataRequest::_Internal {
  public:
-  static const ::birdy_grpc::EncyclopedicBirdInfo& enc_info(const FindBirdResponse* msg);
-  static const ::birdy_grpc::UserBirdInfo& user_info(const FindBirdResponse* msg);
+  static const ::birdy_grpc::UserBirdInfo& info(const AddBirdWithDataRequest* msg);
 };
 
-const ::birdy_grpc::EncyclopedicBirdInfo&
-FindBirdResponse::_Internal::enc_info(const FindBirdResponse* msg) {
-  return *msg->data_.enc_info_;
-}
 const ::birdy_grpc::UserBirdInfo&
-FindBirdResponse::_Internal::user_info(const FindBirdResponse* msg) {
-  return *msg->data_.user_info_;
+AddBirdWithDataRequest::_Internal::info(const AddBirdWithDataRequest* msg) {
+  return *msg->info_;
 }
-void FindBirdResponse::set_allocated_enc_info(::birdy_grpc::EncyclopedicBirdInfo* enc_info) {
-  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArena();
-  clear_data();
-  if (enc_info) {
-    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
-      ::PROTOBUF_NAMESPACE_ID::Arena::GetArena(enc_info);
-    if (message_arena != submessage_arena) {
-      enc_info = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
-          message_arena, enc_info, submessage_arena);
-    }
-    set_has_enc_info();
-    data_.enc_info_ = enc_info;
-  }
-  // @@protoc_insertion_point(field_set_allocated:birdy_grpc.FindBirdResponse.enc_info)
-}
-void FindBirdResponse::set_allocated_user_info(::birdy_grpc::UserBirdInfo* user_info) {
-  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArena();
-  clear_data();
-  if (user_info) {
-    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
-      ::PROTOBUF_NAMESPACE_ID::Arena::GetArena(user_info);
-    if (message_arena != submessage_arena) {
-      user_info = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
-          message_arena, user_info, submessage_arena);
-    }
-    set_has_user_info();
-    data_.user_info_ = user_info;
-  }
-  // @@protoc_insertion_point(field_set_allocated:birdy_grpc.FindBirdResponse.user_info)
-}
-FindBirdResponse::FindBirdResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+AddBirdWithDataRequest::AddBirdWithDataRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
   SharedCtor();
   RegisterArenaDtor(arena);
-  // @@protoc_insertion_point(arena_constructor:birdy_grpc.FindBirdResponse)
+  // @@protoc_insertion_point(arena_constructor:birdy_grpc.AddBirdWithDataRequest)
 }
-FindBirdResponse::FindBirdResponse(const FindBirdResponse& from)
+AddBirdWithDataRequest::AddBirdWithDataRequest(const AddBirdWithDataRequest& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  res_ = from.res_;
-  clear_has_data();
-  switch (from.data_case()) {
-    case kEncInfo: {
-      _internal_mutable_enc_info()->::birdy_grpc::EncyclopedicBirdInfo::MergeFrom(from._internal_enc_info());
-      break;
-    }
-    case kUserInfo: {
-      _internal_mutable_user_info()->::birdy_grpc::UserBirdInfo::MergeFrom(from._internal_user_info());
-      break;
-    }
-    case DATA_NOT_SET: {
-      break;
-    }
+  sound_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (!from._internal_sound().empty()) {
+    sound_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from._internal_sound(),
+      GetArena());
   }
-  // @@protoc_insertion_point(copy_constructor:birdy_grpc.FindBirdResponse)
+  photo_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (!from._internal_photo().empty()) {
+    photo_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from._internal_photo(),
+      GetArena());
+  }
+  if (from._internal_has_info()) {
+    info_ = new ::birdy_grpc::UserBirdInfo(*from.info_);
+  } else {
+    info_ = nullptr;
+  }
+  // @@protoc_insertion_point(copy_constructor:birdy_grpc.AddBirdWithDataRequest)
 }
 
-void FindBirdResponse::SharedCtor() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_FindBirdResponse_birdy_2eproto.base);
-  res_ = 0;
-  clear_has_data();
+void AddBirdWithDataRequest::SharedCtor() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_AddBirdWithDataRequest_birdy_2eproto.base);
+  sound_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  photo_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  info_ = nullptr;
 }
 
-FindBirdResponse::~FindBirdResponse() {
-  // @@protoc_insertion_point(destructor:birdy_grpc.FindBirdResponse)
+AddBirdWithDataRequest::~AddBirdWithDataRequest() {
+  // @@protoc_insertion_point(destructor:birdy_grpc.AddBirdWithDataRequest)
   SharedDtor();
   _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-void FindBirdResponse::SharedDtor() {
+void AddBirdWithDataRequest::SharedDtor() {
   GOOGLE_DCHECK(GetArena() == nullptr);
-  if (has_data()) {
-    clear_data();
-  }
+  sound_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  photo_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (this != internal_default_instance()) delete info_;
 }
 
-void FindBirdResponse::ArenaDtor(void* object) {
-  FindBirdResponse* _this = reinterpret_cast< FindBirdResponse* >(object);
+void AddBirdWithDataRequest::ArenaDtor(void* object) {
+  AddBirdWithDataRequest* _this = reinterpret_cast< AddBirdWithDataRequest* >(object);
   (void)_this;
 }
-void FindBirdResponse::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+void AddBirdWithDataRequest::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
 }
-void FindBirdResponse::SetCachedSize(int size) const {
+void AddBirdWithDataRequest::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
-const FindBirdResponse& FindBirdResponse::default_instance() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_FindBirdResponse_birdy_2eproto.base);
+const AddBirdWithDataRequest& AddBirdWithDataRequest::default_instance() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_AddBirdWithDataRequest_birdy_2eproto.base);
   return *internal_default_instance();
 }
 
 
-void FindBirdResponse::clear_data() {
-// @@protoc_insertion_point(one_of_clear_start:birdy_grpc.FindBirdResponse)
-  switch (data_case()) {
-    case kEncInfo: {
-      if (GetArena() == nullptr) {
-        delete data_.enc_info_;
-      }
-      break;
-    }
-    case kUserInfo: {
-      if (GetArena() == nullptr) {
-        delete data_.user_info_;
-      }
-      break;
-    }
-    case DATA_NOT_SET: {
-      break;
-    }
-  }
-  _oneof_case_[0] = DATA_NOT_SET;
-}
-
-
-void FindBirdResponse::Clear() {
-// @@protoc_insertion_point(message_clear_start:birdy_grpc.FindBirdResponse)
+void AddBirdWithDataRequest::Clear() {
+// @@protoc_insertion_point(message_clear_start:birdy_grpc.AddBirdWithDataRequest)
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  res_ = 0;
-  clear_data();
+  sound_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+  photo_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+  if (GetArena() == nullptr && info_ != nullptr) {
+    delete info_;
+  }
+  info_ = nullptr;
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* FindBirdResponse::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* AddBirdWithDataRequest::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   ::PROTOBUF_NAMESPACE_ID::Arena* arena = GetArena(); (void)arena;
   while (!ctx->Done(&ptr)) {
@@ -3426,12 +3240,490 @@ const char* FindBirdResponse::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPA
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     CHK_(ptr);
     switch (tag >> 3) {
-      // .birdy_grpc.FindBirdResponse.Result res = 1;
+      // .birdy_grpc.UserBirdInfo info = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+          ptr = ctx->ParseMessage(_internal_mutable_info(), ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // bytes sound = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
+          auto str = _internal_mutable_sound();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // bytes photo = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 26)) {
+          auto str = _internal_mutable_photo();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      default: {
+      handle_unusual:
+        if ((tag & 7) == 4 || tag == 0) {
+          ctx->SetLastTag(tag);
+          goto success;
+        }
+        ptr = UnknownFieldParse(tag,
+            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+            ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
+      }
+    }  // switch
+  }  // while
+success:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto success;
+#undef CHK_
+}
+
+::PROTOBUF_NAMESPACE_ID::uint8* AddBirdWithDataRequest::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:birdy_grpc.AddBirdWithDataRequest)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // .birdy_grpc.UserBirdInfo info = 1;
+  if (this->has_info()) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(
+        1, _Internal::info(this), target, stream);
+  }
+
+  // bytes sound = 2;
+  if (this->sound().size() > 0) {
+    target = stream->WriteBytesMaybeAliased(
+        2, this->_internal_sound(), target);
+  }
+
+  // bytes photo = 3;
+  if (this->photo().size() > 0) {
+    target = stream->WriteBytesMaybeAliased(
+        3, this->_internal_photo(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:birdy_grpc.AddBirdWithDataRequest)
+  return target;
+}
+
+size_t AddBirdWithDataRequest::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:birdy_grpc.AddBirdWithDataRequest)
+  size_t total_size = 0;
+
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // bytes sound = 2;
+  if (this->sound().size() > 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::BytesSize(
+        this->_internal_sound());
+  }
+
+  // bytes photo = 3;
+  if (this->photo().size() > 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::BytesSize(
+        this->_internal_photo());
+  }
+
+  // .birdy_grpc.UserBirdInfo info = 1;
+  if (this->has_info()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *info_);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
+}
+
+void AddBirdWithDataRequest::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:birdy_grpc.AddBirdWithDataRequest)
+  GOOGLE_DCHECK_NE(&from, this);
+  const AddBirdWithDataRequest* source =
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<AddBirdWithDataRequest>(
+          &from);
+  if (source == nullptr) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:birdy_grpc.AddBirdWithDataRequest)
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:birdy_grpc.AddBirdWithDataRequest)
+    MergeFrom(*source);
+  }
+}
+
+void AddBirdWithDataRequest::MergeFrom(const AddBirdWithDataRequest& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:birdy_grpc.AddBirdWithDataRequest)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from.sound().size() > 0) {
+    _internal_set_sound(from._internal_sound());
+  }
+  if (from.photo().size() > 0) {
+    _internal_set_photo(from._internal_photo());
+  }
+  if (from.has_info()) {
+    _internal_mutable_info()->::birdy_grpc::UserBirdInfo::MergeFrom(from._internal_info());
+  }
+}
+
+void AddBirdWithDataRequest::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:birdy_grpc.AddBirdWithDataRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void AddBirdWithDataRequest::CopyFrom(const AddBirdWithDataRequest& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:birdy_grpc.AddBirdWithDataRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool AddBirdWithDataRequest::IsInitialized() const {
+  return true;
+}
+
+void AddBirdWithDataRequest::InternalSwap(AddBirdWithDataRequest* other) {
+  using std::swap;
+  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
+  sound_.Swap(&other->sound_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+  photo_.Swap(&other->photo_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+  swap(info_, other->info_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata AddBirdWithDataRequest::GetMetadata() const {
+  return GetMetadataStatic();
+}
+
+
+// ===================================================================
+
+void AddBirdWithDataResponse::InitAsDefaultInstance() {
+}
+class AddBirdWithDataResponse::_Internal {
+ public:
+};
+
+AddBirdWithDataResponse::AddBirdWithDataResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
+  SharedCtor();
+  RegisterArenaDtor(arena);
+  // @@protoc_insertion_point(arena_constructor:birdy_grpc.AddBirdWithDataResponse)
+}
+AddBirdWithDataResponse::AddBirdWithDataResponse(const AddBirdWithDataResponse& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  bird_name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (!from._internal_bird_name().empty()) {
+    bird_name_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from._internal_bird_name(),
+      GetArena());
+  }
+  // @@protoc_insertion_point(copy_constructor:birdy_grpc.AddBirdWithDataResponse)
+}
+
+void AddBirdWithDataResponse::SharedCtor() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_AddBirdWithDataResponse_birdy_2eproto.base);
+  bird_name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+
+AddBirdWithDataResponse::~AddBirdWithDataResponse() {
+  // @@protoc_insertion_point(destructor:birdy_grpc.AddBirdWithDataResponse)
+  SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+void AddBirdWithDataResponse::SharedDtor() {
+  GOOGLE_DCHECK(GetArena() == nullptr);
+  bird_name_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+
+void AddBirdWithDataResponse::ArenaDtor(void* object) {
+  AddBirdWithDataResponse* _this = reinterpret_cast< AddBirdWithDataResponse* >(object);
+  (void)_this;
+}
+void AddBirdWithDataResponse::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+}
+void AddBirdWithDataResponse::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+const AddBirdWithDataResponse& AddBirdWithDataResponse::default_instance() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_AddBirdWithDataResponse_birdy_2eproto.base);
+  return *internal_default_instance();
+}
+
+
+void AddBirdWithDataResponse::Clear() {
+// @@protoc_insertion_point(message_clear_start:birdy_grpc.AddBirdWithDataResponse)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  bird_name_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* AddBirdWithDataResponse::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  ::PROTOBUF_NAMESPACE_ID::Arena* arena = GetArena(); (void)arena;
+  while (!ctx->Done(&ptr)) {
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
+    switch (tag >> 3) {
+      // string bird_name = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+          auto str = _internal_mutable_bird_name();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "birdy_grpc.AddBirdWithDataResponse.bird_name"));
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      default: {
+      handle_unusual:
+        if ((tag & 7) == 4 || tag == 0) {
+          ctx->SetLastTag(tag);
+          goto success;
+        }
+        ptr = UnknownFieldParse(tag,
+            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+            ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
+      }
+    }  // switch
+  }  // while
+success:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto success;
+#undef CHK_
+}
+
+::PROTOBUF_NAMESPACE_ID::uint8* AddBirdWithDataResponse::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:birdy_grpc.AddBirdWithDataResponse)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // string bird_name = 1;
+  if (this->bird_name().size() > 0) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_bird_name().data(), static_cast<int>(this->_internal_bird_name().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "birdy_grpc.AddBirdWithDataResponse.bird_name");
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_bird_name(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:birdy_grpc.AddBirdWithDataResponse)
+  return target;
+}
+
+size_t AddBirdWithDataResponse::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:birdy_grpc.AddBirdWithDataResponse)
+  size_t total_size = 0;
+
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // string bird_name = 1;
+  if (this->bird_name().size() > 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_bird_name());
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
+}
+
+void AddBirdWithDataResponse::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:birdy_grpc.AddBirdWithDataResponse)
+  GOOGLE_DCHECK_NE(&from, this);
+  const AddBirdWithDataResponse* source =
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<AddBirdWithDataResponse>(
+          &from);
+  if (source == nullptr) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:birdy_grpc.AddBirdWithDataResponse)
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:birdy_grpc.AddBirdWithDataResponse)
+    MergeFrom(*source);
+  }
+}
+
+void AddBirdWithDataResponse::MergeFrom(const AddBirdWithDataResponse& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:birdy_grpc.AddBirdWithDataResponse)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from.bird_name().size() > 0) {
+    _internal_set_bird_name(from._internal_bird_name());
+  }
+}
+
+void AddBirdWithDataResponse::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:birdy_grpc.AddBirdWithDataResponse)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void AddBirdWithDataResponse::CopyFrom(const AddBirdWithDataResponse& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:birdy_grpc.AddBirdWithDataResponse)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool AddBirdWithDataResponse::IsInitialized() const {
+  return true;
+}
+
+void AddBirdWithDataResponse::InternalSwap(AddBirdWithDataResponse* other) {
+  using std::swap;
+  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
+  bird_name_.Swap(&other->bird_name_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata AddBirdWithDataResponse::GetMetadata() const {
+  return GetMetadataStatic();
+}
+
+
+// ===================================================================
+
+void FindBirdByNameResponse::InitAsDefaultInstance() {
+  ::birdy_grpc::_FindBirdByNameResponse_default_instance_._instance.get_mutable()->enc_info_ = const_cast< ::birdy_grpc::EncyclopedicBirdInfo*>(
+      ::birdy_grpc::EncyclopedicBirdInfo::internal_default_instance());
+}
+class FindBirdByNameResponse::_Internal {
+ public:
+  static const ::birdy_grpc::EncyclopedicBirdInfo& enc_info(const FindBirdByNameResponse* msg);
+};
+
+const ::birdy_grpc::EncyclopedicBirdInfo&
+FindBirdByNameResponse::_Internal::enc_info(const FindBirdByNameResponse* msg) {
+  return *msg->enc_info_;
+}
+FindBirdByNameResponse::FindBirdByNameResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
+  SharedCtor();
+  RegisterArenaDtor(arena);
+  // @@protoc_insertion_point(arena_constructor:birdy_grpc.FindBirdByNameResponse)
+}
+FindBirdByNameResponse::FindBirdByNameResponse(const FindBirdByNameResponse& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  if (from._internal_has_enc_info()) {
+    enc_info_ = new ::birdy_grpc::EncyclopedicBirdInfo(*from.enc_info_);
+  } else {
+    enc_info_ = nullptr;
+  }
+  res_ = from.res_;
+  // @@protoc_insertion_point(copy_constructor:birdy_grpc.FindBirdByNameResponse)
+}
+
+void FindBirdByNameResponse::SharedCtor() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_FindBirdByNameResponse_birdy_2eproto.base);
+  ::memset(&enc_info_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&res_) -
+      reinterpret_cast<char*>(&enc_info_)) + sizeof(res_));
+}
+
+FindBirdByNameResponse::~FindBirdByNameResponse() {
+  // @@protoc_insertion_point(destructor:birdy_grpc.FindBirdByNameResponse)
+  SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+void FindBirdByNameResponse::SharedDtor() {
+  GOOGLE_DCHECK(GetArena() == nullptr);
+  if (this != internal_default_instance()) delete enc_info_;
+}
+
+void FindBirdByNameResponse::ArenaDtor(void* object) {
+  FindBirdByNameResponse* _this = reinterpret_cast< FindBirdByNameResponse* >(object);
+  (void)_this;
+}
+void FindBirdByNameResponse::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+}
+void FindBirdByNameResponse::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+const FindBirdByNameResponse& FindBirdByNameResponse::default_instance() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_FindBirdByNameResponse_birdy_2eproto.base);
+  return *internal_default_instance();
+}
+
+
+void FindBirdByNameResponse::Clear() {
+// @@protoc_insertion_point(message_clear_start:birdy_grpc.FindBirdByNameResponse)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  if (GetArena() == nullptr && enc_info_ != nullptr) {
+    delete enc_info_;
+  }
+  enc_info_ = nullptr;
+  res_ = 0;
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* FindBirdByNameResponse::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  ::PROTOBUF_NAMESPACE_ID::Arena* arena = GetArena(); (void)arena;
+  while (!ctx->Done(&ptr)) {
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
+    switch (tag >> 3) {
+      // .birdy_grpc.FindBirdByNameResponse.Result res = 1;
       case 1:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 8)) {
           ::PROTOBUF_NAMESPACE_ID::uint64 val = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
-          _internal_set_res(static_cast<::birdy_grpc::FindBirdResponse_Result>(val));
+          _internal_set_res(static_cast<::birdy_grpc::FindBirdByNameResponse_Result>(val));
         } else goto handle_unusual;
         continue;
       // .birdy_grpc.EncyclopedicBirdInfo enc_info = 2;
@@ -3441,13 +3733,6 @@ const char* FindBirdResponse::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPA
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
-      // .birdy_grpc.UserBirdInfo user_info = 3;
-      case 3:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 26)) {
-          ptr = ctx->ParseMessage(_internal_mutable_user_info(), ptr);
-          CHK_(ptr);
-        } else goto handle_unusual;
-        continue;
       default: {
       handle_unusual:
         if ((tag & 7) == 4 || tag == 0) {
@@ -3470,13 +3755,13 @@ failure:
 #undef CHK_
 }
 
-::PROTOBUF_NAMESPACE_ID::uint8* FindBirdResponse::_InternalSerialize(
+::PROTOBUF_NAMESPACE_ID::uint8* FindBirdByNameResponse::_InternalSerialize(
     ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:birdy_grpc.FindBirdResponse)
+  // @@protoc_insertion_point(serialize_to_array_start:birdy_grpc.FindBirdByNameResponse)
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // .birdy_grpc.FindBirdResponse.Result res = 1;
+  // .birdy_grpc.FindBirdByNameResponse.Result res = 1;
   if (this->res() != 0) {
     target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteEnumToArray(
@@ -3484,62 +3769,42 @@ failure:
   }
 
   // .birdy_grpc.EncyclopedicBirdInfo enc_info = 2;
-  if (_internal_has_enc_info()) {
+  if (this->has_enc_info()) {
     target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
       InternalWriteMessage(
         2, _Internal::enc_info(this), target, stream);
   }
 
-  // .birdy_grpc.UserBirdInfo user_info = 3;
-  if (_internal_has_user_info()) {
-    target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        3, _Internal::user_info(this), target, stream);
-  }
-
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:birdy_grpc.FindBirdResponse)
+  // @@protoc_insertion_point(serialize_to_array_end:birdy_grpc.FindBirdByNameResponse)
   return target;
 }
 
-size_t FindBirdResponse::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:birdy_grpc.FindBirdResponse)
+size_t FindBirdByNameResponse::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:birdy_grpc.FindBirdByNameResponse)
   size_t total_size = 0;
 
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // .birdy_grpc.FindBirdResponse.Result res = 1;
+  // .birdy_grpc.EncyclopedicBirdInfo enc_info = 2;
+  if (this->has_enc_info()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *enc_info_);
+  }
+
+  // .birdy_grpc.FindBirdByNameResponse.Result res = 1;
   if (this->res() != 0) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::EnumSize(this->_internal_res());
   }
 
-  switch (data_case()) {
-    // .birdy_grpc.EncyclopedicBirdInfo enc_info = 2;
-    case kEncInfo: {
-      total_size += 1 +
-        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-          *data_.enc_info_);
-      break;
-    }
-    // .birdy_grpc.UserBirdInfo user_info = 3;
-    case kUserInfo: {
-      total_size += 1 +
-        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-          *data_.user_info_);
-      break;
-    }
-    case DATA_NOT_SET: {
-      break;
-    }
-  }
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
         _internal_metadata_, total_size, &_cached_size_);
@@ -3549,73 +3814,66 @@ size_t FindBirdResponse::ByteSizeLong() const {
   return total_size;
 }
 
-void FindBirdResponse::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:birdy_grpc.FindBirdResponse)
+void FindBirdByNameResponse::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:birdy_grpc.FindBirdByNameResponse)
   GOOGLE_DCHECK_NE(&from, this);
-  const FindBirdResponse* source =
-      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<FindBirdResponse>(
+  const FindBirdByNameResponse* source =
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<FindBirdByNameResponse>(
           &from);
   if (source == nullptr) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:birdy_grpc.FindBirdResponse)
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:birdy_grpc.FindBirdByNameResponse)
     ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
   } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:birdy_grpc.FindBirdResponse)
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:birdy_grpc.FindBirdByNameResponse)
     MergeFrom(*source);
   }
 }
 
-void FindBirdResponse::MergeFrom(const FindBirdResponse& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:birdy_grpc.FindBirdResponse)
+void FindBirdByNameResponse::MergeFrom(const FindBirdByNameResponse& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:birdy_grpc.FindBirdByNameResponse)
   GOOGLE_DCHECK_NE(&from, this);
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
+  if (from.has_enc_info()) {
+    _internal_mutable_enc_info()->::birdy_grpc::EncyclopedicBirdInfo::MergeFrom(from._internal_enc_info());
+  }
   if (from.res() != 0) {
     _internal_set_res(from._internal_res());
   }
-  switch (from.data_case()) {
-    case kEncInfo: {
-      _internal_mutable_enc_info()->::birdy_grpc::EncyclopedicBirdInfo::MergeFrom(from._internal_enc_info());
-      break;
-    }
-    case kUserInfo: {
-      _internal_mutable_user_info()->::birdy_grpc::UserBirdInfo::MergeFrom(from._internal_user_info());
-      break;
-    }
-    case DATA_NOT_SET: {
-      break;
-    }
-  }
 }
 
-void FindBirdResponse::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:birdy_grpc.FindBirdResponse)
+void FindBirdByNameResponse::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:birdy_grpc.FindBirdByNameResponse)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-void FindBirdResponse::CopyFrom(const FindBirdResponse& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:birdy_grpc.FindBirdResponse)
+void FindBirdByNameResponse::CopyFrom(const FindBirdByNameResponse& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:birdy_grpc.FindBirdByNameResponse)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool FindBirdResponse::IsInitialized() const {
+bool FindBirdByNameResponse::IsInitialized() const {
   return true;
 }
 
-void FindBirdResponse::InternalSwap(FindBirdResponse* other) {
+void FindBirdByNameResponse::InternalSwap(FindBirdByNameResponse* other) {
   using std::swap;
   _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
-  swap(res_, other->res_);
-  swap(data_, other->data_);
-  swap(_oneof_case_[0], other->_oneof_case_[0]);
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(FindBirdByNameResponse, res_)
+      + sizeof(FindBirdByNameResponse::res_)
+      - PROTOBUF_FIELD_OFFSET(FindBirdByNameResponse, enc_info_)>(
+          reinterpret_cast<char*>(&enc_info_),
+          reinterpret_cast<char*>(&other->enc_info_));
 }
 
-::PROTOBUF_NAMESPACE_ID::Metadata FindBirdResponse::GetMetadata() const {
+::PROTOBUF_NAMESPACE_ID::Metadata FindBirdByNameResponse::GetMetadata() const {
   return GetMetadataStatic();
 }
 
@@ -4365,11 +4623,17 @@ template<> PROTOBUF_NOINLINE ::birdy_grpc::UserBirdInfo* Arena::CreateMaybeMessa
 template<> PROTOBUF_NOINLINE ::birdy_grpc::EncyclopedicBirdInfo* Arena::CreateMaybeMessage< ::birdy_grpc::EncyclopedicBirdInfo >(Arena* arena) {
   return Arena::CreateMessageInternal< ::birdy_grpc::EncyclopedicBirdInfo >(arena);
 }
-template<> PROTOBUF_NOINLINE ::birdy_grpc::FindBirdRequest* Arena::CreateMaybeMessage< ::birdy_grpc::FindBirdRequest >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::birdy_grpc::FindBirdRequest >(arena);
+template<> PROTOBUF_NOINLINE ::birdy_grpc::FindBirdByNameRequest* Arena::CreateMaybeMessage< ::birdy_grpc::FindBirdByNameRequest >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::birdy_grpc::FindBirdByNameRequest >(arena);
 }
-template<> PROTOBUF_NOINLINE ::birdy_grpc::FindBirdResponse* Arena::CreateMaybeMessage< ::birdy_grpc::FindBirdResponse >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::birdy_grpc::FindBirdResponse >(arena);
+template<> PROTOBUF_NOINLINE ::birdy_grpc::AddBirdWithDataRequest* Arena::CreateMaybeMessage< ::birdy_grpc::AddBirdWithDataRequest >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::birdy_grpc::AddBirdWithDataRequest >(arena);
+}
+template<> PROTOBUF_NOINLINE ::birdy_grpc::AddBirdWithDataResponse* Arena::CreateMaybeMessage< ::birdy_grpc::AddBirdWithDataResponse >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::birdy_grpc::AddBirdWithDataResponse >(arena);
+}
+template<> PROTOBUF_NOINLINE ::birdy_grpc::FindBirdByNameResponse* Arena::CreateMaybeMessage< ::birdy_grpc::FindBirdByNameResponse >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::birdy_grpc::FindBirdByNameResponse >(arena);
 }
 template<> PROTOBUF_NOINLINE ::birdy_grpc::SendMessageRequest* Arena::CreateMaybeMessage< ::birdy_grpc::SendMessageRequest >(Arena* arena) {
   return Arena::CreateMessageInternal< ::birdy_grpc::SendMessageRequest >(arena);

@@ -24,7 +24,8 @@ namespace birdy_grpc {
 static const char* MainEndpoint_method_names[] = {
   "/birdy_grpc.MainEndpoint/RegisterUser",
   "/birdy_grpc.MainEndpoint/LoginUser",
-  "/birdy_grpc.MainEndpoint/FindBird",
+  "/birdy_grpc.MainEndpoint/FindBirdByName",
+  "/birdy_grpc.MainEndpoint/AddBirdWithData",
   "/birdy_grpc.MainEndpoint/SendMessage",
   "/birdy_grpc.MainEndpoint/SubscribeToNewMessages",
 };
@@ -38,9 +39,10 @@ std::unique_ptr< MainEndpoint::Stub> MainEndpoint::NewStub(const std::shared_ptr
 MainEndpoint::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel)
   : channel_(channel), rpcmethod_RegisterUser_(MainEndpoint_method_names[0], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_LoginUser_(MainEndpoint_method_names[1], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_FindBird_(MainEndpoint_method_names[2], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_SendMessage_(MainEndpoint_method_names[3], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_SubscribeToNewMessages_(MainEndpoint_method_names[4], ::grpc::internal::RpcMethod::SERVER_STREAMING, channel)
+  , rpcmethod_FindBirdByName_(MainEndpoint_method_names[2], ::grpc::internal::RpcMethod::SERVER_STREAMING, channel)
+  , rpcmethod_AddBirdWithData_(MainEndpoint_method_names[3], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_SendMessage_(MainEndpoint_method_names[4], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_SubscribeToNewMessages_(MainEndpoint_method_names[5], ::grpc::internal::RpcMethod::SERVER_STREAMING, channel)
   {}
 
 ::grpc::Status MainEndpoint::Stub::RegisterUser(::grpc::ClientContext* context, const ::birdy_grpc::RegistrationRequest& request, ::birdy_grpc::RegistrationResponse* response) {
@@ -99,32 +101,48 @@ void MainEndpoint::Stub::experimental_async::LoginUser(::grpc::ClientContext* co
   return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::birdy_grpc::LoginResponse>::Create(channel_.get(), cq, rpcmethod_LoginUser_, context, request, false);
 }
 
-::grpc::Status MainEndpoint::Stub::FindBird(::grpc::ClientContext* context, const ::birdy_grpc::FindBirdRequest& request, ::birdy_grpc::FindBirdResponse* response) {
-  return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_FindBird_, context, request, response);
+::grpc::ClientReader< ::birdy_grpc::FindBirdByNameResponse>* MainEndpoint::Stub::FindBirdByNameRaw(::grpc::ClientContext* context, const ::birdy_grpc::FindBirdByNameRequest& request) {
+  return ::grpc_impl::internal::ClientReaderFactory< ::birdy_grpc::FindBirdByNameResponse>::Create(channel_.get(), rpcmethod_FindBirdByName_, context, request);
 }
 
-void MainEndpoint::Stub::experimental_async::FindBird(::grpc::ClientContext* context, const ::birdy_grpc::FindBirdRequest* request, ::birdy_grpc::FindBirdResponse* response, std::function<void(::grpc::Status)> f) {
-  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_FindBird_, context, request, response, std::move(f));
+void MainEndpoint::Stub::experimental_async::FindBirdByName(::grpc::ClientContext* context, ::birdy_grpc::FindBirdByNameRequest* request, ::grpc::experimental::ClientReadReactor< ::birdy_grpc::FindBirdByNameResponse>* reactor) {
+  ::grpc_impl::internal::ClientCallbackReaderFactory< ::birdy_grpc::FindBirdByNameResponse>::Create(stub_->channel_.get(), stub_->rpcmethod_FindBirdByName_, context, request, reactor);
 }
 
-void MainEndpoint::Stub::experimental_async::FindBird(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::birdy_grpc::FindBirdResponse* response, std::function<void(::grpc::Status)> f) {
-  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_FindBird_, context, request, response, std::move(f));
+::grpc::ClientAsyncReader< ::birdy_grpc::FindBirdByNameResponse>* MainEndpoint::Stub::AsyncFindBirdByNameRaw(::grpc::ClientContext* context, const ::birdy_grpc::FindBirdByNameRequest& request, ::grpc::CompletionQueue* cq, void* tag) {
+  return ::grpc_impl::internal::ClientAsyncReaderFactory< ::birdy_grpc::FindBirdByNameResponse>::Create(channel_.get(), cq, rpcmethod_FindBirdByName_, context, request, true, tag);
 }
 
-void MainEndpoint::Stub::experimental_async::FindBird(::grpc::ClientContext* context, const ::birdy_grpc::FindBirdRequest* request, ::birdy_grpc::FindBirdResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
-  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_FindBird_, context, request, response, reactor);
+::grpc::ClientAsyncReader< ::birdy_grpc::FindBirdByNameResponse>* MainEndpoint::Stub::PrepareAsyncFindBirdByNameRaw(::grpc::ClientContext* context, const ::birdy_grpc::FindBirdByNameRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc_impl::internal::ClientAsyncReaderFactory< ::birdy_grpc::FindBirdByNameResponse>::Create(channel_.get(), cq, rpcmethod_FindBirdByName_, context, request, false, nullptr);
 }
 
-void MainEndpoint::Stub::experimental_async::FindBird(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::birdy_grpc::FindBirdResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
-  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_FindBird_, context, request, response, reactor);
+::grpc::Status MainEndpoint::Stub::AddBirdWithData(::grpc::ClientContext* context, const ::birdy_grpc::AddBirdWithDataRequest& request, ::birdy_grpc::AddBirdWithDataResponse* response) {
+  return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_AddBirdWithData_, context, request, response);
 }
 
-::grpc::ClientAsyncResponseReader< ::birdy_grpc::FindBirdResponse>* MainEndpoint::Stub::AsyncFindBirdRaw(::grpc::ClientContext* context, const ::birdy_grpc::FindBirdRequest& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::birdy_grpc::FindBirdResponse>::Create(channel_.get(), cq, rpcmethod_FindBird_, context, request, true);
+void MainEndpoint::Stub::experimental_async::AddBirdWithData(::grpc::ClientContext* context, const ::birdy_grpc::AddBirdWithDataRequest* request, ::birdy_grpc::AddBirdWithDataResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_AddBirdWithData_, context, request, response, std::move(f));
 }
 
-::grpc::ClientAsyncResponseReader< ::birdy_grpc::FindBirdResponse>* MainEndpoint::Stub::PrepareAsyncFindBirdRaw(::grpc::ClientContext* context, const ::birdy_grpc::FindBirdRequest& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::birdy_grpc::FindBirdResponse>::Create(channel_.get(), cq, rpcmethod_FindBird_, context, request, false);
+void MainEndpoint::Stub::experimental_async::AddBirdWithData(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::birdy_grpc::AddBirdWithDataResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_AddBirdWithData_, context, request, response, std::move(f));
+}
+
+void MainEndpoint::Stub::experimental_async::AddBirdWithData(::grpc::ClientContext* context, const ::birdy_grpc::AddBirdWithDataRequest* request, ::birdy_grpc::AddBirdWithDataResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_AddBirdWithData_, context, request, response, reactor);
+}
+
+void MainEndpoint::Stub::experimental_async::AddBirdWithData(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::birdy_grpc::AddBirdWithDataResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_AddBirdWithData_, context, request, response, reactor);
+}
+
+::grpc::ClientAsyncResponseReader< ::birdy_grpc::AddBirdWithDataResponse>* MainEndpoint::Stub::AsyncAddBirdWithDataRaw(::grpc::ClientContext* context, const ::birdy_grpc::AddBirdWithDataRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::birdy_grpc::AddBirdWithDataResponse>::Create(channel_.get(), cq, rpcmethod_AddBirdWithData_, context, request, true);
+}
+
+::grpc::ClientAsyncResponseReader< ::birdy_grpc::AddBirdWithDataResponse>* MainEndpoint::Stub::PrepareAsyncAddBirdWithDataRaw(::grpc::ClientContext* context, const ::birdy_grpc::AddBirdWithDataRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::birdy_grpc::AddBirdWithDataResponse>::Create(channel_.get(), cq, rpcmethod_AddBirdWithData_, context, request, false);
 }
 
 ::grpc::Status MainEndpoint::Stub::SendMessage(::grpc::ClientContext* context, const ::birdy_grpc::SendMessageRequest& request, ::birdy_grpc::SendMessageResponse* response) {
@@ -194,16 +212,26 @@ MainEndpoint::Service::Service() {
              }, this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       MainEndpoint_method_names[2],
-      ::grpc::internal::RpcMethod::NORMAL_RPC,
-      new ::grpc::internal::RpcMethodHandler< MainEndpoint::Service, ::birdy_grpc::FindBirdRequest, ::birdy_grpc::FindBirdResponse>(
+      ::grpc::internal::RpcMethod::SERVER_STREAMING,
+      new ::grpc::internal::ServerStreamingHandler< MainEndpoint::Service, ::birdy_grpc::FindBirdByNameRequest, ::birdy_grpc::FindBirdByNameResponse>(
           [](MainEndpoint::Service* service,
              ::grpc_impl::ServerContext* ctx,
-             const ::birdy_grpc::FindBirdRequest* req,
-             ::birdy_grpc::FindBirdResponse* resp) {
-               return service->FindBird(ctx, req, resp);
+             const ::birdy_grpc::FindBirdByNameRequest* req,
+             ::grpc_impl::ServerWriter<::birdy_grpc::FindBirdByNameResponse>* writer) {
+               return service->FindBirdByName(ctx, req, writer);
              }, this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       MainEndpoint_method_names[3],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< MainEndpoint::Service, ::birdy_grpc::AddBirdWithDataRequest, ::birdy_grpc::AddBirdWithDataResponse>(
+          [](MainEndpoint::Service* service,
+             ::grpc_impl::ServerContext* ctx,
+             const ::birdy_grpc::AddBirdWithDataRequest* req,
+             ::birdy_grpc::AddBirdWithDataResponse* resp) {
+               return service->AddBirdWithData(ctx, req, resp);
+             }, this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      MainEndpoint_method_names[4],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< MainEndpoint::Service, ::birdy_grpc::SendMessageRequest, ::birdy_grpc::SendMessageResponse>(
           [](MainEndpoint::Service* service,
@@ -213,7 +241,7 @@ MainEndpoint::Service::Service() {
                return service->SendMessage(ctx, req, resp);
              }, this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      MainEndpoint_method_names[4],
+      MainEndpoint_method_names[5],
       ::grpc::internal::RpcMethod::SERVER_STREAMING,
       new ::grpc::internal::ServerStreamingHandler< MainEndpoint::Service, ::birdy_grpc::Empty, ::birdy_grpc::ChatMessage>(
           [](MainEndpoint::Service* service,
@@ -241,7 +269,14 @@ MainEndpoint::Service::~Service() {
   return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
 }
 
-::grpc::Status MainEndpoint::Service::FindBird(::grpc::ServerContext* context, const ::birdy_grpc::FindBirdRequest* request, ::birdy_grpc::FindBirdResponse* response) {
+::grpc::Status MainEndpoint::Service::FindBirdByName(::grpc::ServerContext* context, const ::birdy_grpc::FindBirdByNameRequest* request, ::grpc::ServerWriter< ::birdy_grpc::FindBirdByNameResponse>* writer) {
+  (void) context;
+  (void) request;
+  (void) writer;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status MainEndpoint::Service::AddBirdWithData(::grpc::ServerContext* context, const ::birdy_grpc::AddBirdWithDataRequest* request, ::birdy_grpc::AddBirdWithDataResponse* response) {
   (void) context;
   (void) request;
   (void) response;

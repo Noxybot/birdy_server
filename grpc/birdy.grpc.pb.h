@@ -50,12 +50,21 @@ class MainEndpoint final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::birdy_grpc::LoginResponse>> PrepareAsyncLoginUser(::grpc::ClientContext* context, const ::birdy_grpc::LoginRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::birdy_grpc::LoginResponse>>(PrepareAsyncLoginUserRaw(context, request, cq));
     }
-    virtual ::grpc::Status FindBird(::grpc::ClientContext* context, const ::birdy_grpc::FindBirdRequest& request, ::birdy_grpc::FindBirdResponse* response) = 0;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::birdy_grpc::FindBirdResponse>> AsyncFindBird(::grpc::ClientContext* context, const ::birdy_grpc::FindBirdRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::birdy_grpc::FindBirdResponse>>(AsyncFindBirdRaw(context, request, cq));
+    std::unique_ptr< ::grpc::ClientReaderInterface< ::birdy_grpc::FindBirdByNameResponse>> FindBirdByName(::grpc::ClientContext* context, const ::birdy_grpc::FindBirdByNameRequest& request) {
+      return std::unique_ptr< ::grpc::ClientReaderInterface< ::birdy_grpc::FindBirdByNameResponse>>(FindBirdByNameRaw(context, request));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::birdy_grpc::FindBirdResponse>> PrepareAsyncFindBird(::grpc::ClientContext* context, const ::birdy_grpc::FindBirdRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::birdy_grpc::FindBirdResponse>>(PrepareAsyncFindBirdRaw(context, request, cq));
+    std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::birdy_grpc::FindBirdByNameResponse>> AsyncFindBirdByName(::grpc::ClientContext* context, const ::birdy_grpc::FindBirdByNameRequest& request, ::grpc::CompletionQueue* cq, void* tag) {
+      return std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::birdy_grpc::FindBirdByNameResponse>>(AsyncFindBirdByNameRaw(context, request, cq, tag));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::birdy_grpc::FindBirdByNameResponse>> PrepareAsyncFindBirdByName(::grpc::ClientContext* context, const ::birdy_grpc::FindBirdByNameRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::birdy_grpc::FindBirdByNameResponse>>(PrepareAsyncFindBirdByNameRaw(context, request, cq));
+    }
+    virtual ::grpc::Status AddBirdWithData(::grpc::ClientContext* context, const ::birdy_grpc::AddBirdWithDataRequest& request, ::birdy_grpc::AddBirdWithDataResponse* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::birdy_grpc::AddBirdWithDataResponse>> AsyncAddBirdWithData(::grpc::ClientContext* context, const ::birdy_grpc::AddBirdWithDataRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::birdy_grpc::AddBirdWithDataResponse>>(AsyncAddBirdWithDataRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::birdy_grpc::AddBirdWithDataResponse>> PrepareAsyncAddBirdWithData(::grpc::ClientContext* context, const ::birdy_grpc::AddBirdWithDataRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::birdy_grpc::AddBirdWithDataResponse>>(PrepareAsyncAddBirdWithDataRaw(context, request, cq));
     }
     virtual ::grpc::Status SendMessage(::grpc::ClientContext* context, const ::birdy_grpc::SendMessageRequest& request, ::birdy_grpc::SendMessageResponse* response) = 0;
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::birdy_grpc::SendMessageResponse>> AsyncSendMessage(::grpc::ClientContext* context, const ::birdy_grpc::SendMessageRequest& request, ::grpc::CompletionQueue* cq) {
@@ -100,17 +109,22 @@ class MainEndpoint final {
       #else
       virtual void LoginUser(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::birdy_grpc::LoginResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
       #endif
-      virtual void FindBird(::grpc::ClientContext* context, const ::birdy_grpc::FindBirdRequest* request, ::birdy_grpc::FindBirdResponse* response, std::function<void(::grpc::Status)>) = 0;
-      virtual void FindBird(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::birdy_grpc::FindBirdResponse* response, std::function<void(::grpc::Status)>) = 0;
       #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      virtual void FindBird(::grpc::ClientContext* context, const ::birdy_grpc::FindBirdRequest* request, ::birdy_grpc::FindBirdResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      virtual void FindBirdByName(::grpc::ClientContext* context, ::birdy_grpc::FindBirdByNameRequest* request, ::grpc::ClientReadReactor< ::birdy_grpc::FindBirdByNameResponse>* reactor) = 0;
       #else
-      virtual void FindBird(::grpc::ClientContext* context, const ::birdy_grpc::FindBirdRequest* request, ::birdy_grpc::FindBirdResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
+      virtual void FindBirdByName(::grpc::ClientContext* context, ::birdy_grpc::FindBirdByNameRequest* request, ::grpc::experimental::ClientReadReactor< ::birdy_grpc::FindBirdByNameResponse>* reactor) = 0;
+      #endif
+      virtual void AddBirdWithData(::grpc::ClientContext* context, const ::birdy_grpc::AddBirdWithDataRequest* request, ::birdy_grpc::AddBirdWithDataResponse* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void AddBirdWithData(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::birdy_grpc::AddBirdWithDataResponse* response, std::function<void(::grpc::Status)>) = 0;
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      virtual void AddBirdWithData(::grpc::ClientContext* context, const ::birdy_grpc::AddBirdWithDataRequest* request, ::birdy_grpc::AddBirdWithDataResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      #else
+      virtual void AddBirdWithData(::grpc::ClientContext* context, const ::birdy_grpc::AddBirdWithDataRequest* request, ::birdy_grpc::AddBirdWithDataResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
       #endif
       #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      virtual void FindBird(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::birdy_grpc::FindBirdResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      virtual void AddBirdWithData(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::birdy_grpc::AddBirdWithDataResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
       #else
-      virtual void FindBird(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::birdy_grpc::FindBirdResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
+      virtual void AddBirdWithData(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::birdy_grpc::AddBirdWithDataResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
       #endif
       virtual void SendMessage(::grpc::ClientContext* context, const ::birdy_grpc::SendMessageRequest* request, ::birdy_grpc::SendMessageResponse* response, std::function<void(::grpc::Status)>) = 0;
       virtual void SendMessage(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::birdy_grpc::SendMessageResponse* response, std::function<void(::grpc::Status)>) = 0;
@@ -142,8 +156,11 @@ class MainEndpoint final {
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::birdy_grpc::RegistrationResponse>* PrepareAsyncRegisterUserRaw(::grpc::ClientContext* context, const ::birdy_grpc::RegistrationRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::birdy_grpc::LoginResponse>* AsyncLoginUserRaw(::grpc::ClientContext* context, const ::birdy_grpc::LoginRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::birdy_grpc::LoginResponse>* PrepareAsyncLoginUserRaw(::grpc::ClientContext* context, const ::birdy_grpc::LoginRequest& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::birdy_grpc::FindBirdResponse>* AsyncFindBirdRaw(::grpc::ClientContext* context, const ::birdy_grpc::FindBirdRequest& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::birdy_grpc::FindBirdResponse>* PrepareAsyncFindBirdRaw(::grpc::ClientContext* context, const ::birdy_grpc::FindBirdRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientReaderInterface< ::birdy_grpc::FindBirdByNameResponse>* FindBirdByNameRaw(::grpc::ClientContext* context, const ::birdy_grpc::FindBirdByNameRequest& request) = 0;
+    virtual ::grpc::ClientAsyncReaderInterface< ::birdy_grpc::FindBirdByNameResponse>* AsyncFindBirdByNameRaw(::grpc::ClientContext* context, const ::birdy_grpc::FindBirdByNameRequest& request, ::grpc::CompletionQueue* cq, void* tag) = 0;
+    virtual ::grpc::ClientAsyncReaderInterface< ::birdy_grpc::FindBirdByNameResponse>* PrepareAsyncFindBirdByNameRaw(::grpc::ClientContext* context, const ::birdy_grpc::FindBirdByNameRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::birdy_grpc::AddBirdWithDataResponse>* AsyncAddBirdWithDataRaw(::grpc::ClientContext* context, const ::birdy_grpc::AddBirdWithDataRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::birdy_grpc::AddBirdWithDataResponse>* PrepareAsyncAddBirdWithDataRaw(::grpc::ClientContext* context, const ::birdy_grpc::AddBirdWithDataRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::birdy_grpc::SendMessageResponse>* AsyncSendMessageRaw(::grpc::ClientContext* context, const ::birdy_grpc::SendMessageRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::birdy_grpc::SendMessageResponse>* PrepareAsyncSendMessageRaw(::grpc::ClientContext* context, const ::birdy_grpc::SendMessageRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientReaderInterface< ::birdy_grpc::ChatMessage>* SubscribeToNewMessagesRaw(::grpc::ClientContext* context, const ::birdy_grpc::Empty& request) = 0;
@@ -167,12 +184,21 @@ class MainEndpoint final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::birdy_grpc::LoginResponse>> PrepareAsyncLoginUser(::grpc::ClientContext* context, const ::birdy_grpc::LoginRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::birdy_grpc::LoginResponse>>(PrepareAsyncLoginUserRaw(context, request, cq));
     }
-    ::grpc::Status FindBird(::grpc::ClientContext* context, const ::birdy_grpc::FindBirdRequest& request, ::birdy_grpc::FindBirdResponse* response) override;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::birdy_grpc::FindBirdResponse>> AsyncFindBird(::grpc::ClientContext* context, const ::birdy_grpc::FindBirdRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::birdy_grpc::FindBirdResponse>>(AsyncFindBirdRaw(context, request, cq));
+    std::unique_ptr< ::grpc::ClientReader< ::birdy_grpc::FindBirdByNameResponse>> FindBirdByName(::grpc::ClientContext* context, const ::birdy_grpc::FindBirdByNameRequest& request) {
+      return std::unique_ptr< ::grpc::ClientReader< ::birdy_grpc::FindBirdByNameResponse>>(FindBirdByNameRaw(context, request));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::birdy_grpc::FindBirdResponse>> PrepareAsyncFindBird(::grpc::ClientContext* context, const ::birdy_grpc::FindBirdRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::birdy_grpc::FindBirdResponse>>(PrepareAsyncFindBirdRaw(context, request, cq));
+    std::unique_ptr< ::grpc::ClientAsyncReader< ::birdy_grpc::FindBirdByNameResponse>> AsyncFindBirdByName(::grpc::ClientContext* context, const ::birdy_grpc::FindBirdByNameRequest& request, ::grpc::CompletionQueue* cq, void* tag) {
+      return std::unique_ptr< ::grpc::ClientAsyncReader< ::birdy_grpc::FindBirdByNameResponse>>(AsyncFindBirdByNameRaw(context, request, cq, tag));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncReader< ::birdy_grpc::FindBirdByNameResponse>> PrepareAsyncFindBirdByName(::grpc::ClientContext* context, const ::birdy_grpc::FindBirdByNameRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncReader< ::birdy_grpc::FindBirdByNameResponse>>(PrepareAsyncFindBirdByNameRaw(context, request, cq));
+    }
+    ::grpc::Status AddBirdWithData(::grpc::ClientContext* context, const ::birdy_grpc::AddBirdWithDataRequest& request, ::birdy_grpc::AddBirdWithDataResponse* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::birdy_grpc::AddBirdWithDataResponse>> AsyncAddBirdWithData(::grpc::ClientContext* context, const ::birdy_grpc::AddBirdWithDataRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::birdy_grpc::AddBirdWithDataResponse>>(AsyncAddBirdWithDataRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::birdy_grpc::AddBirdWithDataResponse>> PrepareAsyncAddBirdWithData(::grpc::ClientContext* context, const ::birdy_grpc::AddBirdWithDataRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::birdy_grpc::AddBirdWithDataResponse>>(PrepareAsyncAddBirdWithDataRaw(context, request, cq));
     }
     ::grpc::Status SendMessage(::grpc::ClientContext* context, const ::birdy_grpc::SendMessageRequest& request, ::birdy_grpc::SendMessageResponse* response) override;
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::birdy_grpc::SendMessageResponse>> AsyncSendMessage(::grpc::ClientContext* context, const ::birdy_grpc::SendMessageRequest& request, ::grpc::CompletionQueue* cq) {
@@ -217,17 +243,22 @@ class MainEndpoint final {
       #else
       void LoginUser(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::birdy_grpc::LoginResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
       #endif
-      void FindBird(::grpc::ClientContext* context, const ::birdy_grpc::FindBirdRequest* request, ::birdy_grpc::FindBirdResponse* response, std::function<void(::grpc::Status)>) override;
-      void FindBird(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::birdy_grpc::FindBirdResponse* response, std::function<void(::grpc::Status)>) override;
       #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      void FindBird(::grpc::ClientContext* context, const ::birdy_grpc::FindBirdRequest* request, ::birdy_grpc::FindBirdResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
+      void FindBirdByName(::grpc::ClientContext* context, ::birdy_grpc::FindBirdByNameRequest* request, ::grpc::ClientReadReactor< ::birdy_grpc::FindBirdByNameResponse>* reactor) override;
       #else
-      void FindBird(::grpc::ClientContext* context, const ::birdy_grpc::FindBirdRequest* request, ::birdy_grpc::FindBirdResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
+      void FindBirdByName(::grpc::ClientContext* context, ::birdy_grpc::FindBirdByNameRequest* request, ::grpc::experimental::ClientReadReactor< ::birdy_grpc::FindBirdByNameResponse>* reactor) override;
+      #endif
+      void AddBirdWithData(::grpc::ClientContext* context, const ::birdy_grpc::AddBirdWithDataRequest* request, ::birdy_grpc::AddBirdWithDataResponse* response, std::function<void(::grpc::Status)>) override;
+      void AddBirdWithData(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::birdy_grpc::AddBirdWithDataResponse* response, std::function<void(::grpc::Status)>) override;
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      void AddBirdWithData(::grpc::ClientContext* context, const ::birdy_grpc::AddBirdWithDataRequest* request, ::birdy_grpc::AddBirdWithDataResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
+      #else
+      void AddBirdWithData(::grpc::ClientContext* context, const ::birdy_grpc::AddBirdWithDataRequest* request, ::birdy_grpc::AddBirdWithDataResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
       #endif
       #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      void FindBird(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::birdy_grpc::FindBirdResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
+      void AddBirdWithData(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::birdy_grpc::AddBirdWithDataResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
       #else
-      void FindBird(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::birdy_grpc::FindBirdResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
+      void AddBirdWithData(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::birdy_grpc::AddBirdWithDataResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
       #endif
       void SendMessage(::grpc::ClientContext* context, const ::birdy_grpc::SendMessageRequest* request, ::birdy_grpc::SendMessageResponse* response, std::function<void(::grpc::Status)>) override;
       void SendMessage(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::birdy_grpc::SendMessageResponse* response, std::function<void(::grpc::Status)>) override;
@@ -261,8 +292,11 @@ class MainEndpoint final {
     ::grpc::ClientAsyncResponseReader< ::birdy_grpc::RegistrationResponse>* PrepareAsyncRegisterUserRaw(::grpc::ClientContext* context, const ::birdy_grpc::RegistrationRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::birdy_grpc::LoginResponse>* AsyncLoginUserRaw(::grpc::ClientContext* context, const ::birdy_grpc::LoginRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::birdy_grpc::LoginResponse>* PrepareAsyncLoginUserRaw(::grpc::ClientContext* context, const ::birdy_grpc::LoginRequest& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::birdy_grpc::FindBirdResponse>* AsyncFindBirdRaw(::grpc::ClientContext* context, const ::birdy_grpc::FindBirdRequest& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::birdy_grpc::FindBirdResponse>* PrepareAsyncFindBirdRaw(::grpc::ClientContext* context, const ::birdy_grpc::FindBirdRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientReader< ::birdy_grpc::FindBirdByNameResponse>* FindBirdByNameRaw(::grpc::ClientContext* context, const ::birdy_grpc::FindBirdByNameRequest& request) override;
+    ::grpc::ClientAsyncReader< ::birdy_grpc::FindBirdByNameResponse>* AsyncFindBirdByNameRaw(::grpc::ClientContext* context, const ::birdy_grpc::FindBirdByNameRequest& request, ::grpc::CompletionQueue* cq, void* tag) override;
+    ::grpc::ClientAsyncReader< ::birdy_grpc::FindBirdByNameResponse>* PrepareAsyncFindBirdByNameRaw(::grpc::ClientContext* context, const ::birdy_grpc::FindBirdByNameRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::birdy_grpc::AddBirdWithDataResponse>* AsyncAddBirdWithDataRaw(::grpc::ClientContext* context, const ::birdy_grpc::AddBirdWithDataRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::birdy_grpc::AddBirdWithDataResponse>* PrepareAsyncAddBirdWithDataRaw(::grpc::ClientContext* context, const ::birdy_grpc::AddBirdWithDataRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::birdy_grpc::SendMessageResponse>* AsyncSendMessageRaw(::grpc::ClientContext* context, const ::birdy_grpc::SendMessageRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::birdy_grpc::SendMessageResponse>* PrepareAsyncSendMessageRaw(::grpc::ClientContext* context, const ::birdy_grpc::SendMessageRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientReader< ::birdy_grpc::ChatMessage>* SubscribeToNewMessagesRaw(::grpc::ClientContext* context, const ::birdy_grpc::Empty& request) override;
@@ -270,7 +304,8 @@ class MainEndpoint final {
     ::grpc::ClientAsyncReader< ::birdy_grpc::ChatMessage>* PrepareAsyncSubscribeToNewMessagesRaw(::grpc::ClientContext* context, const ::birdy_grpc::Empty& request, ::grpc::CompletionQueue* cq) override;
     const ::grpc::internal::RpcMethod rpcmethod_RegisterUser_;
     const ::grpc::internal::RpcMethod rpcmethod_LoginUser_;
-    const ::grpc::internal::RpcMethod rpcmethod_FindBird_;
+    const ::grpc::internal::RpcMethod rpcmethod_FindBirdByName_;
+    const ::grpc::internal::RpcMethod rpcmethod_AddBirdWithData_;
     const ::grpc::internal::RpcMethod rpcmethod_SendMessage_;
     const ::grpc::internal::RpcMethod rpcmethod_SubscribeToNewMessages_;
   };
@@ -282,7 +317,8 @@ class MainEndpoint final {
     virtual ~Service();
     virtual ::grpc::Status RegisterUser(::grpc::ServerContext* context, const ::birdy_grpc::RegistrationRequest* request, ::birdy_grpc::RegistrationResponse* response);
     virtual ::grpc::Status LoginUser(::grpc::ServerContext* context, const ::birdy_grpc::LoginRequest* request, ::birdy_grpc::LoginResponse* response);
-    virtual ::grpc::Status FindBird(::grpc::ServerContext* context, const ::birdy_grpc::FindBirdRequest* request, ::birdy_grpc::FindBirdResponse* response);
+    virtual ::grpc::Status FindBirdByName(::grpc::ServerContext* context, const ::birdy_grpc::FindBirdByNameRequest* request, ::grpc::ServerWriter< ::birdy_grpc::FindBirdByNameResponse>* writer);
+    virtual ::grpc::Status AddBirdWithData(::grpc::ServerContext* context, const ::birdy_grpc::AddBirdWithDataRequest* request, ::birdy_grpc::AddBirdWithDataResponse* response);
     virtual ::grpc::Status SendMessage(::grpc::ServerContext* context, const ::birdy_grpc::SendMessageRequest* request, ::birdy_grpc::SendMessageResponse* response);
     virtual ::grpc::Status SubscribeToNewMessages(::grpc::ServerContext* context, const ::birdy_grpc::Empty* request, ::grpc::ServerWriter< ::birdy_grpc::ChatMessage>* writer);
   };
@@ -327,23 +363,43 @@ class MainEndpoint final {
     }
   };
   template <class BaseClass>
-  class WithAsyncMethod_FindBird : public BaseClass {
+  class WithAsyncMethod_FindBirdByName : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithAsyncMethod_FindBird() {
+    WithAsyncMethod_FindBirdByName() {
       ::grpc::Service::MarkMethodAsync(2);
     }
-    ~WithAsyncMethod_FindBird() override {
+    ~WithAsyncMethod_FindBirdByName() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status FindBird(::grpc::ServerContext* /*context*/, const ::birdy_grpc::FindBirdRequest* /*request*/, ::birdy_grpc::FindBirdResponse* /*response*/) override {
+    ::grpc::Status FindBirdByName(::grpc::ServerContext* /*context*/, const ::birdy_grpc::FindBirdByNameRequest* /*request*/, ::grpc::ServerWriter< ::birdy_grpc::FindBirdByNameResponse>* /*writer*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    void RequestFindBird(::grpc::ServerContext* context, ::birdy_grpc::FindBirdRequest* request, ::grpc::ServerAsyncResponseWriter< ::birdy_grpc::FindBirdResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(2, context, request, response, new_call_cq, notification_cq, tag);
+    void RequestFindBirdByName(::grpc::ServerContext* context, ::birdy_grpc::FindBirdByNameRequest* request, ::grpc::ServerAsyncWriter< ::birdy_grpc::FindBirdByNameResponse>* writer, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncServerStreaming(2, context, request, writer, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithAsyncMethod_AddBirdWithData : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithAsyncMethod_AddBirdWithData() {
+      ::grpc::Service::MarkMethodAsync(3);
+    }
+    ~WithAsyncMethod_AddBirdWithData() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status AddBirdWithData(::grpc::ServerContext* /*context*/, const ::birdy_grpc::AddBirdWithDataRequest* /*request*/, ::birdy_grpc::AddBirdWithDataResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestAddBirdWithData(::grpc::ServerContext* context, ::birdy_grpc::AddBirdWithDataRequest* request, ::grpc::ServerAsyncResponseWriter< ::birdy_grpc::AddBirdWithDataResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(3, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -352,7 +408,7 @@ class MainEndpoint final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_SendMessage() {
-      ::grpc::Service::MarkMethodAsync(3);
+      ::grpc::Service::MarkMethodAsync(4);
     }
     ~WithAsyncMethod_SendMessage() override {
       BaseClassMustBeDerivedFromService(this);
@@ -363,7 +419,7 @@ class MainEndpoint final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestSendMessage(::grpc::ServerContext* context, ::birdy_grpc::SendMessageRequest* request, ::grpc::ServerAsyncResponseWriter< ::birdy_grpc::SendMessageResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(3, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(4, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -372,7 +428,7 @@ class MainEndpoint final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_SubscribeToNewMessages() {
-      ::grpc::Service::MarkMethodAsync(4);
+      ::grpc::Service::MarkMethodAsync(5);
     }
     ~WithAsyncMethod_SubscribeToNewMessages() override {
       BaseClassMustBeDerivedFromService(this);
@@ -383,10 +439,10 @@ class MainEndpoint final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestSubscribeToNewMessages(::grpc::ServerContext* context, ::birdy_grpc::Empty* request, ::grpc::ServerAsyncWriter< ::birdy_grpc::ChatMessage>* writer, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncServerStreaming(4, context, request, writer, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncServerStreaming(5, context, request, writer, new_call_cq, notification_cq, tag);
     }
   };
-  typedef WithAsyncMethod_RegisterUser<WithAsyncMethod_LoginUser<WithAsyncMethod_FindBird<WithAsyncMethod_SendMessage<WithAsyncMethod_SubscribeToNewMessages<Service > > > > > AsyncService;
+  typedef WithAsyncMethod_RegisterUser<WithAsyncMethod_LoginUser<WithAsyncMethod_FindBirdByName<WithAsyncMethod_AddBirdWithData<WithAsyncMethod_SendMessage<WithAsyncMethod_SubscribeToNewMessages<Service > > > > > > AsyncService;
   template <class BaseClass>
   class ExperimentalWithCallbackMethod_RegisterUser : public BaseClass {
    private:
@@ -482,49 +538,87 @@ class MainEndpoint final {
       { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_FindBird : public BaseClass {
+  class ExperimentalWithCallbackMethod_FindBirdByName : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithCallbackMethod_FindBird() {
+    ExperimentalWithCallbackMethod_FindBirdByName() {
     #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       ::grpc::Service::
     #else
       ::grpc::Service::experimental().
     #endif
         MarkMethodCallback(2,
-          new ::grpc_impl::internal::CallbackUnaryHandler< ::birdy_grpc::FindBirdRequest, ::birdy_grpc::FindBirdResponse>(
+          new ::grpc_impl::internal::CallbackServerStreamingHandler< ::birdy_grpc::FindBirdByNameRequest, ::birdy_grpc::FindBirdByNameResponse>(
             [this](
     #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
                    ::grpc::CallbackServerContext*
     #else
                    ::grpc::experimental::CallbackServerContext*
     #endif
-                     context, const ::birdy_grpc::FindBirdRequest* request, ::birdy_grpc::FindBirdResponse* response) { return this->FindBird(context, request, response); }));}
-    void SetMessageAllocatorFor_FindBird(
-        ::grpc::experimental::MessageAllocator< ::birdy_grpc::FindBirdRequest, ::birdy_grpc::FindBirdResponse>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(2);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(2);
-    #endif
-      static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::birdy_grpc::FindBirdRequest, ::birdy_grpc::FindBirdResponse>*>(handler)
-              ->SetMessageAllocator(allocator);
+                     context, const ::birdy_grpc::FindBirdByNameRequest* request) { return this->FindBirdByName(context, request); }));
     }
-    ~ExperimentalWithCallbackMethod_FindBird() override {
+    ~ExperimentalWithCallbackMethod_FindBirdByName() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status FindBird(::grpc::ServerContext* /*context*/, const ::birdy_grpc::FindBirdRequest* /*request*/, ::birdy_grpc::FindBirdResponse* /*response*/) override {
+    ::grpc::Status FindBirdByName(::grpc::ServerContext* /*context*/, const ::birdy_grpc::FindBirdByNameRequest* /*request*/, ::grpc::ServerWriter< ::birdy_grpc::FindBirdByNameResponse>* /*writer*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-    virtual ::grpc::ServerUnaryReactor* FindBird(
-      ::grpc::CallbackServerContext* /*context*/, const ::birdy_grpc::FindBirdRequest* /*request*/, ::birdy_grpc::FindBirdResponse* /*response*/)
+    virtual ::grpc::ServerWriteReactor< ::birdy_grpc::FindBirdByNameResponse>* FindBirdByName(
+      ::grpc::CallbackServerContext* /*context*/, const ::birdy_grpc::FindBirdByNameRequest* /*request*/)
     #else
-    virtual ::grpc::experimental::ServerUnaryReactor* FindBird(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::birdy_grpc::FindBirdRequest* /*request*/, ::birdy_grpc::FindBirdResponse* /*response*/)
+    virtual ::grpc::experimental::ServerWriteReactor< ::birdy_grpc::FindBirdByNameResponse>* FindBirdByName(
+      ::grpc::experimental::CallbackServerContext* /*context*/, const ::birdy_grpc::FindBirdByNameRequest* /*request*/)
+    #endif
+      { return nullptr; }
+  };
+  template <class BaseClass>
+  class ExperimentalWithCallbackMethod_AddBirdWithData : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    ExperimentalWithCallbackMethod_AddBirdWithData() {
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      ::grpc::Service::
+    #else
+      ::grpc::Service::experimental().
+    #endif
+        MarkMethodCallback(3,
+          new ::grpc_impl::internal::CallbackUnaryHandler< ::birdy_grpc::AddBirdWithDataRequest, ::birdy_grpc::AddBirdWithDataResponse>(
+            [this](
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+                   ::grpc::CallbackServerContext*
+    #else
+                   ::grpc::experimental::CallbackServerContext*
+    #endif
+                     context, const ::birdy_grpc::AddBirdWithDataRequest* request, ::birdy_grpc::AddBirdWithDataResponse* response) { return this->AddBirdWithData(context, request, response); }));}
+    void SetMessageAllocatorFor_AddBirdWithData(
+        ::grpc::experimental::MessageAllocator< ::birdy_grpc::AddBirdWithDataRequest, ::birdy_grpc::AddBirdWithDataResponse>* allocator) {
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(3);
+    #else
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(3);
+    #endif
+      static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::birdy_grpc::AddBirdWithDataRequest, ::birdy_grpc::AddBirdWithDataResponse>*>(handler)
+              ->SetMessageAllocator(allocator);
+    }
+    ~ExperimentalWithCallbackMethod_AddBirdWithData() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status AddBirdWithData(::grpc::ServerContext* /*context*/, const ::birdy_grpc::AddBirdWithDataRequest* /*request*/, ::birdy_grpc::AddBirdWithDataResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+    virtual ::grpc::ServerUnaryReactor* AddBirdWithData(
+      ::grpc::CallbackServerContext* /*context*/, const ::birdy_grpc::AddBirdWithDataRequest* /*request*/, ::birdy_grpc::AddBirdWithDataResponse* /*response*/)
+    #else
+    virtual ::grpc::experimental::ServerUnaryReactor* AddBirdWithData(
+      ::grpc::experimental::CallbackServerContext* /*context*/, const ::birdy_grpc::AddBirdWithDataRequest* /*request*/, ::birdy_grpc::AddBirdWithDataResponse* /*response*/)
     #endif
       { return nullptr; }
   };
@@ -539,7 +633,7 @@ class MainEndpoint final {
     #else
       ::grpc::Service::experimental().
     #endif
-        MarkMethodCallback(3,
+        MarkMethodCallback(4,
           new ::grpc_impl::internal::CallbackUnaryHandler< ::birdy_grpc::SendMessageRequest, ::birdy_grpc::SendMessageResponse>(
             [this](
     #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
@@ -551,9 +645,9 @@ class MainEndpoint final {
     void SetMessageAllocatorFor_SendMessage(
         ::grpc::experimental::MessageAllocator< ::birdy_grpc::SendMessageRequest, ::birdy_grpc::SendMessageResponse>* allocator) {
     #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(3);
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(4);
     #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(3);
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(4);
     #endif
       static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::birdy_grpc::SendMessageRequest, ::birdy_grpc::SendMessageResponse>*>(handler)
               ->SetMessageAllocator(allocator);
@@ -586,7 +680,7 @@ class MainEndpoint final {
     #else
       ::grpc::Service::experimental().
     #endif
-        MarkMethodCallback(4,
+        MarkMethodCallback(5,
           new ::grpc_impl::internal::CallbackServerStreamingHandler< ::birdy_grpc::Empty, ::birdy_grpc::ChatMessage>(
             [this](
     #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
@@ -614,10 +708,10 @@ class MainEndpoint final {
       { return nullptr; }
   };
   #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-  typedef ExperimentalWithCallbackMethod_RegisterUser<ExperimentalWithCallbackMethod_LoginUser<ExperimentalWithCallbackMethod_FindBird<ExperimentalWithCallbackMethod_SendMessage<ExperimentalWithCallbackMethod_SubscribeToNewMessages<Service > > > > > CallbackService;
+  typedef ExperimentalWithCallbackMethod_RegisterUser<ExperimentalWithCallbackMethod_LoginUser<ExperimentalWithCallbackMethod_FindBirdByName<ExperimentalWithCallbackMethod_AddBirdWithData<ExperimentalWithCallbackMethod_SendMessage<ExperimentalWithCallbackMethod_SubscribeToNewMessages<Service > > > > > > CallbackService;
   #endif
 
-  typedef ExperimentalWithCallbackMethod_RegisterUser<ExperimentalWithCallbackMethod_LoginUser<ExperimentalWithCallbackMethod_FindBird<ExperimentalWithCallbackMethod_SendMessage<ExperimentalWithCallbackMethod_SubscribeToNewMessages<Service > > > > > ExperimentalCallbackService;
+  typedef ExperimentalWithCallbackMethod_RegisterUser<ExperimentalWithCallbackMethod_LoginUser<ExperimentalWithCallbackMethod_FindBirdByName<ExperimentalWithCallbackMethod_AddBirdWithData<ExperimentalWithCallbackMethod_SendMessage<ExperimentalWithCallbackMethod_SubscribeToNewMessages<Service > > > > > > ExperimentalCallbackService;
   template <class BaseClass>
   class WithGenericMethod_RegisterUser : public BaseClass {
    private:
@@ -653,18 +747,35 @@ class MainEndpoint final {
     }
   };
   template <class BaseClass>
-  class WithGenericMethod_FindBird : public BaseClass {
+  class WithGenericMethod_FindBirdByName : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithGenericMethod_FindBird() {
+    WithGenericMethod_FindBirdByName() {
       ::grpc::Service::MarkMethodGeneric(2);
     }
-    ~WithGenericMethod_FindBird() override {
+    ~WithGenericMethod_FindBirdByName() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status FindBird(::grpc::ServerContext* /*context*/, const ::birdy_grpc::FindBirdRequest* /*request*/, ::birdy_grpc::FindBirdResponse* /*response*/) override {
+    ::grpc::Status FindBirdByName(::grpc::ServerContext* /*context*/, const ::birdy_grpc::FindBirdByNameRequest* /*request*/, ::grpc::ServerWriter< ::birdy_grpc::FindBirdByNameResponse>* /*writer*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class WithGenericMethod_AddBirdWithData : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithGenericMethod_AddBirdWithData() {
+      ::grpc::Service::MarkMethodGeneric(3);
+    }
+    ~WithGenericMethod_AddBirdWithData() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status AddBirdWithData(::grpc::ServerContext* /*context*/, const ::birdy_grpc::AddBirdWithDataRequest* /*request*/, ::birdy_grpc::AddBirdWithDataResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -675,7 +786,7 @@ class MainEndpoint final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_SendMessage() {
-      ::grpc::Service::MarkMethodGeneric(3);
+      ::grpc::Service::MarkMethodGeneric(4);
     }
     ~WithGenericMethod_SendMessage() override {
       BaseClassMustBeDerivedFromService(this);
@@ -692,7 +803,7 @@ class MainEndpoint final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_SubscribeToNewMessages() {
-      ::grpc::Service::MarkMethodGeneric(4);
+      ::grpc::Service::MarkMethodGeneric(5);
     }
     ~WithGenericMethod_SubscribeToNewMessages() override {
       BaseClassMustBeDerivedFromService(this);
@@ -744,23 +855,43 @@ class MainEndpoint final {
     }
   };
   template <class BaseClass>
-  class WithRawMethod_FindBird : public BaseClass {
+  class WithRawMethod_FindBirdByName : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithRawMethod_FindBird() {
+    WithRawMethod_FindBirdByName() {
       ::grpc::Service::MarkMethodRaw(2);
     }
-    ~WithRawMethod_FindBird() override {
+    ~WithRawMethod_FindBirdByName() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status FindBird(::grpc::ServerContext* /*context*/, const ::birdy_grpc::FindBirdRequest* /*request*/, ::birdy_grpc::FindBirdResponse* /*response*/) override {
+    ::grpc::Status FindBirdByName(::grpc::ServerContext* /*context*/, const ::birdy_grpc::FindBirdByNameRequest* /*request*/, ::grpc::ServerWriter< ::birdy_grpc::FindBirdByNameResponse>* /*writer*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    void RequestFindBird(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(2, context, request, response, new_call_cq, notification_cq, tag);
+    void RequestFindBirdByName(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncWriter< ::grpc::ByteBuffer>* writer, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncServerStreaming(2, context, request, writer, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_AddBirdWithData : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawMethod_AddBirdWithData() {
+      ::grpc::Service::MarkMethodRaw(3);
+    }
+    ~WithRawMethod_AddBirdWithData() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status AddBirdWithData(::grpc::ServerContext* /*context*/, const ::birdy_grpc::AddBirdWithDataRequest* /*request*/, ::birdy_grpc::AddBirdWithDataResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestAddBirdWithData(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(3, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -769,7 +900,7 @@ class MainEndpoint final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_SendMessage() {
-      ::grpc::Service::MarkMethodRaw(3);
+      ::grpc::Service::MarkMethodRaw(4);
     }
     ~WithRawMethod_SendMessage() override {
       BaseClassMustBeDerivedFromService(this);
@@ -780,7 +911,7 @@ class MainEndpoint final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestSendMessage(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(3, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(4, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -789,7 +920,7 @@ class MainEndpoint final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_SubscribeToNewMessages() {
-      ::grpc::Service::MarkMethodRaw(4);
+      ::grpc::Service::MarkMethodRaw(5);
     }
     ~WithRawMethod_SubscribeToNewMessages() override {
       BaseClassMustBeDerivedFromService(this);
@@ -800,7 +931,7 @@ class MainEndpoint final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestSubscribeToNewMessages(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncWriter< ::grpc::ByteBuffer>* writer, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncServerStreaming(4, context, request, writer, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncServerStreaming(5, context, request, writer, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -880,17 +1011,55 @@ class MainEndpoint final {
       { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_FindBird : public BaseClass {
+  class ExperimentalWithRawCallbackMethod_FindBirdByName : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_FindBird() {
+    ExperimentalWithRawCallbackMethod_FindBirdByName() {
     #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       ::grpc::Service::
     #else
       ::grpc::Service::experimental().
     #endif
         MarkMethodRawCallback(2,
+          new ::grpc_impl::internal::CallbackServerStreamingHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+            [this](
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+                   ::grpc::CallbackServerContext*
+    #else
+                   ::grpc::experimental::CallbackServerContext*
+    #endif
+                     context, const::grpc::ByteBuffer* request) { return this->FindBirdByName(context, request); }));
+    }
+    ~ExperimentalWithRawCallbackMethod_FindBirdByName() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status FindBirdByName(::grpc::ServerContext* /*context*/, const ::birdy_grpc::FindBirdByNameRequest* /*request*/, ::grpc::ServerWriter< ::birdy_grpc::FindBirdByNameResponse>* /*writer*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+    virtual ::grpc::ServerWriteReactor< ::grpc::ByteBuffer>* FindBirdByName(
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/)
+    #else
+    virtual ::grpc::experimental::ServerWriteReactor< ::grpc::ByteBuffer>* FindBirdByName(
+      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/)
+    #endif
+      { return nullptr; }
+  };
+  template <class BaseClass>
+  class ExperimentalWithRawCallbackMethod_AddBirdWithData : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    ExperimentalWithRawCallbackMethod_AddBirdWithData() {
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      ::grpc::Service::
+    #else
+      ::grpc::Service::experimental().
+    #endif
+        MarkMethodRawCallback(3,
           new ::grpc_impl::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
     #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
@@ -898,21 +1067,21 @@ class MainEndpoint final {
     #else
                    ::grpc::experimental::CallbackServerContext*
     #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->FindBird(context, request, response); }));
+                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->AddBirdWithData(context, request, response); }));
     }
-    ~ExperimentalWithRawCallbackMethod_FindBird() override {
+    ~ExperimentalWithRawCallbackMethod_AddBirdWithData() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status FindBird(::grpc::ServerContext* /*context*/, const ::birdy_grpc::FindBirdRequest* /*request*/, ::birdy_grpc::FindBirdResponse* /*response*/) override {
+    ::grpc::Status AddBirdWithData(::grpc::ServerContext* /*context*/, const ::birdy_grpc::AddBirdWithDataRequest* /*request*/, ::birdy_grpc::AddBirdWithDataResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-    virtual ::grpc::ServerUnaryReactor* FindBird(
+    virtual ::grpc::ServerUnaryReactor* AddBirdWithData(
       ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
     #else
-    virtual ::grpc::experimental::ServerUnaryReactor* FindBird(
+    virtual ::grpc::experimental::ServerUnaryReactor* AddBirdWithData(
       ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
     #endif
       { return nullptr; }
@@ -928,7 +1097,7 @@ class MainEndpoint final {
     #else
       ::grpc::Service::experimental().
     #endif
-        MarkMethodRawCallback(3,
+        MarkMethodRawCallback(4,
           new ::grpc_impl::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
     #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
@@ -966,7 +1135,7 @@ class MainEndpoint final {
     #else
       ::grpc::Service::experimental().
     #endif
-        MarkMethodRawCallback(4,
+        MarkMethodRawCallback(5,
           new ::grpc_impl::internal::CallbackServerStreamingHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
     #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
@@ -1048,31 +1217,31 @@ class MainEndpoint final {
     virtual ::grpc::Status StreamedLoginUser(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::birdy_grpc::LoginRequest,::birdy_grpc::LoginResponse>* server_unary_streamer) = 0;
   };
   template <class BaseClass>
-  class WithStreamedUnaryMethod_FindBird : public BaseClass {
+  class WithStreamedUnaryMethod_AddBirdWithData : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithStreamedUnaryMethod_FindBird() {
-      ::grpc::Service::MarkMethodStreamed(2,
+    WithStreamedUnaryMethod_AddBirdWithData() {
+      ::grpc::Service::MarkMethodStreamed(3,
         new ::grpc::internal::StreamedUnaryHandler<
-          ::birdy_grpc::FindBirdRequest, ::birdy_grpc::FindBirdResponse>(
+          ::birdy_grpc::AddBirdWithDataRequest, ::birdy_grpc::AddBirdWithDataResponse>(
             [this](::grpc_impl::ServerContext* context,
                    ::grpc_impl::ServerUnaryStreamer<
-                     ::birdy_grpc::FindBirdRequest, ::birdy_grpc::FindBirdResponse>* streamer) {
-                       return this->StreamedFindBird(context,
+                     ::birdy_grpc::AddBirdWithDataRequest, ::birdy_grpc::AddBirdWithDataResponse>* streamer) {
+                       return this->StreamedAddBirdWithData(context,
                          streamer);
                   }));
     }
-    ~WithStreamedUnaryMethod_FindBird() override {
+    ~WithStreamedUnaryMethod_AddBirdWithData() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable regular version of this method
-    ::grpc::Status FindBird(::grpc::ServerContext* /*context*/, const ::birdy_grpc::FindBirdRequest* /*request*/, ::birdy_grpc::FindBirdResponse* /*response*/) override {
+    ::grpc::Status AddBirdWithData(::grpc::ServerContext* /*context*/, const ::birdy_grpc::AddBirdWithDataRequest* /*request*/, ::birdy_grpc::AddBirdWithDataResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     // replace default version of method with streamed unary
-    virtual ::grpc::Status StreamedFindBird(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::birdy_grpc::FindBirdRequest,::birdy_grpc::FindBirdResponse>* server_unary_streamer) = 0;
+    virtual ::grpc::Status StreamedAddBirdWithData(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::birdy_grpc::AddBirdWithDataRequest,::birdy_grpc::AddBirdWithDataResponse>* server_unary_streamer) = 0;
   };
   template <class BaseClass>
   class WithStreamedUnaryMethod_SendMessage : public BaseClass {
@@ -1080,7 +1249,7 @@ class MainEndpoint final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_SendMessage() {
-      ::grpc::Service::MarkMethodStreamed(3,
+      ::grpc::Service::MarkMethodStreamed(4,
         new ::grpc::internal::StreamedUnaryHandler<
           ::birdy_grpc::SendMessageRequest, ::birdy_grpc::SendMessageResponse>(
             [this](::grpc_impl::ServerContext* context,
@@ -1101,14 +1270,41 @@ class MainEndpoint final {
     // replace default version of method with streamed unary
     virtual ::grpc::Status StreamedSendMessage(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::birdy_grpc::SendMessageRequest,::birdy_grpc::SendMessageResponse>* server_unary_streamer) = 0;
   };
-  typedef WithStreamedUnaryMethod_RegisterUser<WithStreamedUnaryMethod_LoginUser<WithStreamedUnaryMethod_FindBird<WithStreamedUnaryMethod_SendMessage<Service > > > > StreamedUnaryService;
+  typedef WithStreamedUnaryMethod_RegisterUser<WithStreamedUnaryMethod_LoginUser<WithStreamedUnaryMethod_AddBirdWithData<WithStreamedUnaryMethod_SendMessage<Service > > > > StreamedUnaryService;
+  template <class BaseClass>
+  class WithSplitStreamingMethod_FindBirdByName : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithSplitStreamingMethod_FindBirdByName() {
+      ::grpc::Service::MarkMethodStreamed(2,
+        new ::grpc::internal::SplitServerStreamingHandler<
+          ::birdy_grpc::FindBirdByNameRequest, ::birdy_grpc::FindBirdByNameResponse>(
+            [this](::grpc_impl::ServerContext* context,
+                   ::grpc_impl::ServerSplitStreamer<
+                     ::birdy_grpc::FindBirdByNameRequest, ::birdy_grpc::FindBirdByNameResponse>* streamer) {
+                       return this->StreamedFindBirdByName(context,
+                         streamer);
+                  }));
+    }
+    ~WithSplitStreamingMethod_FindBirdByName() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status FindBirdByName(::grpc::ServerContext* /*context*/, const ::birdy_grpc::FindBirdByNameRequest* /*request*/, ::grpc::ServerWriter< ::birdy_grpc::FindBirdByNameResponse>* /*writer*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with split streamed
+    virtual ::grpc::Status StreamedFindBirdByName(::grpc::ServerContext* context, ::grpc::ServerSplitStreamer< ::birdy_grpc::FindBirdByNameRequest,::birdy_grpc::FindBirdByNameResponse>* server_split_streamer) = 0;
+  };
   template <class BaseClass>
   class WithSplitStreamingMethod_SubscribeToNewMessages : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithSplitStreamingMethod_SubscribeToNewMessages() {
-      ::grpc::Service::MarkMethodStreamed(4,
+      ::grpc::Service::MarkMethodStreamed(5,
         new ::grpc::internal::SplitServerStreamingHandler<
           ::birdy_grpc::Empty, ::birdy_grpc::ChatMessage>(
             [this](::grpc_impl::ServerContext* context,
@@ -1129,8 +1325,8 @@ class MainEndpoint final {
     // replace default version of method with split streamed
     virtual ::grpc::Status StreamedSubscribeToNewMessages(::grpc::ServerContext* context, ::grpc::ServerSplitStreamer< ::birdy_grpc::Empty,::birdy_grpc::ChatMessage>* server_split_streamer) = 0;
   };
-  typedef WithSplitStreamingMethod_SubscribeToNewMessages<Service > SplitStreamedService;
-  typedef WithStreamedUnaryMethod_RegisterUser<WithStreamedUnaryMethod_LoginUser<WithStreamedUnaryMethod_FindBird<WithStreamedUnaryMethod_SendMessage<WithSplitStreamingMethod_SubscribeToNewMessages<Service > > > > > StreamedService;
+  typedef WithSplitStreamingMethod_FindBirdByName<WithSplitStreamingMethod_SubscribeToNewMessages<Service > > SplitStreamedService;
+  typedef WithStreamedUnaryMethod_RegisterUser<WithStreamedUnaryMethod_LoginUser<WithSplitStreamingMethod_FindBirdByName<WithStreamedUnaryMethod_AddBirdWithData<WithStreamedUnaryMethod_SendMessage<WithSplitStreamingMethod_SubscribeToNewMessages<Service > > > > > > StreamedService;
 };
 
 }  // namespace birdy_grpc

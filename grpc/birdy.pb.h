@@ -48,7 +48,7 @@ struct TableStruct_birdy_2eproto {
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::AuxiliaryParseTableField aux[]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
-  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[14]
+  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[16]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::FieldMetadata field_metadata[];
   static const ::PROTOBUF_NAMESPACE_ID::internal::SerializationTable serialization_table[];
@@ -56,6 +56,12 @@ struct TableStruct_birdy_2eproto {
 };
 extern const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_birdy_2eproto;
 namespace birdy_grpc {
+class AddBirdWithDataRequest;
+class AddBirdWithDataRequestDefaultTypeInternal;
+extern AddBirdWithDataRequestDefaultTypeInternal _AddBirdWithDataRequest_default_instance_;
+class AddBirdWithDataResponse;
+class AddBirdWithDataResponseDefaultTypeInternal;
+extern AddBirdWithDataResponseDefaultTypeInternal _AddBirdWithDataResponse_default_instance_;
 class ChatMessage;
 class ChatMessageDefaultTypeInternal;
 extern ChatMessageDefaultTypeInternal _ChatMessage_default_instance_;
@@ -65,12 +71,12 @@ extern EmptyDefaultTypeInternal _Empty_default_instance_;
 class EncyclopedicBirdInfo;
 class EncyclopedicBirdInfoDefaultTypeInternal;
 extern EncyclopedicBirdInfoDefaultTypeInternal _EncyclopedicBirdInfo_default_instance_;
-class FindBirdRequest;
-class FindBirdRequestDefaultTypeInternal;
-extern FindBirdRequestDefaultTypeInternal _FindBirdRequest_default_instance_;
-class FindBirdResponse;
-class FindBirdResponseDefaultTypeInternal;
-extern FindBirdResponseDefaultTypeInternal _FindBirdResponse_default_instance_;
+class FindBirdByNameRequest;
+class FindBirdByNameRequestDefaultTypeInternal;
+extern FindBirdByNameRequestDefaultTypeInternal _FindBirdByNameRequest_default_instance_;
+class FindBirdByNameResponse;
+class FindBirdByNameResponseDefaultTypeInternal;
+extern FindBirdByNameResponseDefaultTypeInternal _FindBirdByNameResponse_default_instance_;
 class LoginRequest;
 class LoginRequestDefaultTypeInternal;
 extern LoginRequestDefaultTypeInternal _LoginRequest_default_instance_;
@@ -100,11 +106,13 @@ class UserBirdInfo_PointDefaultTypeInternal;
 extern UserBirdInfo_PointDefaultTypeInternal _UserBirdInfo_Point_default_instance_;
 }  // namespace birdy_grpc
 PROTOBUF_NAMESPACE_OPEN
+template<> ::birdy_grpc::AddBirdWithDataRequest* Arena::CreateMaybeMessage<::birdy_grpc::AddBirdWithDataRequest>(Arena*);
+template<> ::birdy_grpc::AddBirdWithDataResponse* Arena::CreateMaybeMessage<::birdy_grpc::AddBirdWithDataResponse>(Arena*);
 template<> ::birdy_grpc::ChatMessage* Arena::CreateMaybeMessage<::birdy_grpc::ChatMessage>(Arena*);
 template<> ::birdy_grpc::Empty* Arena::CreateMaybeMessage<::birdy_grpc::Empty>(Arena*);
 template<> ::birdy_grpc::EncyclopedicBirdInfo* Arena::CreateMaybeMessage<::birdy_grpc::EncyclopedicBirdInfo>(Arena*);
-template<> ::birdy_grpc::FindBirdRequest* Arena::CreateMaybeMessage<::birdy_grpc::FindBirdRequest>(Arena*);
-template<> ::birdy_grpc::FindBirdResponse* Arena::CreateMaybeMessage<::birdy_grpc::FindBirdResponse>(Arena*);
+template<> ::birdy_grpc::FindBirdByNameRequest* Arena::CreateMaybeMessage<::birdy_grpc::FindBirdByNameRequest>(Arena*);
+template<> ::birdy_grpc::FindBirdByNameResponse* Arena::CreateMaybeMessage<::birdy_grpc::FindBirdByNameResponse>(Arena*);
 template<> ::birdy_grpc::LoginRequest* Arena::CreateMaybeMessage<::birdy_grpc::LoginRequest>(Arena*);
 template<> ::birdy_grpc::LoginResponse* Arena::CreateMaybeMessage<::birdy_grpc::LoginResponse>(Arena*);
 template<> ::birdy_grpc::RegistrationRequest* Arena::CreateMaybeMessage<::birdy_grpc::RegistrationRequest>(Arena*);
@@ -170,57 +178,31 @@ inline bool LoginResponse_Result_Parse(
   return ::PROTOBUF_NAMESPACE_ID::internal::ParseNamedEnum<LoginResponse_Result>(
     LoginResponse_Result_descriptor(), name, value);
 }
-enum FindBirdRequest_FindType : int {
-  FindBirdRequest_FindType_BY_PHOTO = 0,
-  FindBirdRequest_FindType_BY_SOUND = 1,
-  FindBirdRequest_FindType_BY_NAME = 2,
-  FindBirdRequest_FindType_FindBirdRequest_FindType_INT_MIN_SENTINEL_DO_NOT_USE_ = std::numeric_limits<::PROTOBUF_NAMESPACE_ID::int32>::min(),
-  FindBirdRequest_FindType_FindBirdRequest_FindType_INT_MAX_SENTINEL_DO_NOT_USE_ = std::numeric_limits<::PROTOBUF_NAMESPACE_ID::int32>::max()
+enum FindBirdByNameResponse_Result : int {
+  FindBirdByNameResponse_Result_FOUND = 0,
+  FindBirdByNameResponse_Result_NOT_FOUND = 1,
+  FindBirdByNameResponse_Result_DB_ERROR = 2,
+  FindBirdByNameResponse_Result_FindBirdByNameResponse_Result_INT_MIN_SENTINEL_DO_NOT_USE_ = std::numeric_limits<::PROTOBUF_NAMESPACE_ID::int32>::min(),
+  FindBirdByNameResponse_Result_FindBirdByNameResponse_Result_INT_MAX_SENTINEL_DO_NOT_USE_ = std::numeric_limits<::PROTOBUF_NAMESPACE_ID::int32>::max()
 };
-bool FindBirdRequest_FindType_IsValid(int value);
-constexpr FindBirdRequest_FindType FindBirdRequest_FindType_FindType_MIN = FindBirdRequest_FindType_BY_PHOTO;
-constexpr FindBirdRequest_FindType FindBirdRequest_FindType_FindType_MAX = FindBirdRequest_FindType_BY_NAME;
-constexpr int FindBirdRequest_FindType_FindType_ARRAYSIZE = FindBirdRequest_FindType_FindType_MAX + 1;
+bool FindBirdByNameResponse_Result_IsValid(int value);
+constexpr FindBirdByNameResponse_Result FindBirdByNameResponse_Result_Result_MIN = FindBirdByNameResponse_Result_FOUND;
+constexpr FindBirdByNameResponse_Result FindBirdByNameResponse_Result_Result_MAX = FindBirdByNameResponse_Result_DB_ERROR;
+constexpr int FindBirdByNameResponse_Result_Result_ARRAYSIZE = FindBirdByNameResponse_Result_Result_MAX + 1;
 
-const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* FindBirdRequest_FindType_descriptor();
+const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* FindBirdByNameResponse_Result_descriptor();
 template<typename T>
-inline const std::string& FindBirdRequest_FindType_Name(T enum_t_value) {
-  static_assert(::std::is_same<T, FindBirdRequest_FindType>::value ||
+inline const std::string& FindBirdByNameResponse_Result_Name(T enum_t_value) {
+  static_assert(::std::is_same<T, FindBirdByNameResponse_Result>::value ||
     ::std::is_integral<T>::value,
-    "Incorrect type passed to function FindBirdRequest_FindType_Name.");
+    "Incorrect type passed to function FindBirdByNameResponse_Result_Name.");
   return ::PROTOBUF_NAMESPACE_ID::internal::NameOfEnum(
-    FindBirdRequest_FindType_descriptor(), enum_t_value);
+    FindBirdByNameResponse_Result_descriptor(), enum_t_value);
 }
-inline bool FindBirdRequest_FindType_Parse(
-    ::PROTOBUF_NAMESPACE_ID::ConstStringParam name, FindBirdRequest_FindType* value) {
-  return ::PROTOBUF_NAMESPACE_ID::internal::ParseNamedEnum<FindBirdRequest_FindType>(
-    FindBirdRequest_FindType_descriptor(), name, value);
-}
-enum FindBirdResponse_Result : int {
-  FindBirdResponse_Result_FOUND = 0,
-  FindBirdResponse_Result_NOT_FOUND = 1,
-  FindBirdResponse_Result_DB_ERROR = 2,
-  FindBirdResponse_Result_FindBirdResponse_Result_INT_MIN_SENTINEL_DO_NOT_USE_ = std::numeric_limits<::PROTOBUF_NAMESPACE_ID::int32>::min(),
-  FindBirdResponse_Result_FindBirdResponse_Result_INT_MAX_SENTINEL_DO_NOT_USE_ = std::numeric_limits<::PROTOBUF_NAMESPACE_ID::int32>::max()
-};
-bool FindBirdResponse_Result_IsValid(int value);
-constexpr FindBirdResponse_Result FindBirdResponse_Result_Result_MIN = FindBirdResponse_Result_FOUND;
-constexpr FindBirdResponse_Result FindBirdResponse_Result_Result_MAX = FindBirdResponse_Result_DB_ERROR;
-constexpr int FindBirdResponse_Result_Result_ARRAYSIZE = FindBirdResponse_Result_Result_MAX + 1;
-
-const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* FindBirdResponse_Result_descriptor();
-template<typename T>
-inline const std::string& FindBirdResponse_Result_Name(T enum_t_value) {
-  static_assert(::std::is_same<T, FindBirdResponse_Result>::value ||
-    ::std::is_integral<T>::value,
-    "Incorrect type passed to function FindBirdResponse_Result_Name.");
-  return ::PROTOBUF_NAMESPACE_ID::internal::NameOfEnum(
-    FindBirdResponse_Result_descriptor(), enum_t_value);
-}
-inline bool FindBirdResponse_Result_Parse(
-    ::PROTOBUF_NAMESPACE_ID::ConstStringParam name, FindBirdResponse_Result* value) {
-  return ::PROTOBUF_NAMESPACE_ID::internal::ParseNamedEnum<FindBirdResponse_Result>(
-    FindBirdResponse_Result_descriptor(), name, value);
+inline bool FindBirdByNameResponse_Result_Parse(
+    ::PROTOBUF_NAMESPACE_ID::ConstStringParam name, FindBirdByNameResponse_Result* value) {
+  return ::PROTOBUF_NAMESPACE_ID::internal::ParseNamedEnum<FindBirdByNameResponse_Result>(
+    FindBirdByNameResponse_Result_descriptor(), name, value);
 }
 // ===================================================================
 
@@ -1513,12 +1495,27 @@ class UserBirdInfo PROTOBUF_FINAL :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kFinderEmailFieldNumber = 3,
-    kSoundFieldNumber = 5,
-    kFoundPointFieldNumber = 1,
     kFoundTimeFieldNumber = 2,
-    kInfoFieldNumber = 4,
+    kFinderEmailFieldNumber = 3,
+    kSoundFieldNumber = 4,
+    kFoundPointFieldNumber = 1,
   };
+  // string found_time = 2;
+  void clear_found_time();
+  const std::string& found_time() const;
+  void set_found_time(const std::string& value);
+  void set_found_time(std::string&& value);
+  void set_found_time(const char* value);
+  void set_found_time(const char* value, size_t size);
+  std::string* mutable_found_time();
+  std::string* release_found_time();
+  void set_allocated_found_time(std::string* found_time);
+  private:
+  const std::string& _internal_found_time() const;
+  void _internal_set_found_time(const std::string& value);
+  std::string* _internal_mutable_found_time();
+  public:
+
   // string finder_email = 3;
   void clear_finder_email();
   const std::string& finder_email() const;
@@ -1535,7 +1532,7 @@ class UserBirdInfo PROTOBUF_FINAL :
   std::string* _internal_mutable_finder_email();
   public:
 
-  // bytes sound = 5;
+  // bytes sound = 4;
   void clear_sound();
   const std::string& sound() const;
   void set_sound(const std::string& value);
@@ -1569,42 +1566,6 @@ class UserBirdInfo PROTOBUF_FINAL :
       ::birdy_grpc::UserBirdInfo_Point* found_point);
   ::birdy_grpc::UserBirdInfo_Point* unsafe_arena_release_found_point();
 
-  // .birdy_grpc.Timestamp found_time = 2;
-  bool has_found_time() const;
-  private:
-  bool _internal_has_found_time() const;
-  public:
-  void clear_found_time();
-  const ::birdy_grpc::Timestamp& found_time() const;
-  ::birdy_grpc::Timestamp* release_found_time();
-  ::birdy_grpc::Timestamp* mutable_found_time();
-  void set_allocated_found_time(::birdy_grpc::Timestamp* found_time);
-  private:
-  const ::birdy_grpc::Timestamp& _internal_found_time() const;
-  ::birdy_grpc::Timestamp* _internal_mutable_found_time();
-  public:
-  void unsafe_arena_set_allocated_found_time(
-      ::birdy_grpc::Timestamp* found_time);
-  ::birdy_grpc::Timestamp* unsafe_arena_release_found_time();
-
-  // .birdy_grpc.EncyclopedicBirdInfo info = 4;
-  bool has_info() const;
-  private:
-  bool _internal_has_info() const;
-  public:
-  void clear_info();
-  const ::birdy_grpc::EncyclopedicBirdInfo& info() const;
-  ::birdy_grpc::EncyclopedicBirdInfo* release_info();
-  ::birdy_grpc::EncyclopedicBirdInfo* mutable_info();
-  void set_allocated_info(::birdy_grpc::EncyclopedicBirdInfo* info);
-  private:
-  const ::birdy_grpc::EncyclopedicBirdInfo& _internal_info() const;
-  ::birdy_grpc::EncyclopedicBirdInfo* _internal_mutable_info();
-  public:
-  void unsafe_arena_set_allocated_info(
-      ::birdy_grpc::EncyclopedicBirdInfo* info);
-  ::birdy_grpc::EncyclopedicBirdInfo* unsafe_arena_release_info();
-
   // @@protoc_insertion_point(class_scope:birdy_grpc.UserBirdInfo)
  private:
   class _Internal;
@@ -1612,11 +1573,10 @@ class UserBirdInfo PROTOBUF_FINAL :
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr found_time_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr finder_email_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr sound_;
   ::birdy_grpc::UserBirdInfo_Point* found_point_;
-  ::birdy_grpc::Timestamp* found_time_;
-  ::birdy_grpc::EncyclopedicBirdInfo* info_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_birdy_2eproto;
 };
@@ -1802,23 +1762,23 @@ class EncyclopedicBirdInfo PROTOBUF_FINAL :
 };
 // -------------------------------------------------------------------
 
-class FindBirdRequest PROTOBUF_FINAL :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:birdy_grpc.FindBirdRequest) */ {
+class FindBirdByNameRequest PROTOBUF_FINAL :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:birdy_grpc.FindBirdByNameRequest) */ {
  public:
-  inline FindBirdRequest() : FindBirdRequest(nullptr) {}
-  virtual ~FindBirdRequest();
+  inline FindBirdByNameRequest() : FindBirdByNameRequest(nullptr) {}
+  virtual ~FindBirdByNameRequest();
 
-  FindBirdRequest(const FindBirdRequest& from);
-  FindBirdRequest(FindBirdRequest&& from) noexcept
-    : FindBirdRequest() {
+  FindBirdByNameRequest(const FindBirdByNameRequest& from);
+  FindBirdByNameRequest(FindBirdByNameRequest&& from) noexcept
+    : FindBirdByNameRequest() {
     *this = ::std::move(from);
   }
 
-  inline FindBirdRequest& operator=(const FindBirdRequest& from) {
+  inline FindBirdByNameRequest& operator=(const FindBirdByNameRequest& from) {
     CopyFrom(from);
     return *this;
   }
-  inline FindBirdRequest& operator=(FindBirdRequest&& from) noexcept {
+  inline FindBirdByNameRequest& operator=(FindBirdByNameRequest&& from) noexcept {
     if (GetArena() == from.GetArena()) {
       if (this != &from) InternalSwap(&from);
     } else {
@@ -1836,26 +1796,20 @@ class FindBirdRequest PROTOBUF_FINAL :
   static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
     return GetMetadataStatic().reflection;
   }
-  static const FindBirdRequest& default_instance();
-
-  enum DataCase {
-    kMedia = 2,
-    kName = 3,
-    DATA_NOT_SET = 0,
-  };
+  static const FindBirdByNameRequest& default_instance();
 
   static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
-  static inline const FindBirdRequest* internal_default_instance() {
-    return reinterpret_cast<const FindBirdRequest*>(
-               &_FindBirdRequest_default_instance_);
+  static inline const FindBirdByNameRequest* internal_default_instance() {
+    return reinterpret_cast<const FindBirdByNameRequest*>(
+               &_FindBirdByNameRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
     9;
 
-  friend void swap(FindBirdRequest& a, FindBirdRequest& b) {
+  friend void swap(FindBirdByNameRequest& a, FindBirdByNameRequest& b) {
     a.Swap(&b);
   }
-  inline void Swap(FindBirdRequest* other) {
+  inline void Swap(FindBirdByNameRequest* other) {
     if (other == this) return;
     if (GetArena() == other->GetArena()) {
       InternalSwap(other);
@@ -1863,7 +1817,7 @@ class FindBirdRequest PROTOBUF_FINAL :
       ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
     }
   }
-  void UnsafeArenaSwap(FindBirdRequest* other) {
+  void UnsafeArenaSwap(FindBirdByNameRequest* other) {
     if (other == this) return;
     GOOGLE_DCHECK(GetArena() == other->GetArena());
     InternalSwap(other);
@@ -1871,17 +1825,17 @@ class FindBirdRequest PROTOBUF_FINAL :
 
   // implements Message ----------------------------------------------
 
-  inline FindBirdRequest* New() const final {
-    return CreateMaybeMessage<FindBirdRequest>(nullptr);
+  inline FindBirdByNameRequest* New() const final {
+    return CreateMaybeMessage<FindBirdByNameRequest>(nullptr);
   }
 
-  FindBirdRequest* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
-    return CreateMaybeMessage<FindBirdRequest>(arena);
+  FindBirdByNameRequest* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<FindBirdByNameRequest>(arena);
   }
   void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
   void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
-  void CopyFrom(const FindBirdRequest& from);
-  void MergeFrom(const FindBirdRequest& from);
+  void CopyFrom(const FindBirdByNameRequest& from);
+  void MergeFrom(const FindBirdByNameRequest& from);
   PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
   bool IsInitialized() const final;
 
@@ -1895,13 +1849,13 @@ class FindBirdRequest PROTOBUF_FINAL :
   inline void SharedCtor();
   inline void SharedDtor();
   void SetCachedSize(int size) const final;
-  void InternalSwap(FindBirdRequest* other);
+  void InternalSwap(FindBirdByNameRequest* other);
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "birdy_grpc.FindBirdRequest";
+    return "birdy_grpc.FindBirdByNameRequest";
   }
   protected:
-  explicit FindBirdRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  explicit FindBirdByNameRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena);
   private:
   static void ArenaDtor(void* object);
   inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
@@ -1918,77 +1872,12 @@ class FindBirdRequest PROTOBUF_FINAL :
 
   // nested types ----------------------------------------------------
 
-  typedef FindBirdRequest_FindType FindType;
-  static constexpr FindType BY_PHOTO =
-    FindBirdRequest_FindType_BY_PHOTO;
-  static constexpr FindType BY_SOUND =
-    FindBirdRequest_FindType_BY_SOUND;
-  static constexpr FindType BY_NAME =
-    FindBirdRequest_FindType_BY_NAME;
-  static inline bool FindType_IsValid(int value) {
-    return FindBirdRequest_FindType_IsValid(value);
-  }
-  static constexpr FindType FindType_MIN =
-    FindBirdRequest_FindType_FindType_MIN;
-  static constexpr FindType FindType_MAX =
-    FindBirdRequest_FindType_FindType_MAX;
-  static constexpr int FindType_ARRAYSIZE =
-    FindBirdRequest_FindType_FindType_ARRAYSIZE;
-  static inline const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor*
-  FindType_descriptor() {
-    return FindBirdRequest_FindType_descriptor();
-  }
-  template<typename T>
-  static inline const std::string& FindType_Name(T enum_t_value) {
-    static_assert(::std::is_same<T, FindType>::value ||
-      ::std::is_integral<T>::value,
-      "Incorrect type passed to function FindType_Name.");
-    return FindBirdRequest_FindType_Name(enum_t_value);
-  }
-  static inline bool FindType_Parse(::PROTOBUF_NAMESPACE_ID::ConstStringParam name,
-      FindType* value) {
-    return FindBirdRequest_FindType_Parse(name, value);
-  }
-
   // accessors -------------------------------------------------------
 
   enum : int {
-    kTypeFieldNumber = 1,
-    kMediaFieldNumber = 2,
-    kNameFieldNumber = 3,
+    kNameFieldNumber = 1,
   };
-  // .birdy_grpc.FindBirdRequest.FindType type = 1;
-  void clear_type();
-  ::birdy_grpc::FindBirdRequest_FindType type() const;
-  void set_type(::birdy_grpc::FindBirdRequest_FindType value);
-  private:
-  ::birdy_grpc::FindBirdRequest_FindType _internal_type() const;
-  void _internal_set_type(::birdy_grpc::FindBirdRequest_FindType value);
-  public:
-
-  // bytes media = 2;
-  private:
-  bool _internal_has_media() const;
-  public:
-  void clear_media();
-  const std::string& media() const;
-  void set_media(const std::string& value);
-  void set_media(std::string&& value);
-  void set_media(const char* value);
-  void set_media(const void* value, size_t size);
-  std::string* mutable_media();
-  std::string* release_media();
-  void set_allocated_media(std::string* media);
-  private:
-  const std::string& _internal_media() const;
-  void _internal_set_media(const std::string& value);
-  std::string* _internal_mutable_media();
-  public:
-
-  // string name = 3;
-  private:
-  bool _internal_has_name() const;
-  public:
+  // string name = 1;
   void clear_name();
   const std::string& name() const;
   void set_name(const std::string& value);
@@ -2004,50 +1893,36 @@ class FindBirdRequest PROTOBUF_FINAL :
   std::string* _internal_mutable_name();
   public:
 
-  void clear_data();
-  DataCase data_case() const;
-  // @@protoc_insertion_point(class_scope:birdy_grpc.FindBirdRequest)
+  // @@protoc_insertion_point(class_scope:birdy_grpc.FindBirdByNameRequest)
  private:
   class _Internal;
-  void set_has_media();
-  void set_has_name();
-
-  inline bool has_data() const;
-  inline void clear_has_data();
 
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
-  int type_;
-  union DataUnion {
-    DataUnion() {}
-    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr media_;
-    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr name_;
-  } data_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr name_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
-  ::PROTOBUF_NAMESPACE_ID::uint32 _oneof_case_[1];
-
   friend struct ::TableStruct_birdy_2eproto;
 };
 // -------------------------------------------------------------------
 
-class FindBirdResponse PROTOBUF_FINAL :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:birdy_grpc.FindBirdResponse) */ {
+class AddBirdWithDataRequest PROTOBUF_FINAL :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:birdy_grpc.AddBirdWithDataRequest) */ {
  public:
-  inline FindBirdResponse() : FindBirdResponse(nullptr) {}
-  virtual ~FindBirdResponse();
+  inline AddBirdWithDataRequest() : AddBirdWithDataRequest(nullptr) {}
+  virtual ~AddBirdWithDataRequest();
 
-  FindBirdResponse(const FindBirdResponse& from);
-  FindBirdResponse(FindBirdResponse&& from) noexcept
-    : FindBirdResponse() {
+  AddBirdWithDataRequest(const AddBirdWithDataRequest& from);
+  AddBirdWithDataRequest(AddBirdWithDataRequest&& from) noexcept
+    : AddBirdWithDataRequest() {
     *this = ::std::move(from);
   }
 
-  inline FindBirdResponse& operator=(const FindBirdResponse& from) {
+  inline AddBirdWithDataRequest& operator=(const AddBirdWithDataRequest& from) {
     CopyFrom(from);
     return *this;
   }
-  inline FindBirdResponse& operator=(FindBirdResponse&& from) noexcept {
+  inline AddBirdWithDataRequest& operator=(AddBirdWithDataRequest&& from) noexcept {
     if (GetArena() == from.GetArena()) {
       if (this != &from) InternalSwap(&from);
     } else {
@@ -2065,26 +1940,20 @@ class FindBirdResponse PROTOBUF_FINAL :
   static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
     return GetMetadataStatic().reflection;
   }
-  static const FindBirdResponse& default_instance();
-
-  enum DataCase {
-    kEncInfo = 2,
-    kUserInfo = 3,
-    DATA_NOT_SET = 0,
-  };
+  static const AddBirdWithDataRequest& default_instance();
 
   static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
-  static inline const FindBirdResponse* internal_default_instance() {
-    return reinterpret_cast<const FindBirdResponse*>(
-               &_FindBirdResponse_default_instance_);
+  static inline const AddBirdWithDataRequest* internal_default_instance() {
+    return reinterpret_cast<const AddBirdWithDataRequest*>(
+               &_AddBirdWithDataRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
     10;
 
-  friend void swap(FindBirdResponse& a, FindBirdResponse& b) {
+  friend void swap(AddBirdWithDataRequest& a, AddBirdWithDataRequest& b) {
     a.Swap(&b);
   }
-  inline void Swap(FindBirdResponse* other) {
+  inline void Swap(AddBirdWithDataRequest* other) {
     if (other == this) return;
     if (GetArena() == other->GetArena()) {
       InternalSwap(other);
@@ -2092,7 +1961,7 @@ class FindBirdResponse PROTOBUF_FINAL :
       ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
     }
   }
-  void UnsafeArenaSwap(FindBirdResponse* other) {
+  void UnsafeArenaSwap(AddBirdWithDataRequest* other) {
     if (other == this) return;
     GOOGLE_DCHECK(GetArena() == other->GetArena());
     InternalSwap(other);
@@ -2100,17 +1969,17 @@ class FindBirdResponse PROTOBUF_FINAL :
 
   // implements Message ----------------------------------------------
 
-  inline FindBirdResponse* New() const final {
-    return CreateMaybeMessage<FindBirdResponse>(nullptr);
+  inline AddBirdWithDataRequest* New() const final {
+    return CreateMaybeMessage<AddBirdWithDataRequest>(nullptr);
   }
 
-  FindBirdResponse* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
-    return CreateMaybeMessage<FindBirdResponse>(arena);
+  AddBirdWithDataRequest* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<AddBirdWithDataRequest>(arena);
   }
   void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
   void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
-  void CopyFrom(const FindBirdResponse& from);
-  void MergeFrom(const FindBirdResponse& from);
+  void CopyFrom(const AddBirdWithDataRequest& from);
+  void MergeFrom(const AddBirdWithDataRequest& from);
   PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
   bool IsInitialized() const final;
 
@@ -2124,13 +1993,13 @@ class FindBirdResponse PROTOBUF_FINAL :
   inline void SharedCtor();
   inline void SharedDtor();
   void SetCachedSize(int size) const final;
-  void InternalSwap(FindBirdResponse* other);
+  void InternalSwap(AddBirdWithDataRequest* other);
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "birdy_grpc.FindBirdResponse";
+    return "birdy_grpc.AddBirdWithDataRequest";
   }
   protected:
-  explicit FindBirdResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  explicit AddBirdWithDataRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena);
   private:
   static void ArenaDtor(void* object);
   inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
@@ -2147,54 +2016,370 @@ class FindBirdResponse PROTOBUF_FINAL :
 
   // nested types ----------------------------------------------------
 
-  typedef FindBirdResponse_Result Result;
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kSoundFieldNumber = 2,
+    kPhotoFieldNumber = 3,
+    kInfoFieldNumber = 1,
+  };
+  // bytes sound = 2;
+  void clear_sound();
+  const std::string& sound() const;
+  void set_sound(const std::string& value);
+  void set_sound(std::string&& value);
+  void set_sound(const char* value);
+  void set_sound(const void* value, size_t size);
+  std::string* mutable_sound();
+  std::string* release_sound();
+  void set_allocated_sound(std::string* sound);
+  private:
+  const std::string& _internal_sound() const;
+  void _internal_set_sound(const std::string& value);
+  std::string* _internal_mutable_sound();
+  public:
+
+  // bytes photo = 3;
+  void clear_photo();
+  const std::string& photo() const;
+  void set_photo(const std::string& value);
+  void set_photo(std::string&& value);
+  void set_photo(const char* value);
+  void set_photo(const void* value, size_t size);
+  std::string* mutable_photo();
+  std::string* release_photo();
+  void set_allocated_photo(std::string* photo);
+  private:
+  const std::string& _internal_photo() const;
+  void _internal_set_photo(const std::string& value);
+  std::string* _internal_mutable_photo();
+  public:
+
+  // .birdy_grpc.UserBirdInfo info = 1;
+  bool has_info() const;
+  private:
+  bool _internal_has_info() const;
+  public:
+  void clear_info();
+  const ::birdy_grpc::UserBirdInfo& info() const;
+  ::birdy_grpc::UserBirdInfo* release_info();
+  ::birdy_grpc::UserBirdInfo* mutable_info();
+  void set_allocated_info(::birdy_grpc::UserBirdInfo* info);
+  private:
+  const ::birdy_grpc::UserBirdInfo& _internal_info() const;
+  ::birdy_grpc::UserBirdInfo* _internal_mutable_info();
+  public:
+  void unsafe_arena_set_allocated_info(
+      ::birdy_grpc::UserBirdInfo* info);
+  ::birdy_grpc::UserBirdInfo* unsafe_arena_release_info();
+
+  // @@protoc_insertion_point(class_scope:birdy_grpc.AddBirdWithDataRequest)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr sound_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr photo_;
+  ::birdy_grpc::UserBirdInfo* info_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_birdy_2eproto;
+};
+// -------------------------------------------------------------------
+
+class AddBirdWithDataResponse PROTOBUF_FINAL :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:birdy_grpc.AddBirdWithDataResponse) */ {
+ public:
+  inline AddBirdWithDataResponse() : AddBirdWithDataResponse(nullptr) {}
+  virtual ~AddBirdWithDataResponse();
+
+  AddBirdWithDataResponse(const AddBirdWithDataResponse& from);
+  AddBirdWithDataResponse(AddBirdWithDataResponse&& from) noexcept
+    : AddBirdWithDataResponse() {
+    *this = ::std::move(from);
+  }
+
+  inline AddBirdWithDataResponse& operator=(const AddBirdWithDataResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline AddBirdWithDataResponse& operator=(AddBirdWithDataResponse&& from) noexcept {
+    if (GetArena() == from.GetArena()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return GetMetadataStatic().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return GetMetadataStatic().reflection;
+  }
+  static const AddBirdWithDataResponse& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const AddBirdWithDataResponse* internal_default_instance() {
+    return reinterpret_cast<const AddBirdWithDataResponse*>(
+               &_AddBirdWithDataResponse_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    11;
+
+  friend void swap(AddBirdWithDataResponse& a, AddBirdWithDataResponse& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(AddBirdWithDataResponse* other) {
+    if (other == this) return;
+    if (GetArena() == other->GetArena()) {
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(AddBirdWithDataResponse* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline AddBirdWithDataResponse* New() const final {
+    return CreateMaybeMessage<AddBirdWithDataResponse>(nullptr);
+  }
+
+  AddBirdWithDataResponse* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<AddBirdWithDataResponse>(arena);
+  }
+  void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void CopyFrom(const AddBirdWithDataResponse& from);
+  void MergeFrom(const AddBirdWithDataResponse& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::PROTOBUF_NAMESPACE_ID::uint8* _InternalSerialize(
+      ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  inline void SharedCtor();
+  inline void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(AddBirdWithDataResponse* other);
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "birdy_grpc.AddBirdWithDataResponse";
+  }
+  protected:
+  explicit AddBirdWithDataResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  public:
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+  private:
+  static ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadataStatic() {
+    ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&::descriptor_table_birdy_2eproto);
+    return ::descriptor_table_birdy_2eproto.file_level_metadata[kIndexInFileMessages];
+  }
+
+  public:
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kBirdNameFieldNumber = 1,
+  };
+  // string bird_name = 1;
+  void clear_bird_name();
+  const std::string& bird_name() const;
+  void set_bird_name(const std::string& value);
+  void set_bird_name(std::string&& value);
+  void set_bird_name(const char* value);
+  void set_bird_name(const char* value, size_t size);
+  std::string* mutable_bird_name();
+  std::string* release_bird_name();
+  void set_allocated_bird_name(std::string* bird_name);
+  private:
+  const std::string& _internal_bird_name() const;
+  void _internal_set_bird_name(const std::string& value);
+  std::string* _internal_mutable_bird_name();
+  public:
+
+  // @@protoc_insertion_point(class_scope:birdy_grpc.AddBirdWithDataResponse)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr bird_name_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_birdy_2eproto;
+};
+// -------------------------------------------------------------------
+
+class FindBirdByNameResponse PROTOBUF_FINAL :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:birdy_grpc.FindBirdByNameResponse) */ {
+ public:
+  inline FindBirdByNameResponse() : FindBirdByNameResponse(nullptr) {}
+  virtual ~FindBirdByNameResponse();
+
+  FindBirdByNameResponse(const FindBirdByNameResponse& from);
+  FindBirdByNameResponse(FindBirdByNameResponse&& from) noexcept
+    : FindBirdByNameResponse() {
+    *this = ::std::move(from);
+  }
+
+  inline FindBirdByNameResponse& operator=(const FindBirdByNameResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline FindBirdByNameResponse& operator=(FindBirdByNameResponse&& from) noexcept {
+    if (GetArena() == from.GetArena()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return GetMetadataStatic().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return GetMetadataStatic().reflection;
+  }
+  static const FindBirdByNameResponse& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const FindBirdByNameResponse* internal_default_instance() {
+    return reinterpret_cast<const FindBirdByNameResponse*>(
+               &_FindBirdByNameResponse_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    12;
+
+  friend void swap(FindBirdByNameResponse& a, FindBirdByNameResponse& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(FindBirdByNameResponse* other) {
+    if (other == this) return;
+    if (GetArena() == other->GetArena()) {
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(FindBirdByNameResponse* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline FindBirdByNameResponse* New() const final {
+    return CreateMaybeMessage<FindBirdByNameResponse>(nullptr);
+  }
+
+  FindBirdByNameResponse* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<FindBirdByNameResponse>(arena);
+  }
+  void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void CopyFrom(const FindBirdByNameResponse& from);
+  void MergeFrom(const FindBirdByNameResponse& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::PROTOBUF_NAMESPACE_ID::uint8* _InternalSerialize(
+      ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  inline void SharedCtor();
+  inline void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(FindBirdByNameResponse* other);
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "birdy_grpc.FindBirdByNameResponse";
+  }
+  protected:
+  explicit FindBirdByNameResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  public:
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+  private:
+  static ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadataStatic() {
+    ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&::descriptor_table_birdy_2eproto);
+    return ::descriptor_table_birdy_2eproto.file_level_metadata[kIndexInFileMessages];
+  }
+
+  public:
+
+  // nested types ----------------------------------------------------
+
+  typedef FindBirdByNameResponse_Result Result;
   static constexpr Result FOUND =
-    FindBirdResponse_Result_FOUND;
+    FindBirdByNameResponse_Result_FOUND;
   static constexpr Result NOT_FOUND =
-    FindBirdResponse_Result_NOT_FOUND;
+    FindBirdByNameResponse_Result_NOT_FOUND;
   static constexpr Result DB_ERROR =
-    FindBirdResponse_Result_DB_ERROR;
+    FindBirdByNameResponse_Result_DB_ERROR;
   static inline bool Result_IsValid(int value) {
-    return FindBirdResponse_Result_IsValid(value);
+    return FindBirdByNameResponse_Result_IsValid(value);
   }
   static constexpr Result Result_MIN =
-    FindBirdResponse_Result_Result_MIN;
+    FindBirdByNameResponse_Result_Result_MIN;
   static constexpr Result Result_MAX =
-    FindBirdResponse_Result_Result_MAX;
+    FindBirdByNameResponse_Result_Result_MAX;
   static constexpr int Result_ARRAYSIZE =
-    FindBirdResponse_Result_Result_ARRAYSIZE;
+    FindBirdByNameResponse_Result_Result_ARRAYSIZE;
   static inline const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor*
   Result_descriptor() {
-    return FindBirdResponse_Result_descriptor();
+    return FindBirdByNameResponse_Result_descriptor();
   }
   template<typename T>
   static inline const std::string& Result_Name(T enum_t_value) {
     static_assert(::std::is_same<T, Result>::value ||
       ::std::is_integral<T>::value,
       "Incorrect type passed to function Result_Name.");
-    return FindBirdResponse_Result_Name(enum_t_value);
+    return FindBirdByNameResponse_Result_Name(enum_t_value);
   }
   static inline bool Result_Parse(::PROTOBUF_NAMESPACE_ID::ConstStringParam name,
       Result* value) {
-    return FindBirdResponse_Result_Parse(name, value);
+    return FindBirdByNameResponse_Result_Parse(name, value);
   }
 
   // accessors -------------------------------------------------------
 
   enum : int {
-    kResFieldNumber = 1,
     kEncInfoFieldNumber = 2,
-    kUserInfoFieldNumber = 3,
+    kResFieldNumber = 1,
   };
-  // .birdy_grpc.FindBirdResponse.Result res = 1;
-  void clear_res();
-  ::birdy_grpc::FindBirdResponse_Result res() const;
-  void set_res(::birdy_grpc::FindBirdResponse_Result value);
-  private:
-  ::birdy_grpc::FindBirdResponse_Result _internal_res() const;
-  void _internal_set_res(::birdy_grpc::FindBirdResponse_Result value);
-  public:
-
   // .birdy_grpc.EncyclopedicBirdInfo enc_info = 2;
   bool has_enc_info() const;
   private:
@@ -2213,47 +2398,25 @@ class FindBirdResponse PROTOBUF_FINAL :
       ::birdy_grpc::EncyclopedicBirdInfo* enc_info);
   ::birdy_grpc::EncyclopedicBirdInfo* unsafe_arena_release_enc_info();
 
-  // .birdy_grpc.UserBirdInfo user_info = 3;
-  bool has_user_info() const;
+  // .birdy_grpc.FindBirdByNameResponse.Result res = 1;
+  void clear_res();
+  ::birdy_grpc::FindBirdByNameResponse_Result res() const;
+  void set_res(::birdy_grpc::FindBirdByNameResponse_Result value);
   private:
-  bool _internal_has_user_info() const;
+  ::birdy_grpc::FindBirdByNameResponse_Result _internal_res() const;
+  void _internal_set_res(::birdy_grpc::FindBirdByNameResponse_Result value);
   public:
-  void clear_user_info();
-  const ::birdy_grpc::UserBirdInfo& user_info() const;
-  ::birdy_grpc::UserBirdInfo* release_user_info();
-  ::birdy_grpc::UserBirdInfo* mutable_user_info();
-  void set_allocated_user_info(::birdy_grpc::UserBirdInfo* user_info);
-  private:
-  const ::birdy_grpc::UserBirdInfo& _internal_user_info() const;
-  ::birdy_grpc::UserBirdInfo* _internal_mutable_user_info();
-  public:
-  void unsafe_arena_set_allocated_user_info(
-      ::birdy_grpc::UserBirdInfo* user_info);
-  ::birdy_grpc::UserBirdInfo* unsafe_arena_release_user_info();
 
-  void clear_data();
-  DataCase data_case() const;
-  // @@protoc_insertion_point(class_scope:birdy_grpc.FindBirdResponse)
+  // @@protoc_insertion_point(class_scope:birdy_grpc.FindBirdByNameResponse)
  private:
   class _Internal;
-  void set_has_enc_info();
-  void set_has_user_info();
-
-  inline bool has_data() const;
-  inline void clear_has_data();
 
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
+  ::birdy_grpc::EncyclopedicBirdInfo* enc_info_;
   int res_;
-  union DataUnion {
-    DataUnion() {}
-    ::birdy_grpc::EncyclopedicBirdInfo* enc_info_;
-    ::birdy_grpc::UserBirdInfo* user_info_;
-  } data_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
-  ::PROTOBUF_NAMESPACE_ID::uint32 _oneof_case_[1];
-
   friend struct ::TableStruct_birdy_2eproto;
 };
 // -------------------------------------------------------------------
@@ -2300,7 +2463,7 @@ class SendMessageRequest PROTOBUF_FINAL :
                &_SendMessageRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    11;
+    13;
 
   friend void swap(SendMessageRequest& a, SendMessageRequest& b) {
     a.Swap(&b);
@@ -2444,7 +2607,7 @@ class SendMessageResponse PROTOBUF_FINAL :
                &_SendMessageResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    12;
+    14;
 
   friend void swap(SendMessageResponse& a, SendMessageResponse& b) {
     a.Swap(&b);
@@ -2590,7 +2753,7 @@ class ChatMessage PROTOBUF_FINAL :
                &_ChatMessage_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    13;
+    15;
 
   friend void swap(ChatMessage& a, ChatMessage& b) {
     a.Swap(&b);
@@ -3528,86 +3691,65 @@ inline void UserBirdInfo::set_allocated_found_point(::birdy_grpc::UserBirdInfo_P
   // @@protoc_insertion_point(field_set_allocated:birdy_grpc.UserBirdInfo.found_point)
 }
 
-// .birdy_grpc.Timestamp found_time = 2;
-inline bool UserBirdInfo::_internal_has_found_time() const {
-  return this != internal_default_instance() && found_time_ != nullptr;
-}
-inline bool UserBirdInfo::has_found_time() const {
-  return _internal_has_found_time();
-}
+// string found_time = 2;
 inline void UserBirdInfo::clear_found_time() {
-  if (GetArena() == nullptr && found_time_ != nullptr) {
-    delete found_time_;
-  }
-  found_time_ = nullptr;
+  found_time_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
 }
-inline const ::birdy_grpc::Timestamp& UserBirdInfo::_internal_found_time() const {
-  const ::birdy_grpc::Timestamp* p = found_time_;
-  return p != nullptr ? *p : *reinterpret_cast<const ::birdy_grpc::Timestamp*>(
-      &::birdy_grpc::_Timestamp_default_instance_);
-}
-inline const ::birdy_grpc::Timestamp& UserBirdInfo::found_time() const {
+inline const std::string& UserBirdInfo::found_time() const {
   // @@protoc_insertion_point(field_get:birdy_grpc.UserBirdInfo.found_time)
   return _internal_found_time();
 }
-inline void UserBirdInfo::unsafe_arena_set_allocated_found_time(
-    ::birdy_grpc::Timestamp* found_time) {
-  if (GetArena() == nullptr) {
-    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(found_time_);
-  }
-  found_time_ = found_time;
-  if (found_time) {
-    
-  } else {
-    
-  }
-  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:birdy_grpc.UserBirdInfo.found_time)
+inline void UserBirdInfo::set_found_time(const std::string& value) {
+  _internal_set_found_time(value);
+  // @@protoc_insertion_point(field_set:birdy_grpc.UserBirdInfo.found_time)
 }
-inline ::birdy_grpc::Timestamp* UserBirdInfo::release_found_time() {
-  
-  ::birdy_grpc::Timestamp* temp = found_time_;
-  found_time_ = nullptr;
-  if (GetArena() != nullptr) {
-    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
-  }
-  return temp;
-}
-inline ::birdy_grpc::Timestamp* UserBirdInfo::unsafe_arena_release_found_time() {
-  // @@protoc_insertion_point(field_release:birdy_grpc.UserBirdInfo.found_time)
-  
-  ::birdy_grpc::Timestamp* temp = found_time_;
-  found_time_ = nullptr;
-  return temp;
-}
-inline ::birdy_grpc::Timestamp* UserBirdInfo::_internal_mutable_found_time() {
-  
-  if (found_time_ == nullptr) {
-    auto* p = CreateMaybeMessage<::birdy_grpc::Timestamp>(GetArena());
-    found_time_ = p;
-  }
-  return found_time_;
-}
-inline ::birdy_grpc::Timestamp* UserBirdInfo::mutable_found_time() {
+inline std::string* UserBirdInfo::mutable_found_time() {
   // @@protoc_insertion_point(field_mutable:birdy_grpc.UserBirdInfo.found_time)
   return _internal_mutable_found_time();
 }
-inline void UserBirdInfo::set_allocated_found_time(::birdy_grpc::Timestamp* found_time) {
-  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArena();
-  if (message_arena == nullptr) {
-    delete found_time_;
-  }
-  if (found_time) {
-    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
-      ::PROTOBUF_NAMESPACE_ID::Arena::GetArena(found_time);
-    if (message_arena != submessage_arena) {
-      found_time = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
-          message_arena, found_time, submessage_arena);
-    }
+inline const std::string& UserBirdInfo::_internal_found_time() const {
+  return found_time_.Get();
+}
+inline void UserBirdInfo::_internal_set_found_time(const std::string& value) {
+  
+  found_time_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value, GetArena());
+}
+inline void UserBirdInfo::set_found_time(std::string&& value) {
+  
+  found_time_.Set(
+    &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::move(value), GetArena());
+  // @@protoc_insertion_point(field_set_rvalue:birdy_grpc.UserBirdInfo.found_time)
+}
+inline void UserBirdInfo::set_found_time(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  
+  found_time_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value),
+              GetArena());
+  // @@protoc_insertion_point(field_set_char:birdy_grpc.UserBirdInfo.found_time)
+}
+inline void UserBirdInfo::set_found_time(const char* value,
+    size_t size) {
+  
+  found_time_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(
+      reinterpret_cast<const char*>(value), size), GetArena());
+  // @@protoc_insertion_point(field_set_pointer:birdy_grpc.UserBirdInfo.found_time)
+}
+inline std::string* UserBirdInfo::_internal_mutable_found_time() {
+  
+  return found_time_.Mutable(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+}
+inline std::string* UserBirdInfo::release_found_time() {
+  // @@protoc_insertion_point(field_release:birdy_grpc.UserBirdInfo.found_time)
+  return found_time_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+}
+inline void UserBirdInfo::set_allocated_found_time(std::string* found_time) {
+  if (found_time != nullptr) {
     
   } else {
     
   }
-  found_time_ = found_time;
+  found_time_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), found_time,
+      GetArena());
   // @@protoc_insertion_point(field_set_allocated:birdy_grpc.UserBirdInfo.found_time)
 }
 
@@ -3673,90 +3815,7 @@ inline void UserBirdInfo::set_allocated_finder_email(std::string* finder_email) 
   // @@protoc_insertion_point(field_set_allocated:birdy_grpc.UserBirdInfo.finder_email)
 }
 
-// .birdy_grpc.EncyclopedicBirdInfo info = 4;
-inline bool UserBirdInfo::_internal_has_info() const {
-  return this != internal_default_instance() && info_ != nullptr;
-}
-inline bool UserBirdInfo::has_info() const {
-  return _internal_has_info();
-}
-inline void UserBirdInfo::clear_info() {
-  if (GetArena() == nullptr && info_ != nullptr) {
-    delete info_;
-  }
-  info_ = nullptr;
-}
-inline const ::birdy_grpc::EncyclopedicBirdInfo& UserBirdInfo::_internal_info() const {
-  const ::birdy_grpc::EncyclopedicBirdInfo* p = info_;
-  return p != nullptr ? *p : *reinterpret_cast<const ::birdy_grpc::EncyclopedicBirdInfo*>(
-      &::birdy_grpc::_EncyclopedicBirdInfo_default_instance_);
-}
-inline const ::birdy_grpc::EncyclopedicBirdInfo& UserBirdInfo::info() const {
-  // @@protoc_insertion_point(field_get:birdy_grpc.UserBirdInfo.info)
-  return _internal_info();
-}
-inline void UserBirdInfo::unsafe_arena_set_allocated_info(
-    ::birdy_grpc::EncyclopedicBirdInfo* info) {
-  if (GetArena() == nullptr) {
-    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(info_);
-  }
-  info_ = info;
-  if (info) {
-    
-  } else {
-    
-  }
-  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:birdy_grpc.UserBirdInfo.info)
-}
-inline ::birdy_grpc::EncyclopedicBirdInfo* UserBirdInfo::release_info() {
-  
-  ::birdy_grpc::EncyclopedicBirdInfo* temp = info_;
-  info_ = nullptr;
-  if (GetArena() != nullptr) {
-    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
-  }
-  return temp;
-}
-inline ::birdy_grpc::EncyclopedicBirdInfo* UserBirdInfo::unsafe_arena_release_info() {
-  // @@protoc_insertion_point(field_release:birdy_grpc.UserBirdInfo.info)
-  
-  ::birdy_grpc::EncyclopedicBirdInfo* temp = info_;
-  info_ = nullptr;
-  return temp;
-}
-inline ::birdy_grpc::EncyclopedicBirdInfo* UserBirdInfo::_internal_mutable_info() {
-  
-  if (info_ == nullptr) {
-    auto* p = CreateMaybeMessage<::birdy_grpc::EncyclopedicBirdInfo>(GetArena());
-    info_ = p;
-  }
-  return info_;
-}
-inline ::birdy_grpc::EncyclopedicBirdInfo* UserBirdInfo::mutable_info() {
-  // @@protoc_insertion_point(field_mutable:birdy_grpc.UserBirdInfo.info)
-  return _internal_mutable_info();
-}
-inline void UserBirdInfo::set_allocated_info(::birdy_grpc::EncyclopedicBirdInfo* info) {
-  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArena();
-  if (message_arena == nullptr) {
-    delete info_;
-  }
-  if (info) {
-    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
-      ::PROTOBUF_NAMESPACE_ID::Arena::GetArena(info);
-    if (message_arena != submessage_arena) {
-      info = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
-          message_arena, info, submessage_arena);
-    }
-    
-  } else {
-    
-  }
-  info_ = info;
-  // @@protoc_insertion_point(field_set_allocated:birdy_grpc.UserBirdInfo.info)
-}
-
-// bytes sound = 5;
+// bytes sound = 4;
 inline void UserBirdInfo::clear_sound() {
   sound_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
 }
@@ -4010,428 +4069,454 @@ inline void EncyclopedicBirdInfo::set_allocated_description(std::string* descrip
 
 // -------------------------------------------------------------------
 
-// FindBirdRequest
+// FindBirdByNameRequest
 
-// .birdy_grpc.FindBirdRequest.FindType type = 1;
-inline void FindBirdRequest::clear_type() {
-  type_ = 0;
+// string name = 1;
+inline void FindBirdByNameRequest::clear_name() {
+  name_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
 }
-inline ::birdy_grpc::FindBirdRequest_FindType FindBirdRequest::_internal_type() const {
-  return static_cast< ::birdy_grpc::FindBirdRequest_FindType >(type_);
-}
-inline ::birdy_grpc::FindBirdRequest_FindType FindBirdRequest::type() const {
-  // @@protoc_insertion_point(field_get:birdy_grpc.FindBirdRequest.type)
-  return _internal_type();
-}
-inline void FindBirdRequest::_internal_set_type(::birdy_grpc::FindBirdRequest_FindType value) {
-  
-  type_ = value;
-}
-inline void FindBirdRequest::set_type(::birdy_grpc::FindBirdRequest_FindType value) {
-  _internal_set_type(value);
-  // @@protoc_insertion_point(field_set:birdy_grpc.FindBirdRequest.type)
-}
-
-// bytes media = 2;
-inline bool FindBirdRequest::_internal_has_media() const {
-  return data_case() == kMedia;
-}
-inline void FindBirdRequest::set_has_media() {
-  _oneof_case_[0] = kMedia;
-}
-inline void FindBirdRequest::clear_media() {
-  if (_internal_has_media()) {
-    data_.media_.Destroy(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
-    clear_has_data();
-  }
-}
-inline const std::string& FindBirdRequest::media() const {
-  // @@protoc_insertion_point(field_get:birdy_grpc.FindBirdRequest.media)
-  return _internal_media();
-}
-inline void FindBirdRequest::set_media(const std::string& value) {
-  _internal_set_media(value);
-  // @@protoc_insertion_point(field_set:birdy_grpc.FindBirdRequest.media)
-}
-inline std::string* FindBirdRequest::mutable_media() {
-  // @@protoc_insertion_point(field_mutable:birdy_grpc.FindBirdRequest.media)
-  return _internal_mutable_media();
-}
-inline const std::string& FindBirdRequest::_internal_media() const {
-  if (_internal_has_media()) {
-    return data_.media_.Get();
-  }
-  return *&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited();
-}
-inline void FindBirdRequest::_internal_set_media(const std::string& value) {
-  if (!_internal_has_media()) {
-    clear_data();
-    set_has_media();
-    data_.media_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  }
-  data_.media_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value, GetArena());
-}
-inline void FindBirdRequest::set_media(std::string&& value) {
-  // @@protoc_insertion_point(field_set:birdy_grpc.FindBirdRequest.media)
-  if (!_internal_has_media()) {
-    clear_data();
-    set_has_media();
-    data_.media_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  }
-  data_.media_.Set(
-    &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::move(value), GetArena());
-  // @@protoc_insertion_point(field_set_rvalue:birdy_grpc.FindBirdRequest.media)
-}
-inline void FindBirdRequest::set_media(const char* value) {
-  GOOGLE_DCHECK(value != nullptr);
-  if (!_internal_has_media()) {
-    clear_data();
-    set_has_media();
-    data_.media_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  }
-  data_.media_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-      ::std::string(value), GetArena());
-  // @@protoc_insertion_point(field_set_char:birdy_grpc.FindBirdRequest.media)
-}
-inline void FindBirdRequest::set_media(const void* value,
-                             size_t size) {
-  if (!_internal_has_media()) {
-    clear_data();
-    set_has_media();
-    data_.media_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  }
-  data_.media_.Set(
-      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(
-      reinterpret_cast<const char*>(value), size),
-      GetArena());
-  // @@protoc_insertion_point(field_set_pointer:birdy_grpc.FindBirdRequest.media)
-}
-inline std::string* FindBirdRequest::_internal_mutable_media() {
-  if (!_internal_has_media()) {
-    clear_data();
-    set_has_media();
-    data_.media_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  }
-  return data_.media_.Mutable(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
-}
-inline std::string* FindBirdRequest::release_media() {
-  // @@protoc_insertion_point(field_release:birdy_grpc.FindBirdRequest.media)
-  if (_internal_has_media()) {
-    clear_has_data();
-    return data_.media_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
-  } else {
-    return nullptr;
-  }
-}
-inline void FindBirdRequest::set_allocated_media(std::string* media) {
-  if (has_data()) {
-    clear_data();
-  }
-  if (media != nullptr) {
-    set_has_media();
-    data_.media_.UnsafeSetDefault(media);
-    ::PROTOBUF_NAMESPACE_ID::Arena* arena = GetArena();
-    if (arena != nullptr) {
-      arena->Own(media);
-    }
-  }
-  // @@protoc_insertion_point(field_set_allocated:birdy_grpc.FindBirdRequest.media)
-}
-
-// string name = 3;
-inline bool FindBirdRequest::_internal_has_name() const {
-  return data_case() == kName;
-}
-inline void FindBirdRequest::set_has_name() {
-  _oneof_case_[0] = kName;
-}
-inline void FindBirdRequest::clear_name() {
-  if (_internal_has_name()) {
-    data_.name_.Destroy(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
-    clear_has_data();
-  }
-}
-inline const std::string& FindBirdRequest::name() const {
-  // @@protoc_insertion_point(field_get:birdy_grpc.FindBirdRequest.name)
+inline const std::string& FindBirdByNameRequest::name() const {
+  // @@protoc_insertion_point(field_get:birdy_grpc.FindBirdByNameRequest.name)
   return _internal_name();
 }
-inline void FindBirdRequest::set_name(const std::string& value) {
+inline void FindBirdByNameRequest::set_name(const std::string& value) {
   _internal_set_name(value);
-  // @@protoc_insertion_point(field_set:birdy_grpc.FindBirdRequest.name)
+  // @@protoc_insertion_point(field_set:birdy_grpc.FindBirdByNameRequest.name)
 }
-inline std::string* FindBirdRequest::mutable_name() {
-  // @@protoc_insertion_point(field_mutable:birdy_grpc.FindBirdRequest.name)
+inline std::string* FindBirdByNameRequest::mutable_name() {
+  // @@protoc_insertion_point(field_mutable:birdy_grpc.FindBirdByNameRequest.name)
   return _internal_mutable_name();
 }
-inline const std::string& FindBirdRequest::_internal_name() const {
-  if (_internal_has_name()) {
-    return data_.name_.Get();
-  }
-  return *&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited();
+inline const std::string& FindBirdByNameRequest::_internal_name() const {
+  return name_.Get();
 }
-inline void FindBirdRequest::_internal_set_name(const std::string& value) {
-  if (!_internal_has_name()) {
-    clear_data();
-    set_has_name();
-    data_.name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  }
-  data_.name_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value, GetArena());
+inline void FindBirdByNameRequest::_internal_set_name(const std::string& value) {
+  
+  name_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value, GetArena());
 }
-inline void FindBirdRequest::set_name(std::string&& value) {
-  // @@protoc_insertion_point(field_set:birdy_grpc.FindBirdRequest.name)
-  if (!_internal_has_name()) {
-    clear_data();
-    set_has_name();
-    data_.name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  }
-  data_.name_.Set(
+inline void FindBirdByNameRequest::set_name(std::string&& value) {
+  
+  name_.Set(
     &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::move(value), GetArena());
-  // @@protoc_insertion_point(field_set_rvalue:birdy_grpc.FindBirdRequest.name)
+  // @@protoc_insertion_point(field_set_rvalue:birdy_grpc.FindBirdByNameRequest.name)
 }
-inline void FindBirdRequest::set_name(const char* value) {
+inline void FindBirdByNameRequest::set_name(const char* value) {
   GOOGLE_DCHECK(value != nullptr);
-  if (!_internal_has_name()) {
-    clear_data();
-    set_has_name();
-    data_.name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  }
-  data_.name_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-      ::std::string(value), GetArena());
-  // @@protoc_insertion_point(field_set_char:birdy_grpc.FindBirdRequest.name)
+  
+  name_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value),
+              GetArena());
+  // @@protoc_insertion_point(field_set_char:birdy_grpc.FindBirdByNameRequest.name)
 }
-inline void FindBirdRequest::set_name(const char* value,
-                             size_t size) {
-  if (!_internal_has_name()) {
-    clear_data();
-    set_has_name();
-    data_.name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  }
-  data_.name_.Set(
-      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(
-      reinterpret_cast<const char*>(value), size),
-      GetArena());
-  // @@protoc_insertion_point(field_set_pointer:birdy_grpc.FindBirdRequest.name)
+inline void FindBirdByNameRequest::set_name(const char* value,
+    size_t size) {
+  
+  name_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(
+      reinterpret_cast<const char*>(value), size), GetArena());
+  // @@protoc_insertion_point(field_set_pointer:birdy_grpc.FindBirdByNameRequest.name)
 }
-inline std::string* FindBirdRequest::_internal_mutable_name() {
-  if (!_internal_has_name()) {
-    clear_data();
-    set_has_name();
-    data_.name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  }
-  return data_.name_.Mutable(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+inline std::string* FindBirdByNameRequest::_internal_mutable_name() {
+  
+  return name_.Mutable(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
 }
-inline std::string* FindBirdRequest::release_name() {
-  // @@protoc_insertion_point(field_release:birdy_grpc.FindBirdRequest.name)
-  if (_internal_has_name()) {
-    clear_has_data();
-    return data_.name_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
-  } else {
-    return nullptr;
-  }
+inline std::string* FindBirdByNameRequest::release_name() {
+  // @@protoc_insertion_point(field_release:birdy_grpc.FindBirdByNameRequest.name)
+  return name_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
 }
-inline void FindBirdRequest::set_allocated_name(std::string* name) {
-  if (has_data()) {
-    clear_data();
-  }
+inline void FindBirdByNameRequest::set_allocated_name(std::string* name) {
   if (name != nullptr) {
-    set_has_name();
-    data_.name_.UnsafeSetDefault(name);
-    ::PROTOBUF_NAMESPACE_ID::Arena* arena = GetArena();
-    if (arena != nullptr) {
-      arena->Own(name);
-    }
+    
+  } else {
+    
   }
-  // @@protoc_insertion_point(field_set_allocated:birdy_grpc.FindBirdRequest.name)
+  name_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), name,
+      GetArena());
+  // @@protoc_insertion_point(field_set_allocated:birdy_grpc.FindBirdByNameRequest.name)
 }
 
-inline bool FindBirdRequest::has_data() const {
-  return data_case() != DATA_NOT_SET;
-}
-inline void FindBirdRequest::clear_has_data() {
-  _oneof_case_[0] = DATA_NOT_SET;
-}
-inline FindBirdRequest::DataCase FindBirdRequest::data_case() const {
-  return FindBirdRequest::DataCase(_oneof_case_[0]);
-}
 // -------------------------------------------------------------------
 
-// FindBirdResponse
+// AddBirdWithDataRequest
 
-// .birdy_grpc.FindBirdResponse.Result res = 1;
-inline void FindBirdResponse::clear_res() {
+// .birdy_grpc.UserBirdInfo info = 1;
+inline bool AddBirdWithDataRequest::_internal_has_info() const {
+  return this != internal_default_instance() && info_ != nullptr;
+}
+inline bool AddBirdWithDataRequest::has_info() const {
+  return _internal_has_info();
+}
+inline void AddBirdWithDataRequest::clear_info() {
+  if (GetArena() == nullptr && info_ != nullptr) {
+    delete info_;
+  }
+  info_ = nullptr;
+}
+inline const ::birdy_grpc::UserBirdInfo& AddBirdWithDataRequest::_internal_info() const {
+  const ::birdy_grpc::UserBirdInfo* p = info_;
+  return p != nullptr ? *p : *reinterpret_cast<const ::birdy_grpc::UserBirdInfo*>(
+      &::birdy_grpc::_UserBirdInfo_default_instance_);
+}
+inline const ::birdy_grpc::UserBirdInfo& AddBirdWithDataRequest::info() const {
+  // @@protoc_insertion_point(field_get:birdy_grpc.AddBirdWithDataRequest.info)
+  return _internal_info();
+}
+inline void AddBirdWithDataRequest::unsafe_arena_set_allocated_info(
+    ::birdy_grpc::UserBirdInfo* info) {
+  if (GetArena() == nullptr) {
+    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(info_);
+  }
+  info_ = info;
+  if (info) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:birdy_grpc.AddBirdWithDataRequest.info)
+}
+inline ::birdy_grpc::UserBirdInfo* AddBirdWithDataRequest::release_info() {
+  
+  ::birdy_grpc::UserBirdInfo* temp = info_;
+  info_ = nullptr;
+  if (GetArena() != nullptr) {
+    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  }
+  return temp;
+}
+inline ::birdy_grpc::UserBirdInfo* AddBirdWithDataRequest::unsafe_arena_release_info() {
+  // @@protoc_insertion_point(field_release:birdy_grpc.AddBirdWithDataRequest.info)
+  
+  ::birdy_grpc::UserBirdInfo* temp = info_;
+  info_ = nullptr;
+  return temp;
+}
+inline ::birdy_grpc::UserBirdInfo* AddBirdWithDataRequest::_internal_mutable_info() {
+  
+  if (info_ == nullptr) {
+    auto* p = CreateMaybeMessage<::birdy_grpc::UserBirdInfo>(GetArena());
+    info_ = p;
+  }
+  return info_;
+}
+inline ::birdy_grpc::UserBirdInfo* AddBirdWithDataRequest::mutable_info() {
+  // @@protoc_insertion_point(field_mutable:birdy_grpc.AddBirdWithDataRequest.info)
+  return _internal_mutable_info();
+}
+inline void AddBirdWithDataRequest::set_allocated_info(::birdy_grpc::UserBirdInfo* info) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArena();
+  if (message_arena == nullptr) {
+    delete info_;
+  }
+  if (info) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+      ::PROTOBUF_NAMESPACE_ID::Arena::GetArena(info);
+    if (message_arena != submessage_arena) {
+      info = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, info, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  info_ = info;
+  // @@protoc_insertion_point(field_set_allocated:birdy_grpc.AddBirdWithDataRequest.info)
+}
+
+// bytes sound = 2;
+inline void AddBirdWithDataRequest::clear_sound() {
+  sound_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+}
+inline const std::string& AddBirdWithDataRequest::sound() const {
+  // @@protoc_insertion_point(field_get:birdy_grpc.AddBirdWithDataRequest.sound)
+  return _internal_sound();
+}
+inline void AddBirdWithDataRequest::set_sound(const std::string& value) {
+  _internal_set_sound(value);
+  // @@protoc_insertion_point(field_set:birdy_grpc.AddBirdWithDataRequest.sound)
+}
+inline std::string* AddBirdWithDataRequest::mutable_sound() {
+  // @@protoc_insertion_point(field_mutable:birdy_grpc.AddBirdWithDataRequest.sound)
+  return _internal_mutable_sound();
+}
+inline const std::string& AddBirdWithDataRequest::_internal_sound() const {
+  return sound_.Get();
+}
+inline void AddBirdWithDataRequest::_internal_set_sound(const std::string& value) {
+  
+  sound_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value, GetArena());
+}
+inline void AddBirdWithDataRequest::set_sound(std::string&& value) {
+  
+  sound_.Set(
+    &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::move(value), GetArena());
+  // @@protoc_insertion_point(field_set_rvalue:birdy_grpc.AddBirdWithDataRequest.sound)
+}
+inline void AddBirdWithDataRequest::set_sound(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  
+  sound_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value),
+              GetArena());
+  // @@protoc_insertion_point(field_set_char:birdy_grpc.AddBirdWithDataRequest.sound)
+}
+inline void AddBirdWithDataRequest::set_sound(const void* value,
+    size_t size) {
+  
+  sound_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(
+      reinterpret_cast<const char*>(value), size), GetArena());
+  // @@protoc_insertion_point(field_set_pointer:birdy_grpc.AddBirdWithDataRequest.sound)
+}
+inline std::string* AddBirdWithDataRequest::_internal_mutable_sound() {
+  
+  return sound_.Mutable(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+}
+inline std::string* AddBirdWithDataRequest::release_sound() {
+  // @@protoc_insertion_point(field_release:birdy_grpc.AddBirdWithDataRequest.sound)
+  return sound_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+}
+inline void AddBirdWithDataRequest::set_allocated_sound(std::string* sound) {
+  if (sound != nullptr) {
+    
+  } else {
+    
+  }
+  sound_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), sound,
+      GetArena());
+  // @@protoc_insertion_point(field_set_allocated:birdy_grpc.AddBirdWithDataRequest.sound)
+}
+
+// bytes photo = 3;
+inline void AddBirdWithDataRequest::clear_photo() {
+  photo_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+}
+inline const std::string& AddBirdWithDataRequest::photo() const {
+  // @@protoc_insertion_point(field_get:birdy_grpc.AddBirdWithDataRequest.photo)
+  return _internal_photo();
+}
+inline void AddBirdWithDataRequest::set_photo(const std::string& value) {
+  _internal_set_photo(value);
+  // @@protoc_insertion_point(field_set:birdy_grpc.AddBirdWithDataRequest.photo)
+}
+inline std::string* AddBirdWithDataRequest::mutable_photo() {
+  // @@protoc_insertion_point(field_mutable:birdy_grpc.AddBirdWithDataRequest.photo)
+  return _internal_mutable_photo();
+}
+inline const std::string& AddBirdWithDataRequest::_internal_photo() const {
+  return photo_.Get();
+}
+inline void AddBirdWithDataRequest::_internal_set_photo(const std::string& value) {
+  
+  photo_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value, GetArena());
+}
+inline void AddBirdWithDataRequest::set_photo(std::string&& value) {
+  
+  photo_.Set(
+    &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::move(value), GetArena());
+  // @@protoc_insertion_point(field_set_rvalue:birdy_grpc.AddBirdWithDataRequest.photo)
+}
+inline void AddBirdWithDataRequest::set_photo(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  
+  photo_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value),
+              GetArena());
+  // @@protoc_insertion_point(field_set_char:birdy_grpc.AddBirdWithDataRequest.photo)
+}
+inline void AddBirdWithDataRequest::set_photo(const void* value,
+    size_t size) {
+  
+  photo_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(
+      reinterpret_cast<const char*>(value), size), GetArena());
+  // @@protoc_insertion_point(field_set_pointer:birdy_grpc.AddBirdWithDataRequest.photo)
+}
+inline std::string* AddBirdWithDataRequest::_internal_mutable_photo() {
+  
+  return photo_.Mutable(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+}
+inline std::string* AddBirdWithDataRequest::release_photo() {
+  // @@protoc_insertion_point(field_release:birdy_grpc.AddBirdWithDataRequest.photo)
+  return photo_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+}
+inline void AddBirdWithDataRequest::set_allocated_photo(std::string* photo) {
+  if (photo != nullptr) {
+    
+  } else {
+    
+  }
+  photo_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), photo,
+      GetArena());
+  // @@protoc_insertion_point(field_set_allocated:birdy_grpc.AddBirdWithDataRequest.photo)
+}
+
+// -------------------------------------------------------------------
+
+// AddBirdWithDataResponse
+
+// string bird_name = 1;
+inline void AddBirdWithDataResponse::clear_bird_name() {
+  bird_name_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+}
+inline const std::string& AddBirdWithDataResponse::bird_name() const {
+  // @@protoc_insertion_point(field_get:birdy_grpc.AddBirdWithDataResponse.bird_name)
+  return _internal_bird_name();
+}
+inline void AddBirdWithDataResponse::set_bird_name(const std::string& value) {
+  _internal_set_bird_name(value);
+  // @@protoc_insertion_point(field_set:birdy_grpc.AddBirdWithDataResponse.bird_name)
+}
+inline std::string* AddBirdWithDataResponse::mutable_bird_name() {
+  // @@protoc_insertion_point(field_mutable:birdy_grpc.AddBirdWithDataResponse.bird_name)
+  return _internal_mutable_bird_name();
+}
+inline const std::string& AddBirdWithDataResponse::_internal_bird_name() const {
+  return bird_name_.Get();
+}
+inline void AddBirdWithDataResponse::_internal_set_bird_name(const std::string& value) {
+  
+  bird_name_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value, GetArena());
+}
+inline void AddBirdWithDataResponse::set_bird_name(std::string&& value) {
+  
+  bird_name_.Set(
+    &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::move(value), GetArena());
+  // @@protoc_insertion_point(field_set_rvalue:birdy_grpc.AddBirdWithDataResponse.bird_name)
+}
+inline void AddBirdWithDataResponse::set_bird_name(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  
+  bird_name_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value),
+              GetArena());
+  // @@protoc_insertion_point(field_set_char:birdy_grpc.AddBirdWithDataResponse.bird_name)
+}
+inline void AddBirdWithDataResponse::set_bird_name(const char* value,
+    size_t size) {
+  
+  bird_name_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(
+      reinterpret_cast<const char*>(value), size), GetArena());
+  // @@protoc_insertion_point(field_set_pointer:birdy_grpc.AddBirdWithDataResponse.bird_name)
+}
+inline std::string* AddBirdWithDataResponse::_internal_mutable_bird_name() {
+  
+  return bird_name_.Mutable(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+}
+inline std::string* AddBirdWithDataResponse::release_bird_name() {
+  // @@protoc_insertion_point(field_release:birdy_grpc.AddBirdWithDataResponse.bird_name)
+  return bird_name_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+}
+inline void AddBirdWithDataResponse::set_allocated_bird_name(std::string* bird_name) {
+  if (bird_name != nullptr) {
+    
+  } else {
+    
+  }
+  bird_name_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), bird_name,
+      GetArena());
+  // @@protoc_insertion_point(field_set_allocated:birdy_grpc.AddBirdWithDataResponse.bird_name)
+}
+
+// -------------------------------------------------------------------
+
+// FindBirdByNameResponse
+
+// .birdy_grpc.FindBirdByNameResponse.Result res = 1;
+inline void FindBirdByNameResponse::clear_res() {
   res_ = 0;
 }
-inline ::birdy_grpc::FindBirdResponse_Result FindBirdResponse::_internal_res() const {
-  return static_cast< ::birdy_grpc::FindBirdResponse_Result >(res_);
+inline ::birdy_grpc::FindBirdByNameResponse_Result FindBirdByNameResponse::_internal_res() const {
+  return static_cast< ::birdy_grpc::FindBirdByNameResponse_Result >(res_);
 }
-inline ::birdy_grpc::FindBirdResponse_Result FindBirdResponse::res() const {
-  // @@protoc_insertion_point(field_get:birdy_grpc.FindBirdResponse.res)
+inline ::birdy_grpc::FindBirdByNameResponse_Result FindBirdByNameResponse::res() const {
+  // @@protoc_insertion_point(field_get:birdy_grpc.FindBirdByNameResponse.res)
   return _internal_res();
 }
-inline void FindBirdResponse::_internal_set_res(::birdy_grpc::FindBirdResponse_Result value) {
+inline void FindBirdByNameResponse::_internal_set_res(::birdy_grpc::FindBirdByNameResponse_Result value) {
   
   res_ = value;
 }
-inline void FindBirdResponse::set_res(::birdy_grpc::FindBirdResponse_Result value) {
+inline void FindBirdByNameResponse::set_res(::birdy_grpc::FindBirdByNameResponse_Result value) {
   _internal_set_res(value);
-  // @@protoc_insertion_point(field_set:birdy_grpc.FindBirdResponse.res)
+  // @@protoc_insertion_point(field_set:birdy_grpc.FindBirdByNameResponse.res)
 }
 
 // .birdy_grpc.EncyclopedicBirdInfo enc_info = 2;
-inline bool FindBirdResponse::_internal_has_enc_info() const {
-  return data_case() == kEncInfo;
+inline bool FindBirdByNameResponse::_internal_has_enc_info() const {
+  return this != internal_default_instance() && enc_info_ != nullptr;
 }
-inline bool FindBirdResponse::has_enc_info() const {
+inline bool FindBirdByNameResponse::has_enc_info() const {
   return _internal_has_enc_info();
 }
-inline void FindBirdResponse::set_has_enc_info() {
-  _oneof_case_[0] = kEncInfo;
-}
-inline void FindBirdResponse::clear_enc_info() {
-  if (_internal_has_enc_info()) {
-    if (GetArena() == nullptr) {
-      delete data_.enc_info_;
-    }
-    clear_has_data();
+inline void FindBirdByNameResponse::clear_enc_info() {
+  if (GetArena() == nullptr && enc_info_ != nullptr) {
+    delete enc_info_;
   }
+  enc_info_ = nullptr;
 }
-inline ::birdy_grpc::EncyclopedicBirdInfo* FindBirdResponse::release_enc_info() {
-  // @@protoc_insertion_point(field_release:birdy_grpc.FindBirdResponse.enc_info)
-  if (_internal_has_enc_info()) {
-    clear_has_data();
-      ::birdy_grpc::EncyclopedicBirdInfo* temp = data_.enc_info_;
-    if (GetArena() != nullptr) {
-      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
-    }
-    data_.enc_info_ = nullptr;
-    return temp;
-  } else {
-    return nullptr;
-  }
+inline const ::birdy_grpc::EncyclopedicBirdInfo& FindBirdByNameResponse::_internal_enc_info() const {
+  const ::birdy_grpc::EncyclopedicBirdInfo* p = enc_info_;
+  return p != nullptr ? *p : *reinterpret_cast<const ::birdy_grpc::EncyclopedicBirdInfo*>(
+      &::birdy_grpc::_EncyclopedicBirdInfo_default_instance_);
 }
-inline const ::birdy_grpc::EncyclopedicBirdInfo& FindBirdResponse::_internal_enc_info() const {
-  return _internal_has_enc_info()
-      ? *data_.enc_info_
-      : *reinterpret_cast< ::birdy_grpc::EncyclopedicBirdInfo*>(&::birdy_grpc::_EncyclopedicBirdInfo_default_instance_);
-}
-inline const ::birdy_grpc::EncyclopedicBirdInfo& FindBirdResponse::enc_info() const {
-  // @@protoc_insertion_point(field_get:birdy_grpc.FindBirdResponse.enc_info)
+inline const ::birdy_grpc::EncyclopedicBirdInfo& FindBirdByNameResponse::enc_info() const {
+  // @@protoc_insertion_point(field_get:birdy_grpc.FindBirdByNameResponse.enc_info)
   return _internal_enc_info();
 }
-inline ::birdy_grpc::EncyclopedicBirdInfo* FindBirdResponse::unsafe_arena_release_enc_info() {
-  // @@protoc_insertion_point(field_unsafe_arena_release:birdy_grpc.FindBirdResponse.enc_info)
-  if (_internal_has_enc_info()) {
-    clear_has_data();
-    ::birdy_grpc::EncyclopedicBirdInfo* temp = data_.enc_info_;
-    data_.enc_info_ = nullptr;
-    return temp;
-  } else {
-    return nullptr;
+inline void FindBirdByNameResponse::unsafe_arena_set_allocated_enc_info(
+    ::birdy_grpc::EncyclopedicBirdInfo* enc_info) {
+  if (GetArena() == nullptr) {
+    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(enc_info_);
   }
-}
-inline void FindBirdResponse::unsafe_arena_set_allocated_enc_info(::birdy_grpc::EncyclopedicBirdInfo* enc_info) {
-  clear_data();
+  enc_info_ = enc_info;
   if (enc_info) {
-    set_has_enc_info();
-    data_.enc_info_ = enc_info;
+    
+  } else {
+    
   }
-  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:birdy_grpc.FindBirdResponse.enc_info)
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:birdy_grpc.FindBirdByNameResponse.enc_info)
 }
-inline ::birdy_grpc::EncyclopedicBirdInfo* FindBirdResponse::_internal_mutable_enc_info() {
-  if (!_internal_has_enc_info()) {
-    clear_data();
-    set_has_enc_info();
-    data_.enc_info_ = CreateMaybeMessage< ::birdy_grpc::EncyclopedicBirdInfo >(GetArena());
+inline ::birdy_grpc::EncyclopedicBirdInfo* FindBirdByNameResponse::release_enc_info() {
+  
+  ::birdy_grpc::EncyclopedicBirdInfo* temp = enc_info_;
+  enc_info_ = nullptr;
+  if (GetArena() != nullptr) {
+    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
   }
-  return data_.enc_info_;
+  return temp;
 }
-inline ::birdy_grpc::EncyclopedicBirdInfo* FindBirdResponse::mutable_enc_info() {
-  // @@protoc_insertion_point(field_mutable:birdy_grpc.FindBirdResponse.enc_info)
+inline ::birdy_grpc::EncyclopedicBirdInfo* FindBirdByNameResponse::unsafe_arena_release_enc_info() {
+  // @@protoc_insertion_point(field_release:birdy_grpc.FindBirdByNameResponse.enc_info)
+  
+  ::birdy_grpc::EncyclopedicBirdInfo* temp = enc_info_;
+  enc_info_ = nullptr;
+  return temp;
+}
+inline ::birdy_grpc::EncyclopedicBirdInfo* FindBirdByNameResponse::_internal_mutable_enc_info() {
+  
+  if (enc_info_ == nullptr) {
+    auto* p = CreateMaybeMessage<::birdy_grpc::EncyclopedicBirdInfo>(GetArena());
+    enc_info_ = p;
+  }
+  return enc_info_;
+}
+inline ::birdy_grpc::EncyclopedicBirdInfo* FindBirdByNameResponse::mutable_enc_info() {
+  // @@protoc_insertion_point(field_mutable:birdy_grpc.FindBirdByNameResponse.enc_info)
   return _internal_mutable_enc_info();
 }
-
-// .birdy_grpc.UserBirdInfo user_info = 3;
-inline bool FindBirdResponse::_internal_has_user_info() const {
-  return data_case() == kUserInfo;
-}
-inline bool FindBirdResponse::has_user_info() const {
-  return _internal_has_user_info();
-}
-inline void FindBirdResponse::set_has_user_info() {
-  _oneof_case_[0] = kUserInfo;
-}
-inline void FindBirdResponse::clear_user_info() {
-  if (_internal_has_user_info()) {
-    if (GetArena() == nullptr) {
-      delete data_.user_info_;
+inline void FindBirdByNameResponse::set_allocated_enc_info(::birdy_grpc::EncyclopedicBirdInfo* enc_info) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArena();
+  if (message_arena == nullptr) {
+    delete enc_info_;
+  }
+  if (enc_info) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+      ::PROTOBUF_NAMESPACE_ID::Arena::GetArena(enc_info);
+    if (message_arena != submessage_arena) {
+      enc_info = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, enc_info, submessage_arena);
     }
-    clear_has_data();
-  }
-}
-inline ::birdy_grpc::UserBirdInfo* FindBirdResponse::release_user_info() {
-  // @@protoc_insertion_point(field_release:birdy_grpc.FindBirdResponse.user_info)
-  if (_internal_has_user_info()) {
-    clear_has_data();
-      ::birdy_grpc::UserBirdInfo* temp = data_.user_info_;
-    if (GetArena() != nullptr) {
-      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
-    }
-    data_.user_info_ = nullptr;
-    return temp;
+    
   } else {
-    return nullptr;
+    
   }
-}
-inline const ::birdy_grpc::UserBirdInfo& FindBirdResponse::_internal_user_info() const {
-  return _internal_has_user_info()
-      ? *data_.user_info_
-      : *reinterpret_cast< ::birdy_grpc::UserBirdInfo*>(&::birdy_grpc::_UserBirdInfo_default_instance_);
-}
-inline const ::birdy_grpc::UserBirdInfo& FindBirdResponse::user_info() const {
-  // @@protoc_insertion_point(field_get:birdy_grpc.FindBirdResponse.user_info)
-  return _internal_user_info();
-}
-inline ::birdy_grpc::UserBirdInfo* FindBirdResponse::unsafe_arena_release_user_info() {
-  // @@protoc_insertion_point(field_unsafe_arena_release:birdy_grpc.FindBirdResponse.user_info)
-  if (_internal_has_user_info()) {
-    clear_has_data();
-    ::birdy_grpc::UserBirdInfo* temp = data_.user_info_;
-    data_.user_info_ = nullptr;
-    return temp;
-  } else {
-    return nullptr;
-  }
-}
-inline void FindBirdResponse::unsafe_arena_set_allocated_user_info(::birdy_grpc::UserBirdInfo* user_info) {
-  clear_data();
-  if (user_info) {
-    set_has_user_info();
-    data_.user_info_ = user_info;
-  }
-  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:birdy_grpc.FindBirdResponse.user_info)
-}
-inline ::birdy_grpc::UserBirdInfo* FindBirdResponse::_internal_mutable_user_info() {
-  if (!_internal_has_user_info()) {
-    clear_data();
-    set_has_user_info();
-    data_.user_info_ = CreateMaybeMessage< ::birdy_grpc::UserBirdInfo >(GetArena());
-  }
-  return data_.user_info_;
-}
-inline ::birdy_grpc::UserBirdInfo* FindBirdResponse::mutable_user_info() {
-  // @@protoc_insertion_point(field_mutable:birdy_grpc.FindBirdResponse.user_info)
-  return _internal_mutable_user_info();
+  enc_info_ = enc_info;
+  // @@protoc_insertion_point(field_set_allocated:birdy_grpc.FindBirdByNameResponse.enc_info)
 }
 
-inline bool FindBirdResponse::has_data() const {
-  return data_case() != DATA_NOT_SET;
-}
-inline void FindBirdResponse::clear_has_data() {
-  _oneof_case_[0] = DATA_NOT_SET;
-}
-inline FindBirdResponse::DataCase FindBirdResponse::data_case() const {
-  return FindBirdResponse::DataCase(_oneof_case_[0]);
-}
 // -------------------------------------------------------------------
 
 // SendMessageRequest
@@ -4825,6 +4910,10 @@ inline void ChatMessage::set_allocated_text(std::string* text) {
 
 // -------------------------------------------------------------------
 
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 
 // @@protoc_insertion_point(namespace_scope)
 
@@ -4842,15 +4931,10 @@ template <>
 inline const EnumDescriptor* GetEnumDescriptor< ::birdy_grpc::LoginResponse_Result>() {
   return ::birdy_grpc::LoginResponse_Result_descriptor();
 }
-template <> struct is_proto_enum< ::birdy_grpc::FindBirdRequest_FindType> : ::std::true_type {};
+template <> struct is_proto_enum< ::birdy_grpc::FindBirdByNameResponse_Result> : ::std::true_type {};
 template <>
-inline const EnumDescriptor* GetEnumDescriptor< ::birdy_grpc::FindBirdRequest_FindType>() {
-  return ::birdy_grpc::FindBirdRequest_FindType_descriptor();
-}
-template <> struct is_proto_enum< ::birdy_grpc::FindBirdResponse_Result> : ::std::true_type {};
-template <>
-inline const EnumDescriptor* GetEnumDescriptor< ::birdy_grpc::FindBirdResponse_Result>() {
-  return ::birdy_grpc::FindBirdResponse_Result_descriptor();
+inline const EnumDescriptor* GetEnumDescriptor< ::birdy_grpc::FindBirdByNameResponse_Result>() {
+  return ::birdy_grpc::FindBirdByNameResponse_Result_descriptor();
 }
 
 PROTOBUF_NAMESPACE_CLOSE
