@@ -35,9 +35,20 @@ MainEndpoint::MainEndpoint(std::shared_ptr<Database> db)
     }
 }
 
-
-::grpc::Status MainEndpoint::FindBird(::grpc::ServerContext* context, const ::birdy_grpc::FindBirdRequest* request,
-    ::birdy_grpc::FindBirdResponse* response)
+::grpc::Status MainEndpoint::FindBirdByName(::grpc::ServerContext* context, const ::birdy_grpc::FindBirdByNameRequest* request,
+    ::grpc::ServerWriter<::birdy_grpc::FindBirdByNameResponse>* writer)
 {
-    return {};
+    const auto birds = m_db->FindBirdByName(*request);
+    for (const auto& bird : birds)
+        writer->Write(bird);
+    return grpc::Status::OK;
 }
+
+::grpc::Status MainEndpoint::AddBirdWithData(::grpc::ServerContext* context,
+    const ::birdy_grpc::AddBirdWithDataRequest* request, ::birdy_grpc::AddBirdWithDataResponse* response)
+{
+    const auto res = m_db->AddBirdWithData(*request);
+    *response = std::move(res);
+    return grpc::Status::OK;
+}
+

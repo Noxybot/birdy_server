@@ -4,9 +4,9 @@
 #include "database/ConnectionPool.h"
 #include "utils/catch_all.h"
 
-
+#pragma warning(push, 0)
 #include <grpc++/server_builder.h>
-
+#pragma warning(pop)
 
 int main(int argc, char** argv) try
 {
@@ -18,6 +18,7 @@ int main(int argc, char** argv) try
 
   grpc::ServerBuilder builder;
   builder.AddListeningPort(server_address, grpc::InsecureServerCredentials());
+  builder.SetMaxMessageSize(std::numeric_limits<int>::max());
   builder.RegisterService(&service);
   //builder.AddChannelArgument(GRPC_ARG_KEEPALIVE_TIME_MS, 10000);
   //builder.AddChannelArgument(GRPC_ARG_KEEPALIVE_TIMEOUT_MS, 10000);
@@ -36,4 +37,4 @@ int main(int argc, char** argv) try
   server->Wait();
   return 0;
 }
-CATCH_ALL
+CATCH_ALL(-1)

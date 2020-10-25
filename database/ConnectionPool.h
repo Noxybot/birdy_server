@@ -2,14 +2,14 @@
 #include <pqxx/pqxx>
 
 #include <memory>
-#include <vector>
+#include <set>
 #include <mutex>
 
 class ConnectionPool
 {
     using conn_ptr = std::shared_ptr<pqxx::connection>;
     std::mutex m_mtx;
-    std::vector<conn_ptr> m_free_connections;
+    std::set<conn_ptr> m_free_connections;
     std::condition_variable m_condition;
 
 public:
