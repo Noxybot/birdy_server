@@ -28,6 +28,7 @@ MainEndpoint::MainEndpoint(std::shared_ptr<Database> db)
         case birdy_grpc::LoginResponse_Result_OK:
         case birdy_grpc::LoginResponse_Result_WRONG_PASSWORD:
         case birdy_grpc::LoginResponse_Result_LOGIN_NOT_FOUND:
+        case birdy_grpc::LoginResponse_Result_DB_ERROR:
             return grpc::Status::OK;
         default:
             assert(false);

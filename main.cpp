@@ -12,8 +12,8 @@ int main(int argc, char** argv) try
 {
   SetConsoleOutputCP(CP_UTF8);
   std::string server_address("0.0.0.0:1488");
-  auto db = std::make_shared<DatabasePQxx>(std::make_shared<ConnectionPool>("postgresql://postgres:postgres125@109.87.116.179:5555?application_name=birdy_server", 3));
-  db->dummy();
+  auto db = std::make_shared<DatabasePQxx>(std::make_shared<ConnectionPool>("postgresql://postgres:postgres125@109.87.116.179:5555?application_name=birdy_server", 30));
+  //db->dummy();
   MainEndpoint service(db);
 
   grpc::ServerBuilder builder;
@@ -21,6 +21,8 @@ int main(int argc, char** argv) try
   builder.SetMaxMessageSize(std::numeric_limits<int>::max());
   builder.RegisterService(&service);
   //builder.AddChannelArgument(GRPC_ARG_KEEPALIVE_TIME_MS, 10000);
+  builder.AddChannelArgument(GRPC_ARG_MAX_RECEIVE_MESSAGE_LENGTH, -1);
+  builder.AddChannelArgument(GRPC_ARG_MAX_SEND_MESSAGE_LENGTH, -1);
   //builder.AddChannelArgument(GRPC_ARG_KEEPALIVE_TIMEOUT_MS, 10000);
   //builder.AddChannelArgument(GRPC_ARG_HTTP2_BDP_PROBE, 1);
   //builder.AddChannelArgument(GRPC_ARG_KEEPALIVE_PERMIT_WITHOUT_CALLS, 1);
