@@ -14,8 +14,11 @@ void DatabasePQxx::dummy() try
 {
     auto conn = m_pool->AcquireConnection();
     SCOPE_EXIT {m_pool->ReleaseConnection(std::move(conn));};
-    if (!conn)
-        return;
+      if (!conn)
+    {
+        std::cout << "could not acquire connection\n";
+       return;
+    }
     pqxx::work work(*conn);
     const static auto query = fmt::format("SELECT bird_name, photo, description FROM avpz.find_bird_by_name({bird}) AS (bird_name TEXT, photo BYTEA, description TEXT);",
         fmt::arg("bird", work.quote(u8"Вор")));
@@ -28,11 +31,14 @@ CATCH_ALL(;)
 
 birdy_grpc::RegistrationResponse::Result DatabasePQxx::RegisterUser(const birdy_grpc::RegistrationRequest& request) try
 {
-    request.PrintDebugString();
+    std::cout << request.Utf8DebugString();
     auto conn = m_pool->AcquireConnection();
     SCOPE_EXIT {m_pool->ReleaseConnection(std::move(conn));};
-    if (!conn)
-        return {};
+      if (!conn)
+    {
+        std::cout << "could not acquire connection\n";
+       return {};
+    }
     pqxx::work work(*conn);
     const auto query = fmt::format("SELECT avpz.registrer_user({email}, {password}, {first_name}, {middle_name}, {last_name}, {birth_date}, {city});",
            fmt::arg("email", work.quote(request.email())),
@@ -53,17 +59,35 @@ CATCH_ALL(birdy_grpc::RegistrationResponse_Result_DB_ERROR)
 
 birdy_grpc::LoginResponse::Result DatabasePQxx::LoginUser(const birdy_grpc::LoginRequest& request) try
 {
-    return {};
+    std::cout << request.Utf8DebugString();
+    auto conn = m_pool->AcquireConnection();
+    SCOPE_EXIT {m_pool->ReleaseConnection(std::move(conn));};
+      if (!conn)
+    {
+        std::cout << "could not acquire connection\n";
+       return {};
+    }
+    pqxx::work work(*conn);
+    const auto query = fmt::format("SELECT avpz.login_user({email}, {password});",
+           fmt::arg("email", work.quote(request.email())),
+           fmt::arg("password", work.quote(request.password())));
+    const auto res = work.exec1(query);
+    work.commit();
+    const auto login_res =  res[0].as<int>();
+    return static_cast<birdy_grpc::LoginResponse_Result>(login_res);
 }
 CATCH_ALL(birdy_grpc::LoginResponse_Result_DB_ERROR)
 
 std::vector<birdy_grpc::FindBirdByNameResponse> DatabasePQxx::FindBirdByName(const birdy_grpc::FindBirdByNameRequest& request) try
 {
-    request.PrintDebugString();
+    std::cout << request.Utf8DebugString();
     auto conn = m_pool->AcquireConnection();
     SCOPE_EXIT {m_pool->ReleaseConnection(std::move(conn));};
-    if (!conn)
-        return {};
+      if (!conn)
+    {
+        std::cout << "could not acquire connection\n";
+       return {};
+    }
     pqxx::work work(*conn);
     std::vector<birdy_grpc::FindBirdByNameResponse> result;
     if (!request.name().empty())
@@ -80,9 +104,16 @@ std::vector<birdy_grpc::FindBirdByNameResponse> DatabasePQxx::FindBirdByName(con
             if (!row["bird_name"].is_null())
                 enc_info->set_name(row["bird_name"].as<std::string>());
             if (!row["photo"].is_null())
-                enc_info->set_photo(row["photo"].as<std::string>());
+            {
+                auto test = work.unesc_raw(row["photo"].as<std::string>());
+                enc_info->set_photo(test);
+            }
+               
             if (!row["description"].is_null())
-                enc_info->set_description(row["description"].as<std::string>());
+            {
+                auto test = row["description"].as<std::string>();
+                enc_info->set_description(test);
+            }
            // auto bird_info = new birdy_grpc::BirdInfo;
             //bird_info->set_allocated_enc_info(enc_info);
            // response.mutable_info()->AddAllocated(bird_info);
@@ -104,7 +135,7 @@ CATCH_ALL({})
 
 birdy_grpc::AddBirdWithDataResponse DatabasePQxx::AddBirdWithData(const birdy_grpc::AddBirdWithDataRequest& request) try
 {
-    //request.PrintDebugString();
+    std::cout << request.Utf8DebugString();
     const auto& info = request.info();
     const auto& found_point = info.found_point();
     const auto& found_time = info.found_time();
@@ -113,13 +144,19 @@ birdy_grpc::AddBirdWithDataResponse DatabasePQxx::AddBirdWithData(const birdy_gr
         !found_point.latitude() ||
         !found_point.longitude() ||
         found_time.empty())
-    return {};
+    {
+        std::cout << "not enough info\n";
+        return {};
+    }
     const auto& photo = request.photo();
     const auto& sound = request.sound();
     auto conn = m_pool->AcquireConnection();
     SCOPE_EXIT {m_pool->ReleaseConnection(std::move(conn));};
     if (!conn)
-        return {};
+    {
+        std::cout << "could not acquire connection\n";
+       return {};
+    }
     pqxx::work work(*conn);
     //const auto test = work.quote_raw(photo);
     std::string query = fmt::format("CALL avpz.add_found_bird({longitude}, {latitude}, {time}, {email}, {photo}, {sound}, {bird_name})",

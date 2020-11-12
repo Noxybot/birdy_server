@@ -14,6 +14,6 @@ class ConnectionPool
 
 public:
     ConnectionPool(const std::string& connection_string, std::size_t num_connections);
-    conn_ptr AcquireConnection(std::chrono::steady_clock::duration timeout = std::chrono::seconds(3));
+    conn_ptr AcquireConnection(std::chrono::steady_clock::duration timeout = std::chrono::seconds(5));
     void ReleaseConnection(conn_ptr connection);
 };
