@@ -2,12 +2,14 @@
 #include "../interfaces/Database.h"
 
 #include <pqxx/pqxx>
+#include "../FileManager.h"
 
 class ConnectionPool;
 
 class DatabasePQxx : public Database
 {
     std::shared_ptr<ConnectionPool> m_pool;
+    std::unique_ptr<FileManager> m_image_mgr;
 public:
     DatabasePQxx(std::shared_ptr<ConnectionPool> pool);
     void dummy();
