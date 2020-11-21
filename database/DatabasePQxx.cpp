@@ -8,6 +8,7 @@
 
 DatabasePQxx::DatabasePQxx(std::shared_ptr<ConnectionPool> pool)
     : m_pool(std::move(pool))
+    , m_image_mgr(std::make_unique<FileManager>())
 {}
 
 void DatabasePQxx::dummy() try
@@ -51,6 +52,7 @@ birdy_grpc::RegistrationResponse::Result DatabasePQxx::RegisterUser(const birdy_
     std::cout << "query : " << query << std::endl;
     const auto res = work.exec1(query);
     work.commit();
+    std::cout << "query=" << query << std::endl;
     if (res[0].as<bool>())
         return birdy_grpc::RegistrationResponse_Result_OK;
     return birdy_grpc::RegistrationResponse_Result_EMAIL_ALREADY_TAKEN;
@@ -73,6 +75,7 @@ birdy_grpc::LoginResponse::Result DatabasePQxx::LoginUser(const birdy_grpc::Logi
            fmt::arg("password", work.quote(request.password())));
     const auto res = work.exec1(query);
     work.commit();
+    std::cout << "query=" << query << std::endl;
     const auto login_res =  res[0].as<int>();
     return static_cast<birdy_grpc::LoginResponse_Result>(login_res);
 }
@@ -92,10 +95,11 @@ std::vector<birdy_grpc::FindBirdByNameResponse> DatabasePQxx::FindBirdByName(con
     std::vector<birdy_grpc::FindBirdByNameResponse> result;
     if (!request.name().empty())
     {
-        const auto query = fmt::format("SELECT bird_name, photo, description FROM avpz.find_bird_by_name({bird}) AS (bird_name TEXT, photo BYTEA, description TEXT);",
+        const auto query = fmt::format("SELECT bird_name, photo_name, description FROM avpz.find_bird_by_name({bird}) AS (bird_name TEXT, photo_name TEXT, description TEXT);",
         fmt::arg("bird", work.quote(request.name())));
         const auto res = work.exec(query);
         work.commit();
+        std::cout << "query=" << query << std::endl;
         for (const auto& row : res)
         {
             birdy_grpc::FindBirdByNameResponse response;
@@ -103,10 +107,10 @@ std::vector<birdy_grpc::FindBirdByNameResponse> DatabasePQxx::FindBirdByName(con
             auto enc_info = new birdy_grpc::EncyclopedicBirdInfo;
             if (!row["bird_name"].is_null())
                 enc_info->set_name(row["bird_name"].as<std::string>());
-            if (!row["photo"].is_null())
+            if (!row["photo_name"].is_null())
             {
-                auto test = work.unesc_raw(row["photo"].as<std::string>());
-                enc_info->set_photo(test);
+                auto photo = m_image_mgr->GetFile(row["photo_name"].as<std::string>());
+                enc_info->set_photo(std::move(photo));
             }
                
             if (!row["description"].is_null())
@@ -135,7 +139,7 @@ CATCH_ALL({})
 
 birdy_grpc::AddBirdWithDataResponse DatabasePQxx::AddBirdWithData(const birdy_grpc::AddBirdWithDataRequest& request) try
 {
-    std::cout << request.Utf8DebugString();
+    //std::cout << request.Utf8DebugString();
     const auto& info = request.info();
     const auto& found_point = info.found_point();
     const auto& found_time = info.found_time();
@@ -157,18 +161,20 @@ birdy_grpc::AddBirdWithDataResponse DatabasePQxx::AddBirdWithData(const birdy_gr
         std::cout << "could not acquire connection\n";
        return {};
     }
+    const auto photo_name = m_image_mgr->SaveFile(photo);
     pqxx::work work(*conn);
     //const auto test = work.quote_raw(photo);
-    std::string query = fmt::format("CALL avpz.add_found_bird({longitude}, {latitude}, {time}, {email}, {photo}, {sound}, {bird_name})",
+    std::string query = fmt::format("CALL avpz.add_found_bird({longitude}, {latitude}, {time}, {email}, {photo_name}, {sound_name}, {bird_name})",
              fmt::arg("longitude", work.quote(std::to_string(found_point.longitude()))),
              fmt::arg("latitude", work.quote(std::to_string(found_point.latitude()))),
              fmt::arg("time",  work.quote(found_time)),
              fmt::arg("email", work.quote(info.finder_email())),
-             fmt::arg("photo", work.quote_raw(photo)),
-             fmt::arg("sound", work.quote_raw(sound)),
+             fmt::arg("photo_name", work.quote(photo_name)),
+             fmt::arg("sound_name", work.quote("")),
              fmt::arg("bird_name", work.quote(u8"Воронкин")));
     work.exec0(query);
     work.commit();
+    std::cout << "query=" << query << std::endl;
     birdy_grpc::AddBirdWithDataResponse res;
     res.set_bird_name(u8"Воронкин");
     return res;
