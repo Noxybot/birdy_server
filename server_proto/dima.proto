@@ -1,0 +1,15 @@
+syntax = "proto3";
+package birdy_grpc;
+
+service ModelEndpoint {
+	rpc RecognizeBirdByPhoto (RecognizeBirdRequest) returns (RecognizeBirdResponse) {}
+	rpc RecognizeBirdBySound(RecognizeBirdRequest) returns (RecognizeBirdResponse) {}
+}
+
+message RecognizeBirdRequest {
+	bytes data = 1;
+}
+
+message RecognizeBirdResponse {
+	string name = 1;
+}
