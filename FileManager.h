@@ -9,6 +9,7 @@ class FileManager
     mutable std::mutex m_mtx;
 public:
     //returns random file_name
+    explicit FileManager();
     std::string SaveFile(const std::string& image);
     std::string GetFile(const std::string& file_name);
 };

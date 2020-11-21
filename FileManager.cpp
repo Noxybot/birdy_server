@@ -4,6 +4,7 @@
 #include <fstream>
 #include <vector>
 #include <iostream>
+#include <filesystem>
 
 static const std::string folder = "images/";
 static const std::size_t name_size = 16;
@@ -55,6 +56,11 @@ std::uniform_int_distribution<> dist(0, ch_set.size()-1);
 char randchar()
 {
     return ch_set[ dist(rng) ];
+}
+
+FileManager::FileManager()
+{
+    std::filesystem::create_directory(folder);
 }
 
 std::string FileManager::SaveFile(const std::string& file)
