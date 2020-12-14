@@ -25,9 +25,13 @@ static const char* MainEndpoint_method_names[] = {
   "/birdy_grpc.MainEndpoint/RegisterUser",
   "/birdy_grpc.MainEndpoint/LoginUser",
   "/birdy_grpc.MainEndpoint/FindBirdByName",
+  "/birdy_grpc.MainEndpoint/FindBirdCoordinatesByName",
+  "/birdy_grpc.MainEndpoint/BindBoysByCity",
   "/birdy_grpc.MainEndpoint/AddBirdWithData",
   "/birdy_grpc.MainEndpoint/SendMessage",
   "/birdy_grpc.MainEndpoint/SubscribeToNewMessages",
+  "/birdy_grpc.MainEndpoint/UpdateUser",
+  "/birdy_grpc.MainEndpoint/GetTopBirds",
 };
 
 std::unique_ptr< MainEndpoint::Stub> MainEndpoint::NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options) {
@@ -40,9 +44,13 @@ MainEndpoint::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& chann
   : channel_(channel), rpcmethod_RegisterUser_(MainEndpoint_method_names[0], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_LoginUser_(MainEndpoint_method_names[1], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_FindBirdByName_(MainEndpoint_method_names[2], ::grpc::internal::RpcMethod::SERVER_STREAMING, channel)
-  , rpcmethod_AddBirdWithData_(MainEndpoint_method_names[3], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_SendMessage_(MainEndpoint_method_names[4], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_SubscribeToNewMessages_(MainEndpoint_method_names[5], ::grpc::internal::RpcMethod::SERVER_STREAMING, channel)
+  , rpcmethod_FindBirdCoordinatesByName_(MainEndpoint_method_names[3], ::grpc::internal::RpcMethod::SERVER_STREAMING, channel)
+  , rpcmethod_BindBoysByCity_(MainEndpoint_method_names[4], ::grpc::internal::RpcMethod::SERVER_STREAMING, channel)
+  , rpcmethod_AddBirdWithData_(MainEndpoint_method_names[5], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_SendMessage_(MainEndpoint_method_names[6], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_SubscribeToNewMessages_(MainEndpoint_method_names[7], ::grpc::internal::RpcMethod::SERVER_STREAMING, channel)
+  , rpcmethod_UpdateUser_(MainEndpoint_method_names[8], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_GetTopBirds_(MainEndpoint_method_names[9], ::grpc::internal::RpcMethod::SERVER_STREAMING, channel)
   {}
 
 ::grpc::Status MainEndpoint::Stub::RegisterUser(::grpc::ClientContext* context, const ::birdy_grpc::RegistrationRequest& request, ::birdy_grpc::RegistrationResponse* response) {
@@ -117,6 +125,38 @@ void MainEndpoint::Stub::experimental_async::FindBirdByName(::grpc::ClientContex
   return ::grpc_impl::internal::ClientAsyncReaderFactory< ::birdy_grpc::FindBirdByNameResponse>::Create(channel_.get(), cq, rpcmethod_FindBirdByName_, context, request, false, nullptr);
 }
 
+::grpc::ClientReader< ::birdy_grpc::FindBirdCoordinatesByNameResponse>* MainEndpoint::Stub::FindBirdCoordinatesByNameRaw(::grpc::ClientContext* context, const ::birdy_grpc::FindBirdCoordinatesByNameRequest& request) {
+  return ::grpc_impl::internal::ClientReaderFactory< ::birdy_grpc::FindBirdCoordinatesByNameResponse>::Create(channel_.get(), rpcmethod_FindBirdCoordinatesByName_, context, request);
+}
+
+void MainEndpoint::Stub::experimental_async::FindBirdCoordinatesByName(::grpc::ClientContext* context, ::birdy_grpc::FindBirdCoordinatesByNameRequest* request, ::grpc::experimental::ClientReadReactor< ::birdy_grpc::FindBirdCoordinatesByNameResponse>* reactor) {
+  ::grpc_impl::internal::ClientCallbackReaderFactory< ::birdy_grpc::FindBirdCoordinatesByNameResponse>::Create(stub_->channel_.get(), stub_->rpcmethod_FindBirdCoordinatesByName_, context, request, reactor);
+}
+
+::grpc::ClientAsyncReader< ::birdy_grpc::FindBirdCoordinatesByNameResponse>* MainEndpoint::Stub::AsyncFindBirdCoordinatesByNameRaw(::grpc::ClientContext* context, const ::birdy_grpc::FindBirdCoordinatesByNameRequest& request, ::grpc::CompletionQueue* cq, void* tag) {
+  return ::grpc_impl::internal::ClientAsyncReaderFactory< ::birdy_grpc::FindBirdCoordinatesByNameResponse>::Create(channel_.get(), cq, rpcmethod_FindBirdCoordinatesByName_, context, request, true, tag);
+}
+
+::grpc::ClientAsyncReader< ::birdy_grpc::FindBirdCoordinatesByNameResponse>* MainEndpoint::Stub::PrepareAsyncFindBirdCoordinatesByNameRaw(::grpc::ClientContext* context, const ::birdy_grpc::FindBirdCoordinatesByNameRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc_impl::internal::ClientAsyncReaderFactory< ::birdy_grpc::FindBirdCoordinatesByNameResponse>::Create(channel_.get(), cq, rpcmethod_FindBirdCoordinatesByName_, context, request, false, nullptr);
+}
+
+::grpc::ClientReader< ::birdy_grpc::UserInfo>* MainEndpoint::Stub::BindBoysByCityRaw(::grpc::ClientContext* context, const ::birdy_grpc::FindBoysByCityRequest& request) {
+  return ::grpc_impl::internal::ClientReaderFactory< ::birdy_grpc::UserInfo>::Create(channel_.get(), rpcmethod_BindBoysByCity_, context, request);
+}
+
+void MainEndpoint::Stub::experimental_async::BindBoysByCity(::grpc::ClientContext* context, ::birdy_grpc::FindBoysByCityRequest* request, ::grpc::experimental::ClientReadReactor< ::birdy_grpc::UserInfo>* reactor) {
+  ::grpc_impl::internal::ClientCallbackReaderFactory< ::birdy_grpc::UserInfo>::Create(stub_->channel_.get(), stub_->rpcmethod_BindBoysByCity_, context, request, reactor);
+}
+
+::grpc::ClientAsyncReader< ::birdy_grpc::UserInfo>* MainEndpoint::Stub::AsyncBindBoysByCityRaw(::grpc::ClientContext* context, const ::birdy_grpc::FindBoysByCityRequest& request, ::grpc::CompletionQueue* cq, void* tag) {
+  return ::grpc_impl::internal::ClientAsyncReaderFactory< ::birdy_grpc::UserInfo>::Create(channel_.get(), cq, rpcmethod_BindBoysByCity_, context, request, true, tag);
+}
+
+::grpc::ClientAsyncReader< ::birdy_grpc::UserInfo>* MainEndpoint::Stub::PrepareAsyncBindBoysByCityRaw(::grpc::ClientContext* context, const ::birdy_grpc::FindBoysByCityRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc_impl::internal::ClientAsyncReaderFactory< ::birdy_grpc::UserInfo>::Create(channel_.get(), cq, rpcmethod_BindBoysByCity_, context, request, false, nullptr);
+}
+
 ::grpc::Status MainEndpoint::Stub::AddBirdWithData(::grpc::ClientContext* context, const ::birdy_grpc::AddBirdWithDataRequest& request, ::birdy_grpc::AddBirdWithDataResponse* response) {
   return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_AddBirdWithData_, context, request, response);
 }
@@ -189,6 +229,50 @@ void MainEndpoint::Stub::experimental_async::SubscribeToNewMessages(::grpc::Clie
   return ::grpc_impl::internal::ClientAsyncReaderFactory< ::birdy_grpc::ChatMessage>::Create(channel_.get(), cq, rpcmethod_SubscribeToNewMessages_, context, request, false, nullptr);
 }
 
+::grpc::Status MainEndpoint::Stub::UpdateUser(::grpc::ClientContext* context, const ::birdy_grpc::UserInfo& request, ::birdy_grpc::Empty* response) {
+  return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_UpdateUser_, context, request, response);
+}
+
+void MainEndpoint::Stub::experimental_async::UpdateUser(::grpc::ClientContext* context, const ::birdy_grpc::UserInfo* request, ::birdy_grpc::Empty* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_UpdateUser_, context, request, response, std::move(f));
+}
+
+void MainEndpoint::Stub::experimental_async::UpdateUser(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::birdy_grpc::Empty* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_UpdateUser_, context, request, response, std::move(f));
+}
+
+void MainEndpoint::Stub::experimental_async::UpdateUser(::grpc::ClientContext* context, const ::birdy_grpc::UserInfo* request, ::birdy_grpc::Empty* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_UpdateUser_, context, request, response, reactor);
+}
+
+void MainEndpoint::Stub::experimental_async::UpdateUser(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::birdy_grpc::Empty* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_UpdateUser_, context, request, response, reactor);
+}
+
+::grpc::ClientAsyncResponseReader< ::birdy_grpc::Empty>* MainEndpoint::Stub::AsyncUpdateUserRaw(::grpc::ClientContext* context, const ::birdy_grpc::UserInfo& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::birdy_grpc::Empty>::Create(channel_.get(), cq, rpcmethod_UpdateUser_, context, request, true);
+}
+
+::grpc::ClientAsyncResponseReader< ::birdy_grpc::Empty>* MainEndpoint::Stub::PrepareAsyncUpdateUserRaw(::grpc::ClientContext* context, const ::birdy_grpc::UserInfo& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::birdy_grpc::Empty>::Create(channel_.get(), cq, rpcmethod_UpdateUser_, context, request, false);
+}
+
+::grpc::ClientReader< ::birdy_grpc::EncyclopedicBirdInfo>* MainEndpoint::Stub::GetTopBirdsRaw(::grpc::ClientContext* context, const ::birdy_grpc::GetTopBirdsRequest& request) {
+  return ::grpc_impl::internal::ClientReaderFactory< ::birdy_grpc::EncyclopedicBirdInfo>::Create(channel_.get(), rpcmethod_GetTopBirds_, context, request);
+}
+
+void MainEndpoint::Stub::experimental_async::GetTopBirds(::grpc::ClientContext* context, ::birdy_grpc::GetTopBirdsRequest* request, ::grpc::experimental::ClientReadReactor< ::birdy_grpc::EncyclopedicBirdInfo>* reactor) {
+  ::grpc_impl::internal::ClientCallbackReaderFactory< ::birdy_grpc::EncyclopedicBirdInfo>::Create(stub_->channel_.get(), stub_->rpcmethod_GetTopBirds_, context, request, reactor);
+}
+
+::grpc::ClientAsyncReader< ::birdy_grpc::EncyclopedicBirdInfo>* MainEndpoint::Stub::AsyncGetTopBirdsRaw(::grpc::ClientContext* context, const ::birdy_grpc::GetTopBirdsRequest& request, ::grpc::CompletionQueue* cq, void* tag) {
+  return ::grpc_impl::internal::ClientAsyncReaderFactory< ::birdy_grpc::EncyclopedicBirdInfo>::Create(channel_.get(), cq, rpcmethod_GetTopBirds_, context, request, true, tag);
+}
+
+::grpc::ClientAsyncReader< ::birdy_grpc::EncyclopedicBirdInfo>* MainEndpoint::Stub::PrepareAsyncGetTopBirdsRaw(::grpc::ClientContext* context, const ::birdy_grpc::GetTopBirdsRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc_impl::internal::ClientAsyncReaderFactory< ::birdy_grpc::EncyclopedicBirdInfo>::Create(channel_.get(), cq, rpcmethod_GetTopBirds_, context, request, false, nullptr);
+}
+
 MainEndpoint::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       MainEndpoint_method_names[0],
@@ -222,6 +306,26 @@ MainEndpoint::Service::Service() {
              }, this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       MainEndpoint_method_names[3],
+      ::grpc::internal::RpcMethod::SERVER_STREAMING,
+      new ::grpc::internal::ServerStreamingHandler< MainEndpoint::Service, ::birdy_grpc::FindBirdCoordinatesByNameRequest, ::birdy_grpc::FindBirdCoordinatesByNameResponse>(
+          [](MainEndpoint::Service* service,
+             ::grpc_impl::ServerContext* ctx,
+             const ::birdy_grpc::FindBirdCoordinatesByNameRequest* req,
+             ::grpc_impl::ServerWriter<::birdy_grpc::FindBirdCoordinatesByNameResponse>* writer) {
+               return service->FindBirdCoordinatesByName(ctx, req, writer);
+             }, this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      MainEndpoint_method_names[4],
+      ::grpc::internal::RpcMethod::SERVER_STREAMING,
+      new ::grpc::internal::ServerStreamingHandler< MainEndpoint::Service, ::birdy_grpc::FindBoysByCityRequest, ::birdy_grpc::UserInfo>(
+          [](MainEndpoint::Service* service,
+             ::grpc_impl::ServerContext* ctx,
+             const ::birdy_grpc::FindBoysByCityRequest* req,
+             ::grpc_impl::ServerWriter<::birdy_grpc::UserInfo>* writer) {
+               return service->BindBoysByCity(ctx, req, writer);
+             }, this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      MainEndpoint_method_names[5],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< MainEndpoint::Service, ::birdy_grpc::AddBirdWithDataRequest, ::birdy_grpc::AddBirdWithDataResponse>(
           [](MainEndpoint::Service* service,
@@ -231,7 +335,7 @@ MainEndpoint::Service::Service() {
                return service->AddBirdWithData(ctx, req, resp);
              }, this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      MainEndpoint_method_names[4],
+      MainEndpoint_method_names[6],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< MainEndpoint::Service, ::birdy_grpc::SendMessageRequest, ::birdy_grpc::SendMessageResponse>(
           [](MainEndpoint::Service* service,
@@ -241,7 +345,7 @@ MainEndpoint::Service::Service() {
                return service->SendMessage(ctx, req, resp);
              }, this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      MainEndpoint_method_names[5],
+      MainEndpoint_method_names[7],
       ::grpc::internal::RpcMethod::SERVER_STREAMING,
       new ::grpc::internal::ServerStreamingHandler< MainEndpoint::Service, ::birdy_grpc::Empty, ::birdy_grpc::ChatMessage>(
           [](MainEndpoint::Service* service,
@@ -249,6 +353,26 @@ MainEndpoint::Service::Service() {
              const ::birdy_grpc::Empty* req,
              ::grpc_impl::ServerWriter<::birdy_grpc::ChatMessage>* writer) {
                return service->SubscribeToNewMessages(ctx, req, writer);
+             }, this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      MainEndpoint_method_names[8],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< MainEndpoint::Service, ::birdy_grpc::UserInfo, ::birdy_grpc::Empty>(
+          [](MainEndpoint::Service* service,
+             ::grpc_impl::ServerContext* ctx,
+             const ::birdy_grpc::UserInfo* req,
+             ::birdy_grpc::Empty* resp) {
+               return service->UpdateUser(ctx, req, resp);
+             }, this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      MainEndpoint_method_names[9],
+      ::grpc::internal::RpcMethod::SERVER_STREAMING,
+      new ::grpc::internal::ServerStreamingHandler< MainEndpoint::Service, ::birdy_grpc::GetTopBirdsRequest, ::birdy_grpc::EncyclopedicBirdInfo>(
+          [](MainEndpoint::Service* service,
+             ::grpc_impl::ServerContext* ctx,
+             const ::birdy_grpc::GetTopBirdsRequest* req,
+             ::grpc_impl::ServerWriter<::birdy_grpc::EncyclopedicBirdInfo>* writer) {
+               return service->GetTopBirds(ctx, req, writer);
              }, this)));
 }
 
@@ -276,6 +400,20 @@ MainEndpoint::Service::~Service() {
   return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
 }
 
+::grpc::Status MainEndpoint::Service::FindBirdCoordinatesByName(::grpc::ServerContext* context, const ::birdy_grpc::FindBirdCoordinatesByNameRequest* request, ::grpc::ServerWriter< ::birdy_grpc::FindBirdCoordinatesByNameResponse>* writer) {
+  (void) context;
+  (void) request;
+  (void) writer;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status MainEndpoint::Service::BindBoysByCity(::grpc::ServerContext* context, const ::birdy_grpc::FindBoysByCityRequest* request, ::grpc::ServerWriter< ::birdy_grpc::UserInfo>* writer) {
+  (void) context;
+  (void) request;
+  (void) writer;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
 ::grpc::Status MainEndpoint::Service::AddBirdWithData(::grpc::ServerContext* context, const ::birdy_grpc::AddBirdWithDataRequest* request, ::birdy_grpc::AddBirdWithDataResponse* response) {
   (void) context;
   (void) request;
@@ -291,6 +429,20 @@ MainEndpoint::Service::~Service() {
 }
 
 ::grpc::Status MainEndpoint::Service::SubscribeToNewMessages(::grpc::ServerContext* context, const ::birdy_grpc::Empty* request, ::grpc::ServerWriter< ::birdy_grpc::ChatMessage>* writer) {
+  (void) context;
+  (void) request;
+  (void) writer;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status MainEndpoint::Service::UpdateUser(::grpc::ServerContext* context, const ::birdy_grpc::UserInfo* request, ::birdy_grpc::Empty* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status MainEndpoint::Service::GetTopBirds(::grpc::ServerContext* context, const ::birdy_grpc::GetTopBirdsRequest* request, ::grpc::ServerWriter< ::birdy_grpc::EncyclopedicBirdInfo>* writer) {
   (void) context;
   (void) request;
   (void) writer;

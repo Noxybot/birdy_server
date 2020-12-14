@@ -22,18 +22,8 @@ MainEndpoint::MainEndpoint(std::shared_ptr<Database> db)
 ::grpc::Status MainEndpoint::LoginUser(::grpc::ServerContext* context, const ::birdy_grpc::LoginRequest* request,
     ::birdy_grpc::LoginResponse* response)
 {
-    const auto result = m_db->LoginUser(*request);
-    response->set_result(result);
-    switch (result) {
-        case birdy_grpc::LoginResponse_Result_OK:
-        case birdy_grpc::LoginResponse_Result_WRONG_PASSWORD:
-        case birdy_grpc::LoginResponse_Result_LOGIN_NOT_FOUND:
-        case birdy_grpc::LoginResponse_Result_DB_ERROR:
-            return grpc::Status::OK;
-        default:
-            assert(false);
-            return grpc::Status::CANCELLED;
-    }
+    *response = m_db->LoginUser(*request);
+    return grpc::Status::OK;
 }
 
 ::grpc::Status MainEndpoint::FindBirdByName(::grpc::ServerContext* context, const ::birdy_grpc::FindBirdByNameRequest* request,
@@ -50,6 +40,39 @@ MainEndpoint::MainEndpoint(std::shared_ptr<Database> db)
 {
     const auto res = m_db->AddBirdWithData(*request);
     *response = std::move(res);
+    return grpc::Status::OK;
+}
+
+::grpc::Status MainEndpoint::FindBirdCoordinatesByName(::grpc::ServerContext* context,
+    const ::birdy_grpc::FindBirdCoordinatesByNameRequest* request,
+    ::grpc::ServerWriter<::birdy_grpc::FindBirdCoordinatesByNameResponse>* writer)
+{
+    const auto birds = m_db->FindBirdCoordinates(*request);
+    for (const auto& bird : birds)
+        writer->Write(bird);
+    return grpc::Status::OK;
+}
+
+::grpc::Status MainEndpoint::BindBoysByCity(::grpc::ServerContext* context,
+    const ::birdy_grpc::FindBoysByCityRequest* request, ::grpc::ServerWriter<::birdy_grpc::UserInfo>* writer)
+{
+    const auto boys = m_db->FindBoysByCity(*request);
+    for (const auto& boy : boys)
+        writer->Write(boy);
+    return grpc::Status::OK;
+}
+
+::grpc::Status MainEndpoint::UpdateUser(::grpc::ServerContext* context, const ::birdy_grpc::UserInfo* request,
+    ::birdy_grpc::Empty* response)
+{
+    m_db->UpdateUser(*request);
+    return grpc::Status::OK;
+}
+
+::grpc::Status MainEndpoint::GetTopBirds(::grpc::ServerContext* context, const ::birdy_grpc::GetTopBirdsRequest* request,
+    ::grpc::ServerWriter<::birdy_grpc::EncyclopedicBirdInfo>* writer)
+{
+    m_db->GetTopBirds(*request, writer);
     return grpc::Status::OK;
 }
 

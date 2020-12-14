@@ -37,3 +37,6 @@ birdy.vcxproj*
 Debug/*
 Release/*
 images/*
+web/*
+sound.mp3
+image*

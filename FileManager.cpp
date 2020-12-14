@@ -69,7 +69,8 @@ std::string FileManager::SaveFile(const std::string& file)
     std::ofstream f {folder + file_name, std::ios_base::binary};
     f << file;
     std::lock_guard<decltype(m_mtx)> _ {m_mtx};
-    m_cache[file_name] = file;
+    if (!file.empty())
+        m_cache[file_name] = file;
     std::cout << "ImageManger: saved file with size=" << file.size() << ", file=" << folder + file_name << std::endl;
     return file_name;
 }
